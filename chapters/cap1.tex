@@ -6,7 +6,7 @@
 % right way, did not become still more complicated.
 % \end{quotation}
 
-\noindent Este capítulo contextualiza os principais assuntos abordados neste trabalho de dissertação, apresenta as motivações que levaram à escolha do tema, os objetivos gerais e específicos da proposta desta pesquisa, bem como a justificativa para conduzir uma investigação no assunto debatido.
+\noindent Este capítulo contextualiza os principais assuntos abordados neste trabalho de dissertação, apresenta as motivações que levaram à escolha do tema, os objetivos gerais e específicos da proposta desta pesquisa, bem como a justificativa para conduzir uma investigação no assunto debatido e suas principais contribuições.
 \clearpage
 
 % ----------------------------------------------------------
@@ -16,11 +16,11 @@
 \section{Contextualização}
 % ----------------------------------------------------------
 
-Desde a década de 1970, com a criação do modelo relacional por Edgar Frank Codd, a estrutura de armazenamento adotada por muitos desenvolvedores de sistemas da área de tecnologia da informação tem se baseado no conceito de entidade e relação proposto por Codd. A maioria dos sistemas gerenciadores de banco de dados que possui aceitação no mercado fazem uso desse modelo, por exemplo o MySQL, Oracle e Microsoft SQL Server. Porém, os requisitos para o desenvolvimento de ferramentas de software modernas têm mudado significativamente, especialmente com o aumento das aplicações Web [\cite{nasholm:2012}]. Este segmento de aplicações exige requisitos com alta escalabilidade e vazão, onde sistemas que utilizam um armazenamento com esquema relacional não conseguem atender satisfatoriamente. Em resposta a isso, novas abordagens de armazenamentos de dados utilizando o termo de NoSQL tornaram-se popular.
+Desde a década de 1970, com a criação do modelo relacional por Edgar Frank Codd, a estrutura de armazenamento adotada por muitos desenvolvedores de sistemas da área de tecnologia da informação tem se baseado no conceito de entidade e relação proposto por Codd. A maioria dos sistemas gerenciadores de banco de dados que possui aceitação no mercado fazem uso desse modelo, por exemplo o MySQL, Oracle e Microsoft SQL Server. Porém, os requisitos para o desenvolvimento de ferramentas de software modernas têm mudado significativamente, especialmente com o aumento das aplicações Web [\cite{nasholm:2012}]. Este segmento de aplicações exige requisitos com alta escalabilidade e vazão, onde sistemas que utilizam um armazenamento com esquema relacional não conseguem atender satisfatoriamente. Em resposta a isso, novas abordagens de armazenamentos de dados utilizando o termo de NoSQL tornaram-se popular [\cite{silva:2016}].
 
 O termo NoSQL é constantemente interpretado como  ''\emph{Not Only SQL}'', cujo SQL refere-se a linguagem de manipulação de dados dos gerenciadores de armazenamento de dados relacionais (RDBMS - Relational Database Management System) - Structure Query Language [\cite{nasholm:2012}]. O grande propósito das abordagens NoSQL é oferecer alternativas onde os esquemas relacionais não apresentam um bom desempenho. Esse termo abrange diferentes tipos de sistemas. Em geral, banco de dados NoSQL usam modelo de dados não-relacionais, com poucas definições de esquema, são executados em clusters e aplicados a alguns bancos de dados recentes como o Cassandra, o Mongo, o Neo4J e o Riak [\cite{fowler:2013}].
 
-Muitas empresas coletam e armazenam milhares de gigabytes de dados por dia, no qual a análise desses dados torna-se uma vantagem competitiva no mercado. Por isso, há uma grande necessidade de uma nova arquitetura para o gerenciamento de suporte à decisão que possa alcançar melhor escalabilidade e eficiência [\cite{liu:2013}]. Para auxiliar no processo de gerenciamento de suporte à decisão uma das formas mais utilizadas é a criação de um ambiente data warehousing que é responsável por providenciar informações estratégicas e esquematizadas a respeito do negócio [\cite{dayal:1997}].
+Muitas empresas coletam e armazenam milhares de gigabytes de dados por dia, no qual a análise desses dados torna-se uma vantagem competitiva no mercado. Por isso, há uma grande necessidade de uma nova arquitetura para o gerenciamento de suporte à decisão que possa alcançar melhor escalabilidade e eficiência [\cite{liu:2013}]. Para auxiliar no processo de gerenciamento de suporte à decisão uma das formas mais utilizadas é a criação de um ambiente data warehousing, que é responsável por providenciar informações estratégicas e esquematizadas a respeito do negócio [\cite{dayal:1997}].
 
 Segundo a definição de \cite{kimball:2002}, data warehouse (DW) é uma coleção de dados para o processo de gerenciamento de suporte à decisão orientado a assunto, integrado, variante no tempo e não volátil. Os dados de diferentes fontes de sistemas são processados em um data warehouse central através da Extração, Transformação e Carga (ETL) de maneira periódica. Os processos de ETL consistem em um conjunto de técnicas e ferramentas para transformar dados de múltiplas fontes de dados para fins de análise de negócio [\cite{silva:2016}]. Ferramentas de ETL são sistemas de software responsáveis por extrair dados de diversas fontes, transformar e customizar os dados e inseri-los no data warehouse. Comumente, esses processos são executados periodicamente, onde a otimização do seu tempo de execução torna-se importante [\cite{vassiliadis:2005}, \cite{silva:2016}].
 
@@ -40,7 +40,7 @@ Tradicionalmente, o DW é implementado em uma base de dados relacional, onde o d
 \section{Motivação}
 % ----------------------------------------------------------
 
-A integração de dados e os processos de ETL são procedimentos cruciais para a criação de data warehouses e sistemas BI (business intelligence). Porém, os sistemas para ETL e integração de dados são tradicionalmente desenvolvidos para dados estruturados em modelos relacionais que representam apenas uma pequena parte dos dados mantidos por muitas empresas [\cite{darmont:2005}, Russom 2007, Pedersen 2009]. Dessa forma, existe uma demanda crescente para integrar os dados não estruturados e semi estruturados em um repositório unificado. Devido a complexidade desses dados, novos desafios estão surgindo quando lidamos com dados heterogêneos e distribuídos no ambiente de integração [Salem, 2012].
+A integração de dados e os processos de ETL são procedimentos cruciais para a criação de data warehouses e sistemas BI (\textit{business intelligence}). Porém, os sistemas para ETL e integração de dados são tradicionalmente desenvolvidos para dados estruturados em modelos relacionais que representam apenas uma pequena parte dos dados mantidos por muitas empresas [\cite{darmont:2005}, Russom 2007, Pedersen 2009]. Dessa forma, existe uma demanda crescente para integrar os dados não estruturados e semi estruturados em um repositório unificado. Devido a complexidade desses dados, novos desafios estão surgindo quando lidamos com dados heterogêneos e distribuídos no ambiente de integração [Salem, 2012].
 
 Além disso, muitas empresas encontram dificuldades para lidar com as ferramentas ETL disponíveis no mercado. Aprender a lidar com essas ferramentas pode ser muito custoso em termos financeiros e de tempo, e por isso, acabam optando desenvolver os seus processos por meio de uma linguagem de programação de propósito geral [Awad et al., 2011; Muñoz et al., 2009].
 
@@ -84,13 +84,15 @@ Outra contribuição desta pesquisa é apresentar, por meio de um estudo experim
 Este trabalho está organizado de acordo com a seguinte estrutura:
 
 \begin{itemize}
-	\item \textbf{Capítulo 2 (Fundamentação Teórica):} apresenta uma revisão da literatura dos principais assuntos abordados neste trabalho. Serão tratados temas a respeito de ETL, banco de dados NoSQL, Frameworks e estudo experimental de software.
+	\item \textbf{Fundamentação Teórica:} apresenta uma revisão da literatura dos principais assuntos abordados neste trabalho. Serão tratados temas a respeito de ETL, banco de dados NoSQL, Frameworks e estudo experimental de software.
 	
-	\item \textbf{Capítulo 3 (O Framework ETL4NoSQL):} descreve os requisitos, arquitetura e componentes do framework exposto neste trabalho.
+	\item \textbf{Trabalhos Correlatos:} descreve os trabalhos correlatos encontrados na literatura a respeito de ferramentas de ETL. Este capítulo visa um comparativo das diversas ferramentas existentes com a proposta deste trabalho.
 	
-	\item \textbf{Capítulo 4 (Estudo Experimental de Software):} expõe o roteiro da experimentação de software para ferramentas de ETL. Define o objetivo, planejamento, operação e resultado do estudo.
+	\item \textbf{O Framework ETL4NoSQL:} descreve os requisitos, arquitetura e componentes do framework exposto neste trabalho.
 	
-	\item \textbf{Capítulo 5 (Considerações Finais):} expressa as limitações e ameaças à validade do trabalho, considerações finais e sugere de trabalhos futuros.	
+	\item \textbf{Estudo Experimental de Software:} expõe o roteiro da experimentação de software para ferramentas de ETL. Define o objetivo, planejamento, operação e resultado do estudo.
+	
+	\item \textbf{Considerações Finais:} expressa as limitações e ameaças à validade do trabalho, considerações finais e sugere de trabalhos futuros.	
 	
 \end{itemize}
 
