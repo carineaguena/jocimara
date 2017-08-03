@@ -1,7 +1,6 @@
 \chapter{Trabalhos Correlatos}
 
-\noindent Este capítulo aborda os trabalhos que são correlatos a esta pesquisa, bem como descreve como estes trabalhos diferem do realizado
-por esta pesquisa.
+\noindent Este capítulo aborda os trabalhos que são correlatos a esta pesquisa, bem como descreve como estes trabalhos diferem do realizado por esta pesquisa.
 \clearpage
 
 \section{Ferramentas de ETL}
@@ -9,23 +8,39 @@ por esta pesquisa.
 
 
 \subsection{ARKTOS II}
-ARKTOS II: modela os processos de ETL
+
+O principal objetivo do ARKTOS II é facilitar a modelagem dos processos de ETL, de forma que o usuário define a fonte dos dados e o destino, os participantes e o fluxo de dados do processo. Como ilustrado na figura \ref{arktosii}, o usuário pode desenhar atributos e parâmetros, conectá-los ao seu esquema de dados, criar relacionamentos e desenhar arestas de um nó para outro de acordo com a arquitetura do grafo (\cite{vassiliadis:2005}).
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5]{fig/arktosii.png}
+	\caption{Exemplo da Ferramenta ARKTOS II em uso (Adaptado de \cite{vassiliadis:2005})}
+	\label{arktosii}
+\end{figure}
+
+A customização no ARKTOS II é oferecida pela reusabilidade de seus \textit{templates}. Os processos são armazenados em um repositório implementado em um banco de dados relacional. Os autores do ARKTOS II ainda pretendem melhorar a ferramenta permitindo mais formatos de dados como XML e orientado a objetos.
+
 
 \subsection{PygramETL}
-PygramETL: 
+
+PygramETL é um \textit{framework} programável para desenvolvedores de ETL. Ele oferece a funcionalidade para desenvolver ETL demonstrando como deve-se iniciar um projeto. O propósito da ferramenta é facilitar a carga dos dados no DW gerenciado por banco de dados relacionais (RDBMS). Focando nos RDBMS como destino torna o desenvolvimento simples, não considerando outros tipos de estrutura de dados e a integração deles. Dessa forma, o PygramETL oferece suporte apenas a bancos de dados relacionais (\cite{thomsen:2009}).
 
 \subsection{ETLMR}
 ETLMR é um framework de ETL que utiliza \textit{MapReduce} para atingir escalabilidade. Ele suporta esquemas de DW como o esquema estrela, o \textit{snowflake}, e o \textit{slowly changing dimensions} \cite{liu:2011}. 
 
-A figura \ref{etlmr} 
+A figura \ref{etlmr} ilustra o fluxo de dados usando o ETLMR usando MapReduce. O processamento da dimensão é feito em uma tarefa do MapReduce, e o processamento do fato é feito por outra tarefa MapReduce. A tarefa MapReduce gera um número de tarefas map/reduce paralelas para processar a dimensão ou o fato. Cada tarefa consiste em inúmeros passos, incluindo a leitura dos dados no sistema de arquivos distribuído (DFS - distributed file system), execução da função de mapeamento, particionamento, combinação do mapeamento de saída, execução da função reduce e escrita dos resultados(\cite{liu:2011}).
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.7]{fig/cloudetl.png}
+	\includegraphics[scale=0.9]{fig/etlmr.png}
 	\caption{Fluxo de dados ETL no framework MapReduce (Adaptado de \cite{liu:2011})}
 	\label{etlmr}
 \end{figure}
 
+O ETLMR possui inúmeras contribuições, ele permite construir dimensões de ETL em alto nível processando os esquemas estrela, snowflake, SCDs e dimensões de dados intensivos. Pelo fato dele utilizar MapReduce, ele pode automaticamente processar mais de um nó enquanto ao mesmo tempo fornece a sincronização dos dados através dos nós. Além da escalabilidade, ele oferece alta tolerância à falhas, possui código aberto, e é fácil de usar com um único arquivo de configuração executando todos os parâmetros.
+
+O principal objetivo do ETLMR é otimizar o tempo de processamento dos processos de ETL por meio do framework MapReduce. Porém, não há nada a respeito de como deve ser feita a modelagem dos processos de ETL.
 
 \subsection{CloudETL}
 
@@ -35,7 +50,7 @@ CloudETL fornece suporte de alto nível em ETL para construção de diferentes e
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.7]{fig/cloudetl.png}
+	\includegraphics[scale=0.9]{fig/cloudetl.png}
 	\caption{Arquitetura do CloudETL (Adaptado de \cite{liu:2013})}
 	\label{cloudetl}
 \end{figure}
@@ -44,7 +59,18 @@ O CloudETL é uma alternativa quando o problema é o processamento de um grande 
 
 
 \subsection{P-ETL}
-P-ETL:
+
+P-ETL (Parallel - ETL), foi desenvolvido utilizando o \textit{framework} Hadoop com o paradigma MapReduce. Ele oferece duas maneiras de ser configurado: por meio de uma GUI (\textit{graphical user interface}) ou um arquivo de configuração XML. A figura \ref{petl} mostra a interface gráfica de configuração do P-ETL, ela é organizada em três abas: \textit{Extract; Transform e Load} e uma parte para parâmetros avançados. 
+
+O arquivo pivo do P-ETL é no formato csv (Comma Separated Values). Ele converte a fonte para o formato csv permitindo a entrada de várias formas de dados. 
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.9]{fig/petl.png}
+	\caption{Interface de configuração do P-ETL (Adaptado de \cite{bala:2014})}
+	\label{petl}
+\end{figure}
+
+
 
 \subsection{Big-ETL}
 Big-ETL: Foca na paralelização e distribuição.
