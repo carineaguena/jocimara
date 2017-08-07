@@ -73,20 +73,34 @@ O processo de ETL do \textit{framework} inicia-se na aba \textit{Extract}, as co
 
 
 \section{Big-ETL}
-Big-ETL: Foca na paralelização e distribuição.
+
+\cite{bala:2015} propõe em seu trabalho uma abordagem chamada Big-ETL, no qual define que funcionalidades de ETL podem ser executadas em \textit{cluster} utilizando o paradigma MapReduce (MR). O Big-ETL permite paralelizar e distribuir o processo de ETL em dois níveis: o processo de ETL (nível de granularidade maior), e a funcionalidade de ETL (nível de granularidade menor); dessa forma, melhorando o desempenho. Para testar a abordagem proposta, o autor utilizou o P-ETL com intuito de melhorar a ferramenta definindo o processo de ETL (nível de granularidade maior), e a funcionalidade de ETL (nível de granularidade menor) como níveis para o experimento, demonstrando ser uma boa alternativa para melhorar o desempenho nos processos de ETL.
+
+Futuramente os autores pretendem apresentar um \textit{benchmark} no qual comparará quatro abordagens: processo de ETL centralizado; processo de ETL distribuído, Big-ETL e uma abordagem híbrida.
 
 \section{FramETL}
-FramETL
+
+O FramETL é um \textit{framework} para desenvolvimento de aplicações ETL. Ele oferece um ambiente programável e integrado para modelagem e execução de processos de ETL utilizando uma linguagem de programação. O autor utilizou conceitos de \textit{frameworks} como flexibilidade, extensibilidade, reuso e inversão de controle para o desenvolvimento do FramETL. Por meio desses conceitos, utilizando o \textit{framework}, o autor pode aplicar sua solução para construções de duas aplicações de ETL. Porém, \cite{silva:2012} não fez uso de BDs NoSQL, e o foco de sua ferramenta não era em dados \textit{Big Data}.
 
 \section{Outras Ferramentas}
 
+Esta seção apresenta outras ferramentas de ETL presentes no mercado e na literatura, mas que não possuem um foco em BDs NoSQL e \textit{Big Data}.
 \subsection{Pentaho}
 
+Pentaho Data Integration (conhecido também por \textit{\textbf{Kettle}}) é uma ferramenta \textit{open source} para aplicações de ETL. Ela é composta basicamente por quatro elementos: extração de diferentes fontes, transporte de dados, transformação dos dados e carga no \textit{data warehouse}. O \textit{Kettle} pode ser implementado em um único nó, bem como na nuvem, ou em \textit{cluster}. Ele pode carregar e processar \textit{big data} de várias formas oferecendo flexibilidade e segurança (\cite{mali:2015}, \cite{ETLtools}, \cite{pentaho}). Porém, por ser uma ferramenta genérica ela é de difícil customização. 
+
 \subsection{Talend Studio}
-Talend Studio for Data Integration
+
+\textit{Talend Open Studio} é uma plataforma de integração de dados que possibilita processos de integração, seu monitoramento e opera como um gerador de código, produzindo \textit{scripts} de transformação. Ele possui um repositório de metadados no qual fornece os dados (definições e configurações relacionados a cada tarefa) para todos os seus componentes. O Talend Studio é comumente utilizado para migração de dados, sincronização ou replicação das bases de dados  (\cite{mali:2015}, \cite{ETLtools}). 
 
 \subsection{CloverETL}
-CloverETL
+
+\textit{Clover} é uma ferramenta ETL de código aberto considerada para transformação e integração, limpeza e distribuição de dados em aplicações, banco de dados e \textit{data warehouses}. Ela é baseada em Java e pode ser utilizada em linha de comando e é independente de plataforma  (\cite{mali:2015}).
 
 \subsection{Oracle Data Integrator (ODI)}
-Oracle Data Integrator (ODI)
+
+\textit{Oracle Data Integrator} é uma plataforma de integração de dados que atende diversos requisitos de integração, desde grandes volumes de dados até o carregamento em \textit{batch}. As bases de dados de origem e destino podem incluir base de dados relacionais, arquivos XML, tabelas \textit{Hive, Hbase}, arquivos \textit{HDFS}, entre outros. Os usuários podem inserir filtros, junções, agregações, e outros componentes de transformação (\cite{silva:2016}). Porém, o ODI é uma ferramenta comercial e não permite a customização de suas aplicações.
+
+\section{Considerações Finais}
+
+Este capítulo discorreu a respeito das ferramentas de ETL encontradas na literatura. A maioria foca no desempenho ao lidar com \textit{Big Data}, nenhuma delas apresentou uma solução alternativa para modelagem de BDs NoSQL ficando a cargo do desenvolvedor encontrar meios para esquematizar os dados. A ferramenta P-ETL (\cite{bala:2014}) apresentou um arquivo "csv" como alternativa para obter diversos tipos de dados, porém não há um enfoque em BDs NoSQL. A abordagem PygramETL (\cite{thomsen:2009}) facilita a carga de dados, mas lida apenas com banco de dados relacionais. Para suportar processos de ETL em BDsNoSQL, propomos um \textit{framework} integrado, flexível e programável de ETL para BDs NoSQL que permite o uso do processamento distribuído/paralelo e a integração das diversas bases de dados existentes por se tratar de um \textit{framework} baseado em componentes.  
