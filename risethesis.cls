@@ -391,7 +391,7 @@ requirements for the degree of \@degree\ in \@majorfielden.
      \centering\normalfont
    }{
      \chaptertitlename~\thechapter
-   }{20pt}{\normalsize}
+   }{24pt}{\LARGE}
 }
 
 \renewcommand{\frontmatter}{\formatFrontmatterChapter}
@@ -400,7 +400,7 @@ requirements for the degree of \@degree\ in \@majorfielden.
 \newcommand{\MainChapterFormat}{
    \renewcommand{\chapnumfont}{%     % define font for chapter number
      \usefont{T1}{pnc}{b}{n}%      % choose New Chancery, bold, normal shape
-    \fontsize{18}{100}%          % font size 100pt, baselineskip 100pt
+    \centering\fontsize{36}{100}%          % font size 100pt, baselineskip 100pt
      \selectfont%                  % activate font
    }
    
@@ -409,8 +409,8 @@ requirements for the degree of \@degree\ in \@majorfielden.
    \titleformat{\chapter}[display]
      {\bfseries}
      {\chapnumfont\textcolor{chapnumcol}{\thechapter}}
-     {-24pt}
-     {\normalsize}
+     {-12pt}
+     {\centering\LARGE}
 }
 
 \newcommand{\formatMainmatterChapter}{
