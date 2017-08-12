@@ -335,7 +335,9 @@ A figura \ref{presenca} apresenta o gráfico da quantidade de presença para cad
 
 \clearpage
 
-O perfil dos participantes é apresentado no quadro \ref{resultadoperfil}, bem como a legenda para leitura do resultado.
+O perfil dos participantes é apresentado no quadro \ref{resultadoperfil}, bem como a legenda para leitura é exibida no quadro \ref{legenda}. Na figura \ref{perfil} é possível comparar por meio do gráfico os perfis das ferramentas analisadas por este estudo experimental. 
+
+Das onze ferramentas de ETL apresentadas neste estudo dez possuem código aberto, sete não possui uma marca reconhecida no mercado, nenhuma foi desenvolvida para suportar BDs NoSQL, seis possuem uma GUI, apenas quatro não são programáveis, duas não são integradas, nove delas oferece alguma alternativa para o processamento distribuído, um pouco mais da metade são extensíveis e a finalidade da maioria é modelagem tentando aliar ao desempenho.
 
 \begin{table}
 	\centering
@@ -347,11 +349,173 @@ O perfil dos participantes é apresentado no quadro \ref{resultadoperfil}, bem c
 		\hline
 		PygramETL  & 1 & 2 & 2 & 2 & 1 & 1 & 2 & 1 & 2 \\
 		\hline
+		ARKTOSII & 1 & 2 & 2 & 1 & 2 & 1 & 3 & 2 & 1 \\
+		\hline
+		Big-ETL & 1 & 2 & 3 & 2 & 1 & 2 & 1 & 1 & 3\\
+		\hline
+		ETLMR & 1 & 2 & 2 & 2 & 1 & 1 & 1 & 1  & 2 \\
+		\hline
+		CloudETL & 1 & 2 & 3 & 2 & 1 & 1 & 1 & 1 & 2 \\
+		\hline
+		P-ETL & 1 & 2 & 3 & 1 & 2 & 1 & 3 & 2 & 3\\
+		\hline
+		FramETL & 1 & 2 & 2 & 2 & 1 & 1 & 2 & 1 & 1 \\
+		\hline
+		Talend Studio & 1 & 1 & 3 & 1 & 1 & 1 & 3 & 2 & 3 \\
+		\hline
+		Pentaho Kettle & 1 & 1 & 3 & 1 & 2 & 1 & 3 & 2 & 1\\
+		\hline
+		CloverETL & 1 & 1 & 3 & 1 & 1 & 2 & 3 & 2 & 3 \\
+		\hline
+		Oracle (ODI) & 2 & 1 & 3 & 1 & 2 & 1 & 3 & 2 & 3 \\
+		\hline
 		
 		
 		
 	\end{tabular}}
 \end{table}
+
+\begin{table}
+\centering
+\caption{Legenda}
+\label{legenda}
+\resizebox{\textwidth}{!}{\begin{tabular}{|r|r|r|r|r|r|r|r|r|}
+\hline
+Código Fonte & Marca de mercado & Para NoSQL & GUI & Programável & Integrada & Processamento & Extensível & Finalidade\\
+\hline
+1-Aberto & 1-Reconhecido & 1-Sim & 1-Possui & 1-Sim & 1-Sim & 1-Distribuído & 1-Sim & 1-Modelagem \\
+\hline
+2-Fechado & 2-Não reconhecido & 2-Não & 2-Não possui & 2-Não & 2-Não & 2-Centralizado & 2-Não & 2-Desempenho \\
+\hline
+& & 3-Possui, mas não é o foco & & & & 3-Híbrido & & 3-Ambos \\
+\hline
+
+
+\end{tabular}}
+\end{table}
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.38]{fig/perfil.png}
+\caption{Perfil das Ferramentas de ETL}
+\label{perfil}
+\end{figure}
+
+
+\subsection{Estatística descritiva}
+
+As medidas de tendência central como os valores "Presença", "Melhoria" e "Utilidade" são da escala ordinal, por isso é possível definir as métricas de "moda" e "mediana".
+
+\begin{table}[h]
+	\centering
+	\caption{Estatística Descritiva da Presença de Funcionalidades}
+	\label{estatistica_presenca}
+	\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+			\hline
+			\multicolumn{11}{|c|}{Presença}\\
+			\hline
+			Funcionalidades & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+			\hline
+			Mediana & 3 & 2 & 2 & 3 & 2 & 3 &2 & 3 & 3 & 3 \\
+			\hline
+			Moda & 3 & 2 & 2 & 3 & 3 & 3 & 3 & 3 & 3 & 3 \\
+			\hline
+					
+			
+	\end{tabular}
+\end{table}
+
+\begin{table}[h]
+	\centering
+	\caption{Estatística Descritiva da Melhoria de Funcionalidades}
+	\label{estatistica_melhoria}
+	\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+			\hline
+			\multicolumn{11}{|c|}{Melhoria}\\
+			\hline
+			Funcionalidades & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+			\hline
+			Mediana & 2 & 1 & 1 & 2 & 1 & 3 & 2 & 3 & 3 & 2 \\
+			\hline
+			Moda & 2 & 1 & 1 & \{1,3\} & 1 & 3 & \{1,2\} & 3 & 3 & 1 \\
+			\hline
+			
+			
+	\end{tabular}
+\end{table}
+
+\begin{table}[h]
+	\centering
+	\caption{Estatística Descritiva da Utilidade de Funcionalidades}
+	\label{estatistica_utilidade}
+	\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+			\hline
+			\multicolumn{11}{|c|}{Utilidade}\\
+			\hline
+			Funcionalidades & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+			\hline
+			Mediana & 1 & 1 & 1 & 1 & 1 & 3 & 1 & 1 & 1 & 1 \\
+			\hline
+			Moda & 1 & 1 & 1 &1 & 1 & 3 & 1 & 1 & 1 & 1 \\
+			\hline
+			
+			
+	\end{tabular}
+\end{table}
+
+Considerando as respostas recebidas durante o estudo e utilizando os resultados de estatística descritiva podemos dividir as perguntas em 4 grupos:
+
+Os valores na tabela significam P - presente:não presente; M - necessita melhoria:não necessita melhoria; U - útil;inútil. 
+
+
+\begin{table}[h!]
+	\centering
+	\caption{1. Funcionalidade presente e parcialmente útil}
+	\label{grupo1}
+	\begin{tabular}{|c|p{4cm}|c|c|c|p{7cm}|}
+	%	\hline
+	%	\multicolumn{6}{|c|}{Utilidade}\\
+		\hline
+		N. & Funcionalidade & P & M & U & Característica  \\
+		\hline
+		6 & Apoio ao nível de debugging & 10:1 & 0:11 & 8:3 & - A funcionalidade existe na maioria das ferramentas, mas não dão o enfoque nela. \\
+		&&&&& - É uma funcionalidade trivial, pois é possível comparar os dados da fonte e destino mesmo sem debugging.\\
+		&&&&& - Pode ser útil para evitar o trabalho de fazer a comparação da fonte com o destino, além de poder dar uma resposta em tempo de execução.\\
+		\hline
+		
+		
+	\end{tabular}
+\end{table}
+
+
+\begin{table}[]
+	\centering
+	\caption{2. Funcionalidade Existe e é útil}
+	\label{grupo2}
+	\begin{tabular}{|l|l|l|l|l|l|}
+		\hline
+		N & Funcionalidade & P & M & U & Características \\ \hline
+		\multirow{4}{*}{2} & \multirow{4}{*}{Suporte à fonte} & \multirow{4}{*}{10:1} & \multirow{4}{*}{8:3} & \multirow{4}{*}{11:0} & \multirow{16}{*}{\begin{tabular}[c]{@{}l@{}}- As ferramentas oferecem algum suporte \\ em relação à leitura e carga da fonte e destino,  \\ porém muitas apenas lidam com RDBMS.\\ - Deve haver um enfoque nas novas soluções \\ de BDs como os BDs NoSQL.\\ - Algumas ferramentas não oferecem a opção \\ para utilizar linha de comando, o qual é \\ considerado importante para ter maior liberdade \\ na implementação de processos de ETL.\\ -Dependendo do foco da ferramenta, alguma\\ delas não dão importância ao processamento\\ em paralelo, porém em se tratando de Big Data,\\ o processamento em paralelo é fundamental\\ para possibilitar a execução de processos de\\ ETL em grandes volumes de dados.\end{tabular}} \\
+		&  &  &  &  &  \\
+		&  &  &  &  &  \\
+		&  &  &  &  &  \\ \cline{1-5}
+		\multirow{4}{*}{3} & \multirow{4}{*}{Suporte ao destino} & \multirow{4}{*}{10:1} & \multirow{4}{*}{8:3} & \multirow{4}{*}{11:0} &  \\
+		&  &  &  &  &  \\
+		&  &  &  &  &  \\
+		&  &  &  &  &  \\ \cline{1-5}
+		\multirow{4}{*}{5} & \multirow{4}{*}{Paralelismo} & \multirow{4}{*}{7:4} & \multirow{4}{*}{6:5} & \multirow{4}{*}{10:1} &  \\
+		&  &  &  &  &  \\
+		&  &  &  &  &  \\
+		&  &  &  &  &  \\ \cline{1-5}
+		\multirow{4}{*}{7} & \multirow{4}{*}{Programável} & \multirow{4}{*}{7:4} & \multirow{4}{*}{4:7} & \multirow{4}{*}{11:0} &  \\
+		&  &  &  &  &  \\
+		&  &  &  &  &  \\
+		&  &  &  &  &  \\ \hline
+	\end{tabular}
+\end{table}
+
+
 % ---
 \section{Descrição}
 \section{Considerações Finais}
