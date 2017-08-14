@@ -447,7 +447,7 @@ As medidas de tendência central como os valores "Presença", "Melhoria" e "Util
 	\end{tabular}
 \end{table}
 
-\begin{table}[h]
+\begin{table}[h!]
 	\centering
 	\caption{Estatística Descritiva da Utilidade de Funcionalidades}
 	\label{estatistica_utilidade}
@@ -466,14 +466,14 @@ As medidas de tendência central como os valores "Presença", "Melhoria" e "Util
 	\end{tabular}
 \end{table}
 
-Considerando as respostas recebidas durante o estudo e utilizando os resultados de estatística descritiva podemos dividir as perguntas em 4 grupos. O primeiro grupo são as funcionalidades que estão presente, mas são parcialmente úteis, já o segundo grupo são as funcionalidades presentes e úteis, o terceiro grupo consiste na presença da funcionalidade com necessidade de melhoria, e finalmente, o quarto grupo que representa as funcionalidades que estão presentes e não necessitam de melhoria. Todos os grupos podem ser analisados nos quadros \ref{grupo1}, \ref{grupo2}, \ref{grupo3} e \ref{grupo4}.
+Considerando as respostas recebidas durante o estudo e utilizando os resultados de estatística descritiva podemos dividir as perguntas em 4 grupos. O primeiro grupo são as funcionalidades que estão presente, mas são parcialmente úteis; já o segundo grupo são as funcionalidades presentes e úteis; o terceiro grupo consiste na presença da funcionalidade com necessidade de melhoria; e finalmente, o quarto grupo que representa as funcionalidades que estão presentes e não necessitam de melhoria. Todos os grupos podem ser analisados nos quadros \ref{grupo1}, \ref{grupo2}, \ref{grupo3} e \ref{grupo4}.
 
 Os valores na tabela significam P - presente:não presente; M - necessita melhoria:não necessita melhoria; U - útil;inútil. 
 
 
-\begin{table}[h]
+\begin{table}[h!]
 	\centering
-	\caption{1. Funcionalidade presente e parcialmente útil}
+	\caption{Funcionalidade presente e parcialmente útil}
 	\label{grupo1}
 	\begin{tabular}{|c|p{4cm}|c|c|c|p{7cm}|}
 	%	\hline
@@ -491,9 +491,9 @@ Os valores na tabela significam P - presente:não presente; M - necessita melhor
 \end{table}
 
 
-\begin{table}[h]
+\begin{table}[h!]
 	\centering
-	\caption{2. Funcionalidade presente e é útil}
+	\caption{Funcionalidade presente e é útil}
 	\label{grupo2}
 	\begin{tabular}{|l|l|l|l|l|l|}
 		\hline
@@ -518,9 +518,9 @@ Os valores na tabela significam P - presente:não presente; M - necessita melhor
 \end{table}
 
 
-\begin{table}[h]
+\begin{table}[h!]
 	\centering
-	\caption{3. Funcionalidade presente e necessita melhorar}
+	\caption{Funcionalidade presente e necessita melhorar}
 	\label{grupo3}
 	\begin{tabular}{|l|l|l|l|l|l|}
 		\hline
@@ -538,7 +538,7 @@ Os valores na tabela significam P - presente:não presente; M - necessita melhor
 	\end{tabular}
 \end{table}
 
-\begin{table}[h]
+\begin{table}[h!]
 	\centering
 	\caption{Funcionalidade presente e não necessita melhoria}
 	\label{grupo4}
@@ -565,9 +565,9 @@ Os valores na tabela significam P - presente:não presente; M - necessita melhor
 
 \subsection{Aplicação do teste estatístico}
 
-Para cada funcionalidade foi aplicado o teste de associação Qui-quadrado,com o objetivo de verificar se existe associação entre a ferramenta e a presença da sua funcionalidade. O teste do qui-quadrado pode ser usado em pesquisas de amostras independentes com a variável de resposta qualitativa (categórica) \cite{barbetta:2012}. O quadro \ref{distribuicao} mostra os resultados da quantidade de funcionalidades presentes nas ferramentas do estudo.
+Para cada funcionalidade foi aplicado o teste de associação Qui-quadrado,com o objetivo de verificar se existe associação entre a ferramenta e a presença da sua funcionalidade. O teste do qui-quadrado pode ser usado em pesquisas de amostras independentes com a variável de resposta qualitativa (categórica) (\cite{barbetta:2012}). O quadro \ref{distribuicao} mostra os resultados da quantidade de funcionalidades presentes nas ferramentas do estudo.
 
-\begin{table}[h]
+\begin{table}
 	\centering
 	\caption{Quadro de resultado do valor observado de existência da funcionalidade}
 	\label{distribuicao}
@@ -605,7 +605,7 @@ A fórmula estatística para o teste qui-quadrado é definida por:
  O representa a frequência observada na célula; e
  E representa a frequência esperada na célula.
 
-\begin{table}[h]
+\begin{table}
 	\centering
 	\caption{Quadro do resultado de $ \chi^2 $}
 	\label{chiquadrado}
@@ -631,12 +631,28 @@ Pela tabela de distribuição qui-quadrado, verificamos que a probabilidade de s
 
 Para verificar a similaridade entre as funcionalidades existentes nas ferramentas de ETL na literatura e as funcionalidades do ETL4NoSQL é necessário calcular o valor de variável dependente.
 
-1. 
+1. Os conjuntos de funcionalidades existentes nas ferramentas de ETL da literatura e as funcionalidades do ETL4NoSQL não podem ser consideradas iguais (a quantidade de funcionalidades com valor PMU {1, X, X} ?? < 10), nem diferentes (a quantidade de funcionalidas com valor PMU {0, X, X} < 10). Assim, precisamos calcular o grau de similaridade segundo a fórmula do variável dependente 1:
+
+grau de similaridade = ?? / 10 * 100% = 
+
+2. Para verificar a utilidade das funcionalidades similares, é necessário calcular o valor da variável dependente 2:
+
+parte útil das funcionalidades similares = ??? / ?? * 100% = 
+
+parte inútil das funcionalidades similares  = ??? / ?? * 100% = 
+
+3. Para verificar a necessidade de melhoria das funcionalidades similares é necessário calcular o valor de variável dependente 3:
+
+parte que necessita de melhoria das funcionalidades similares = 
+
+parte que não necessita de melhoria das funcionalidades similares =
+
+\subsection{Análise qualitativa}
 
 
+\subsection{Verificação das hipóteses}
 
 %O teste Chi-2 consiste na comparação das distribuições re resposta entre as ferramentas com a ferramenta ideal.
 
-% ---
-\section{Descrição}
+
 \section{Considerações Finais}
