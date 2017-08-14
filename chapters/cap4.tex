@@ -120,7 +120,7 @@ Para cada funcionalidade presente nas ferramentas apresentada na literatura que 
 	\end{tabular}
 \end{table}
 
-Para cada funcionalidade aplicar teste estatístico Chi-2 para definir:
+Para cada funcionalidade aplicar teste estatístico qui-quadrado para definir:
 
 se pode considerar que essa funcionalidade é fornecida;
 
@@ -314,32 +314,31 @@ A figura \ref{presenca} apresenta o gráfico da quantidade de presença para cad
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.5]{fig/presenca.png}
+	\includegraphics[scale=0.4]{fig/presenca.png}
 	\caption{Quantidade de Presença para cada funcionalidade}
 	\label{presenca}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.5]{fig/utilidade.png}
+	\includegraphics[scale=0.4]{fig/utilidade.png}
 	\caption{Níveis de utilidade para cada funcionalidade}
 	\label{utilidade}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.5]{fig/melhorias.png}
+	\includegraphics[scale=0.4]{fig/melhorias.png}
 	\caption{Necessidade de melhoria para cada funcionalidade}
 	\label{melhoria}
 \end{figure}
 
-\clearpage
 
 O perfil dos participantes é apresentado no quadro \ref{resultadoperfil}, bem como a legenda para leitura é exibida no quadro \ref{legenda}. Na figura \ref{perfil} é possível comparar por meio do gráfico os perfis das ferramentas analisadas por este estudo experimental. 
 
 Das onze ferramentas de ETL apresentadas neste estudo dez possuem código aberto, sete não possui uma marca reconhecida no mercado, nenhuma foi desenvolvida para suportar BDs NoSQL, seis possuem uma GUI, apenas quatro não são programáveis, duas não são integradas, nove delas oferece alguma alternativa para o processamento distribuído, um pouco mais da metade são extensíveis e a finalidade da maioria é modelagem tentando aliar ao desempenho.
 
-\begin{table}
+\begin{table}[h]
 	\centering
 	\caption{Resultado do Perfil dos participantes}
 	\label{resultadoperfil}
@@ -375,7 +374,7 @@ Das onze ferramentas de ETL apresentadas neste estudo dez possuem código aberto
 	\end{tabular}}
 \end{table}
 
-\begin{table}
+\begin{table}[h!]
 \centering
 \caption{Legenda}
 \label{legenda}
@@ -402,10 +401,13 @@ Código Fonte & Marca de mercado & Para NoSQL & GUI & Programável & Integrada &
 \label{perfil}
 \end{figure}
 
+\section{Análise e interpretação dos resultados}
+
+Nesta seção é apresentada a análise e interpretação dos resultados conforme as regras estatísticas escolhidas para serem aplicadas neste estudo. 
 
 \subsection{Estatística descritiva}
 
-As medidas de tendência central como os valores "Presença", "Melhoria" e "Utilidade" são da escala ordinal, por isso é possível definir as métricas de "moda" e "mediana".
+As medidas de tendência central como os valores "Presença", "Melhoria" e "Utilidade" são da escala ordinal, por isso é possível definir as métricas de "moda" e "mediana". As métricas de presença estão no quadro \ref{estatistica_presenca}, as métricas de utilidade são apresentadas no quadro \ref{estatistica_utilidade} e as métricas de melhoria podem ser vistas no quadro \ref{estatistica_melhoria}.
 
 \begin{table}[h]
 	\centering
@@ -464,7 +466,7 @@ As medidas de tendência central como os valores "Presença", "Melhoria" e "Util
 	\end{tabular}
 \end{table}
 
-Considerando as respostas recebidas durante o estudo e utilizando os resultados de estatística descritiva podemos dividir as perguntas em 4 grupos:
+Considerando as respostas recebidas durante o estudo e utilizando os resultados de estatística descritiva podemos dividir as perguntas em 4 grupos. O primeiro grupo são as funcionalidades que estão presente, mas são parcialmente úteis, já o segundo grupo são as funcionalidades presentes e úteis, o terceiro grupo consiste na presença da funcionalidade com necessidade de melhoria, e finalmente, o quarto grupo que representa as funcionalidades que estão presentes e não necessitam de melhoria. Todos os grupos podem ser analisados nos quadros \ref{grupo1}, \ref{grupo2}, \ref{grupo3} e \ref{grupo4}.
 
 Os valores na tabela significam P - presente:não presente; M - necessita melhoria:não necessita melhoria; U - útil;inútil. 
 
