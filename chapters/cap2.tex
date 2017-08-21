@@ -12,113 +12,62 @@ Conceitos de ETL, banco de dados NoSQL, \textit{frameworks} e estudo experimenta
 
 \subsection{ETL}
 
-ETL sigla para \textit{Extraction, Transform and Load} (Extração, Limpeza/Transformação e Carga) é conhecido na literatura por definir processos que permitem a integração de dados, centralizando-os numa base destino facilitando o gerenciamento e análise dos dados [\cite{kimball:2004}, \cite{rud:2009}]. O fluxo do processo de ETL inicia-se com extração dos dados a partir de uma fonte, que podem ser arquivos textuais, banco de dados relacionais ou banco de dados NoSQL. Os dados são propagados para uma Área de Processamento de Dados onde são executadas a limpeza e transformação por meio de mecanismos de ETL definidos como agregação, junção, filtro, união, entre outros. Finalmente, os dados são carregados em estruturas que podem ser data warehouses ou repositórios analíticos [\cite{silva:2016}]. 
+ETL sigla para \textit{Extraction, Transform and Load} (Extração, Limpeza/Transformação e Carga) é conhecido na literatura por definir processos que permitem a integração de dados, centralizando-os numa base destino facilitando o gerenciamento e análise dos dados (\cite{kimball:2004}, \cite{rud:2009}). O fluxo do processo de ETL inicia-se com extração dos dados a partir de uma fonte, que podem ser arquivos textuais, banco de dados relacionais ou banco de dados NoSQL. Os dados são propagados para uma Área de Processamento de Dados onde são executadas a limpeza e transformação por meio de mecanismos de ETL definidos como agregação, junção, filtro, união, entre outros. Finalmente, os dados são carregados em estruturas que podem ser data warehouses ou repositórios analíticos (\cite{silva:2016}). 
 
-\cite{kimball:2004} definem ETL em quatro macroprocessos, com 34 subsistemas. Os quadros \ref{subextracao}, \ref{sublimpeza}, \ref{subcarga} e \ref{subgerenciamento} mostram os subsistemas do processo de ETL. Os quatro macroprocessos são:
+\cite{kimball:2004} definem ETL em 4 macroprocessos, com 34 subsistemas listados a seguir. 
 
 \begin{itemize}
-	\item Extração: Recolhe os dados dos sistemas de origem e grava na área de processamento de dados antes de qualquer reestruturação significativa. Esta etapa possui 3 subsistemas.
+	\item \textbf{Extração}: Busca os dados dos sistemas de origem e grava na área de processamento de dados antes de qualquer alteração significativa. Esta etapa possui 3 subsistemas.
+		\begin{itemize}
+			\item \textbf{Data Profiling:} Explora uma origem de dados para determinar seu ajuste para inclusão como uma fonte associado à limpeza e ajuste de requisitos.
+			\item \textbf{Change Data Capture:} Isola as mudanças ocorridas nos sistemas de origem de forma a reduzir os processos de ETL - Carga Incremental.
+			\item \textbf{Sistema de Extração:} Extração e movimentação dos dados de origem para dentro do DW para processamento futuro.
+		\end{itemize}
 	
-	\item Limpeza e Transformação: Envia os dados de origem, por meio de várias etapas de processamento no sistema ETL. Melhora a qualidade dos dados recebidos da fonte, mescla dados de duas ou mais fontes para criar e aplica dimensões e métricas. Esta etapa possui 5 subsistemas.
+	\item \textbf{Limpeza e Transformação}: Envia os dados de origem, por meio de várias etapas de processamento no sistema ETL; melhora a qualidade dos dados recebidos da fonte; mescla dados de duas ou mais fontes; cria dimensões; e aplica métricas. Esta etapa possui 5 subsistemas.
+		\begin{itemize}
+			\item \textbf{Data Cleasing System - Sistema de Limpeza de Dados:}  Implementa processos de qualidade para identificar violações nos dados.
+			\item \textbf{Criação de Dimensão de auditoria:} Junta metadados para cada tabela fato como uma dimensão. Estes metadados estarão disponíveis para a geração de aplicações de BI que visualizem  a qualidade dos dados.
+			\item \textbf{Deduplication - Tirar a duplicidade de dados:} Elimina dados redundantes de dimensões como clientes ou produtos. Pode requerer integração cruzada entre múltiplas origens e a aplicação de regras para identificar qual a versão mais correta de uma linha duplicada.
+			\item \textbf{Data Conformance - conformidade de dados:} Força o uso de atributos comuns entre as principais Conformed Dimensions versus as métricas comuns nas tabelas fato relacionadas.
+		\end{itemize}
 	
-	\item Entrega ou Carga: Estrutura fisicamente e carrega os dados conforme desejado em DWs ou repositórios analíticos. Esta etapa possui 13 subsistemas.
+	\item \textbf{Entrega ou Carga}: Estrutura fisicamente e carrega os dados conforme desejado em DWs ou repositórios analíticos. Esta etapa possui 13 subsistemas.
+		\begin{itemize}
+			\item \textbf{Slowly Changing Dimension (SCD) Manager:} Implementa a lógica para os atributos SCD.
+			\item \textbf{Surrogate Key Generator:} Cria as chaves substitutas (chaves de negócio) - surrogate keys independentes para cada dimensão.
+			\item \textbf{Hierarchy Manager:} Entrega múltipla e simultânea de estruturas hierárquicas na dimensão.
+			\item \textbf{Special Dimensions Manager:} Cria locais - placeholders na estrutura de ETL para sustentar os processos repetitivos específicos da organização, no desenho de dimensões específicas como as Junk Dimensions, Mini Dimensions e indicadores de comportamento.
+			\item \textbf{Fact Table Builders:} Construção dos três tipos básicos de tabela fato: Transacional, Periódico e Cumulativo (transaction grain, periodic snapshot e accumulating snapshot).
+			\item \textbf{Surrogate Key Pipeline:} Substitui, nas dimensões, a chave natural operacional das tabelas de origem pelas chaves substitutas (Surrogate Key) que serão utilizadas para o relacionamento com as tabelas fato.
+			\item \textbf{Multi-Valued Bridge Table Builder:} Construção e manutenção das tabelas ponte (bridge tables) para suportar os relacionamentos multi-valorados.
+			\item \textbf{Late Arriving Data Handler:} Aplica modificações especiais nas \textit{procedures} do processo padrão para lidar com tabelas fato recém definidas (\textit{late-arriving})  e dimensões.
+			\item \textbf{Dimension Manager:} Centraliza a autoridade para preparar e divulgar as dimensões conforme (\textit{conformed dimensions}) para a comunidade do \textit{data warehouse}.
+			\item \textbf{Fact Table Provider:} Detém a administração de uma ou mais tabelas fato, e a responsabilidade de criação, manutenção e uso.
+			\item \textbf{Aggregate Builder:} Construção e manutenção de agregações que serão usadas de forma continua com tecnologias de navegação agregada para melhorar a  performance das consultas.
+			\item \textbf{OLAP Cube Builder:} Seleciona os dados do esquema dimensional para popular os cubos OLAP. 
+			\item \textbf{Data Propagation Manager:} Prepara dados conformados e integrados no servidor de apresentação do \textit{data warehouse}, para entrega em outros ambientes, para propósitos especiais.
+		\end{itemize}
 	
-	\item Gerenciamento: Gerencia os sistemas e processos relacionados ao ambiente ETL de forma coerente. Esta etapa possui 13 subsistemas.
+	\item \textbf{Gerenciamento}: Gerencia os sistemas e processos relacionados ao ambiente ETL de forma coerente. Esta etapa possui 13 subsistemas.
+		\begin{itemize}
+			\item  \textbf{Job Scheduler:} A estratégia de gerenciamento da execução dos ETLs deve ser confiável, incluindo os relacionamentos e dependências entre os ETLs.
+			\item \textbf{Backup System:} Mantem cópia do ambiente de ETL para propósito de recuperação, \textit{restart} e arquivamento. 
+			\item \textbf{Version Control:} Mantem arquivadas versões dos ETLs, para eventual recuperação das lógicas e metadados do 'ETL pipeline'.
+			\item \textbf{Version Migration:} Migração de uma versão completa do 'ETL pipeline' a partir do ambiente de desenvolvimento para um ambiente de testes e, finalmente, para o ambiente de produção.
+			\item  \textbf{Workflow Monitor:} Garante que os processos de ETL estão sendo eficientemente executados e que as cargas iniciem precisamente nas janelas de tempo estipuladas.
+			\item \textbf{Sorting:} Garante a fundamental alta performance nos grupos de processos de ETLs.
+			\item \textbf{Lineage and Dependency:} Identifica a origem dos dados, as localizações intermediarias, as transformações e o dado final, permitindo acompanhar de forma estruturada, a trajetória dos dados até a sua carga no \textit{data warehouse}.
+			\item \textbf{Problem Escalation:} Estrutura de suporte que  encaminha os problemas encontrados nos processos de  ETLs (erros)  para o nível de solução apropriado.
+			\item \textbf{Paralleling and Pipelining:} Habilita ao sistema de ETL a potencializar automaticamente  o uso de recursos como múltiplos processadores ou computação em grade (\textit{grid computing}) para entregas dentro dos prazos restritos.
+			\item \textbf{Security:} Garante o acesso autorizado aos ETLs e Metadados, de forma individual ou em grupos, mantendo um histórico dos acessos.
+			\item \textbf{Compliance Manager:} Suporta os requerimentos organizacionais de conformidade, através, tipicamente, da manutenção da custódia da cadeia de dados e do acompanhamento dos acessos aos dados (quem teve o acesso autorizado ao dado).
+			\item \textbf{Metadata Repository:} Captura os metadados do ETL, incluindo os metadados de processo, metadados técnicos e metadados do negócio que significam todos os metadados do ambiente de DW/BI.
+		\end{itemize}
+	
 \end{itemize}
-\clearpage
-
-\begin{table}[h]
-	\centering
-	\caption{Subsistemas do macroprocesso de extração do processo de ETL}
-	\label{subextracao}
-	\begin{tabular}{|p{3cm}| p{11cm} |}
-	\hline
-	Macroprocesso & subsistema\\
-	\hline
-	Extração & \textbf{Data Profiling:} Explora uma origem de dados para determinar seu ajuste para inclusão como uma fonte associado à limpeza e ajuste de requisitos.\\
-	&  \textbf{Change Data Capture:} Isola as mudanças ocorridas nos sistemas de origem, de forma a reduzir os processos de ETL - Carga Incremental.\\
-	& \textbf{Sistema de Extração:} Extração e movimentação dos dados de origem para dentro do DW, para processamento futuro.\\
-	\hline	
-		
-	\end{tabular}
-\end{table}
-
-\begin{table}[h]
-	\centering
-	\caption{Subsistemas do macroprocesso de limpeza e extração do processo de ETL}
-	\label{sublimpeza}
-	\begin{tabular}{|p{3cm}| p{11cm} |}
-		\hline
-		Macroprocesso & subsistema\\
-		\hline
-		Limpeza e Transformação &  \textbf{Data Cleasing System - Sistema de Limpeza de Dados:}  Implementa processos de qualidade de dados para identificar violações de qualidade.\\
-		& \textbf{Error Event Tracking - Acompanhamento de erro:} Captura todos os ‘eventos de erro’, que serão as entradas vitais para a melhoria da qualidade dos dados.\\
-		& \textbf{Criação de Dimensão de auditoria:} Junta Metadados para cada Tabela Fato, como uma dimensão. Este Metadados estará disponível para a geração de aplicações de BI que visualizem  a qualidade dos dados.\\
-		& \textbf{Deduplication - Tirar a duplicidade de dados:} Elimina dados redundantes de dimensões, como clientes ou produtos. Pode requerer integração cruzada entre multiplas origens e a aplicação de regras para identificar qual a versão mais correta de uma linha duplicada.\\
-		& \textbf{Data Conformance - conformidade de dados:} Força o uso de atributos comuns entre as principais Conformed Dimensions versus as métricas comuns nas Tabelas Fato relacionadas.\\
-		\hline
-		
-	\end{tabular}
-\end{table}
-
-\clearpage
 
 
-\begin{table}[h]
-	\centering
-	\caption{Subsistemas do macroprocesso de entrega ou carga do processo de ETL}
-	\label{subcarga}
-	\begin{tabular}{|p{3cm}| p{11cm} |}
-		\hline
-		Macroprocesso & subsistema\\
-		\hline
-		Entrega ou Carga & \textbf{Slowly Changing Dimension (SCD) Manager:} Implementa a lógica para os atributos SCD. \\
-		& \textbf{Surrogate Key Generator:} Cria as chaves substitutas (chaves de negócio) - surrogate keys independentes para cada dimensão.  \\
-		& \textbf{Hierarchy Manager:} Entrega multipla e simultânea de estruturas hierarquicas na dimensão. \\
-		& \textbf{Special Dimensions Manager:} Cria locais - placeholders na estrutura de ETL para sustentar os processos repetitivos específicos da organização, no desenho de dimensões específicas coma as Junk Dimensions, Mini Dimensions e indicadores de comportamento. \\
-		& \textbf{Fact Table Builders:} Construção dos três tipos básicos de tabela fato: Transacional, Periódico e Cumulativo (transaction grain, periodic snapshot e accumulating snapshot). \\
-		& \textbf{Surrogate Key Pipeline:} Substitui, nas dimensões, a chave natural operacional das tabelas de origem pelas chaves substitutas (Surrogate Key) que serão utilizadas para o relacionamento com as tabelas fato.  \\
-		& \textbf{Multi-Valued Bridge Table Builder:} Construção e Manutenção das tabelas ponte (bridge tables) para suportar os relacionamentos multi-valorados. \\
-		& \textbf{Late Arriving Data Handler:} Aplica modificações especiais nas procedures do processo padrão para lidar com tabelas fato recém definidas (late-arriving)  e dimensões. \\
-		& \textbf{Dimension Manager:} Centraliza a autoridade para preparar e divulgar as dimensões conforme (conformed dimensions) para a comunidade do Data Warehouse.  \\
-		& \textbf{Fact Table Provider:} Detém a administração de uma ou mais tabelas fato, e a responsabilidade de criação, manutenção e uso. \\
-		& \textbf{Aggregate Builder:} Construção e manutenção de agregações que serão usadas de forma continua com tecnologias de navegação agregada para melhorar a  performance das consultas.  \\
-		& \textbf{OLAP Cube Builder:} Seleciona os dados do esquema dimensional para popular os cubos OLAP. \\
-		& \textbf{Data Propagation Manager:} Prepara dados conformados e integrados no servidor de apresentação do Data Warehouse, para entrega em outros ambientes, para propósitos especiais. \\
-		\hline
-		
-	\end{tabular}
-\end{table}
-
-\clearpage
-
-\begin{table}[h]
-	\centering
-	\caption{Subsistemas do macroprocesso de gerenciamento do processo de ETL}
-	\label{subgerenciamento}
-	\begin{tabular}{|p{3cm}| p{11cm} |}
-		\hline
-		Macroprocesso & subsistema\\
-		\hline
-		Gerenciamento & \textbf{Job Scheduler:} A estratégia de gerenciamento da execução dos ETLs deve ser confiável, incluindo os relacionamentos e dependências entre os ETLs. \\
-		& \textbf{Backup System:} Mantem cópia do ambiente de ETL para propósito de recuperação, restart e arquivamento. \\
-		& \textbf{Recovery and Restart:} Processos para recuperação do ambiente de ETL  ou processo de reinicio, em caso de eventuais falhas. \\
-		& \textbf{Version Control:} Mantem arquivadas versões dos ETLs, para eventual recuperação das lógicas e metadados do 'ETL pipeline'. \\
-		& \textbf{Version Migration:} Migração de uma versão completa do 'ETL pipeline' a partir do ambiente de desenvolvimento para um ambiente de testes e, finalmente, para o ambiente de produção. \\
-		& \textbf{Workflow Monitor:} Garante que os processos de ETL estão sendo eficientemente executados e que as cargas iniciem precisamente nas janelas de tempo estipuladas.  \\
-		& \textbf{Sorting:} Garante a fundamental alta performance nos grupos de processos de ETLs. \\
-		& \textbf{Lineage and Dependency:} Identifica a origem dos dados, as localizações intermediarias, as transformações e o dado final, permitindo acompanhar de forma estruturada, a trajetória dos dados até a sua carga no Data Warehouse. \\
-		& \textbf{Problem Escalation:} Estrutura de suporte que  encaminha os problemas encontrados nos processos de  ETLs (erros)  para o nível de solução apropriado. \\
-		& \textbf{Paralleling and Pipelining:} Habilita ao sistema de ETL a potencializar automaticamente  o uso de recursos como múltiplos processadores ou computação em grade (grid computing) para entregas dentro dos prazos restritos. \\
-		& \textbf{Security:} Garante o acesso autorizado aos ETLs e Metadados, de forma individual ou em grupos, mantendo um histórico dos acessos.\\
-		& \textbf{Compliance Manager:} Suporta os requerimentos organizacionais de conformidade, através, tipicamente, da manutenção da custódia da cadeia de dados e do acompanhamento dos acessos aos dados (quem teve o acesso autorizado ao dado). \\
-		& \textbf{Metadata Repository:} Captura os metadados do ETL, incluindo os metadados de processo, metadados técnicos e metadados do negócio que significam todos os metadados do ambiente de DW/BI.\\
-		\hline
-		
-	\end{tabular}
-\end{table}
-
-\clearpage
 
 
 \subsection{Bancos de Dados NoSQL}
@@ -178,13 +127,13 @@ O \textit{framework} ETL4NoSQL encaixa-se na categoria de aplicações corporati
 
 Esta pesquisa de dissertação considera a execução do estudo experimental de software para caracterizar, avaliar e propor melhorias ao framework ETL4NoSQL. O objetivo principal da aplicação do experimento é definir se o \textit{framework} proposto é uma ferramenta adequada para auxiliar no desenvolvimento de processos de ETL em dados estruturados, semi estruturados e não estruturados. Os participantes escolhidos foram as principais ferramentas de ETL encontradas na literatura. Os questionários utilizados para a coleta de dados são baseadas nos requisitos mínimos considerados pela literatura para ferramentas de ETL.
 
-Segundo Travassos (2002), a experimentação é o centro do processo científico, por meio dos experimentos que é possível verificar teorias, explorar fatores críticos e formular novas teorias. O autor reforça ainda a necessidade de avaliar novas invenções e sugestões em comparação com as existentes.
+Segundo \cite{travassos:2002}, a experimentação é o centro do processo científico, por meio dos experimentos que é possível verificar teorias, explorar fatores críticos e formular novas teorias. O autor reforça ainda a necessidade de avaliar novas invenções e sugestões em comparação com as existentes.
 
-Para Wohlin00, existem quatro métodos relevantes para experimentação em Engenharia de Software: científico, de engenharia, experimental e analítico. 
+Para \cite{wohlin:2000}, existem quatro métodos relevantes para experimentação em Engenharia de Software: científico, de engenharia, experimental e analítico. 
 
-O paradigma indutivo, ou método científico, observa o mundo, pode ser utilizado quando se quer entender o processo, produto de software, ambiente. Ele mede e analisa, verifica as hipóteses do modelo ou teoria.  Já o método de engenharia observa as soluções existentes, é uma abordagem baseada na melhoria evolutiva, modifica modelos de processos ou produtos de softwares existentes com propósito de melhorar os objetos de estudo. O método experimental é uma abordagem baseada na melhoria revolucionária. Ela sugere um modelo, não necessariamente baseado em um existente, aplica o método qualitativo e/ou quantitativo, faz a experimentação, analisa e repete o processo. Por fim, o método analítico sugere uma teoria formal, é um método dedutivo que oferece uma base analítica para o desenvolvimento de modelos (Travassos, 2002).
+O paradigma indutivo, ou método científico, observa o mundo, pode ser utilizado quando se quer entender o processo, produto de software, ambiente. Ele mede e analisa, verifica as hipóteses do modelo ou teoria.  Já o método de engenharia observa as soluções existentes, é uma abordagem baseada na melhoria evolutiva, modifica modelos de processos ou produtos de softwares existentes com propósito de melhorar os objetos de estudo. O método experimental é uma abordagem baseada na melhoria revolucionária. Ela sugere um modelo, não necessariamente baseado em um existente, aplica o método qualitativo e/ou quantitativo, faz a experimentação, analisa e repete o processo. Por fim, o método analítico sugere uma teoria formal, é um método dedutivo que oferece uma base analítica para o desenvolvimento de modelos (\cite{travassos:2002}).
 
-Travassos (2002) sugere que a abordagem mais apropriada para a experimentação na área de Engenharia de Software seja o método experimental, pois considera a proposição e avaliação do modelo com os estudos experimentais.
+\cite{travassos:2002} sugere que a abordagem mais apropriada para a experimentação na área de Engenharia de Software seja o método experimental, pois considera a proposição e avaliação do modelo com os estudos experimentais.
 
 Os principais objetivos relacionados à execução de um estudo experimental de software são: caracterização, avaliação, previsão, controle e melhoria a respeito de produtos, processos, recursos, modelos e teorias.
 
@@ -221,7 +170,7 @@ ETLMR é um framework de ETL que utiliza \textit{MapReduce} para atingir escalab
 
 A figura \ref{etlmr} ilustra o fluxo de dados usando o ETLMR usando MapReduce. O processamento da dimensão é feito em uma tarefa do MapReduce, e o processamento do fato é feito por outra tarefa MapReduce. A tarefa MapReduce gera um número de tarefas map/reduce paralelas para processar a dimensão ou o fato. Cada tarefa consiste em inúmeros passos, incluindo a leitura dos dados no sistema de arquivos distribuído (DFS - distributed file system), execução da função de mapeamento, particionamento, combinação do mapeamento de saída, execução da função reduce e escrita dos resultados(\cite{liu:2011}).
 
-\begin{figure}[h]
+\begin{figure}
 	\centering
 	\includegraphics[scale=0.9]{fig/etlmr.png}
 	\caption{Fluxo de dados ETL no framework MapReduce (Adaptado de \cite{liu:2011})}
