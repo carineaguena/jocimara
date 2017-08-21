@@ -46,13 +46,17 @@ Q1. Existem funcionalidades listadas pelas ferramentas pesquisadas que não est�
 
 Métrica: A lista de funcionalidades que não estão presentes no ETL4NoSQL.
 
-Q2. Existem funcionalidades oferecidas pelo ETL4NoSQL que não estão presentes nas ferramentas apresentadas pela literatura?
+Q2. Existem funcionalidades listadas pelas ferramentas pesquisadas que estão presentes no ETL4NoSQL, mas são consideradas pouco úteis?
 
-Métrica: A lista de funcionalidades que não estão presentes nas ferramentas da literatura.
+Métrica: A lista de funcionalidades que estão presentes nas ferramentas da literatura e no ETL4NoSQL e são consideradas inúteis.
 
-Q3. Existem funcionalidades que não estão presentes no ETL4NoSQL e nas ferramentas da literatura que poderiam ser implementadas?
+Q3. Existem funcionalidades que estão presentes nas ferramentas de ETL da literatura e no ETL4NoSQL, consideradas úteis, e que poderiam ser melhoradas?
 
-Métrica: A lista de funcionalidades que não estão presentes em nenhuma das ferramentas.
+Métrica: A lista de funcionalidades que estão presentes nas ferramentas de ETL da literatura e no ETL4NoSQL, consideradas úteis e que necessitam melhorar.
+
+Q4. Existem funcionalidades que estão presentes nas ferramentas de ETL da literatura que não estão presentes no ETL4NoSQL, mas que são consideradas úteis?
+
+Métrica: A lista de funcionalidades que estão presentes nas ferramentas de ETL da literatura que não estão presentes no ETl4NoSQL e que são consideradas úteis.
 
 \section{Planejamento}
 
@@ -62,31 +66,48 @@ Na etapa de planejamento são definidas as hipóteses do estudo, a descrição d
 
 Hipótese nula (H0): As funcionalidades oferecidas pelo ETL4NoSQL são similares às funcionalidades oferecidas pelas ferramentas presentes na literatura.
 
-Fp - Funcionalidades do ETL4NoSQL
+Fp - Funcionalidades do ETL4NoSQL;
 
-Fl - Funcionalidades das ferramentas da literatura
+Fl - Funcionalidades das ferramentas da literatura.
 
 H0: Fl - (Fp $\cap$ Fl) = $\emptyset$
 \newline
 
 Hipótese alternativa (H1): A lista de funcionalidades oferecidas pelo ETL4NoSQL é diferente da lista de funcionalidades oferecidas pelas ferramentas presentes na literatura.
 
-Fp - Funcionalidades do ETL4NoSQL
+Fp - Funcionalidades do ETL4NoSQL;
 
-Fl - Funcionalidades das ferramentas da literatura
+Fl - Funcionalidades das ferramentas da literatura.
 
 H1: Fl - (Fp $\cap$ Fl) $\neq$ $\emptyset$
 \newline
 
-Hipótese alternativa (H2): A lista de funcionalidades que poderiam ser implementadas é diferente da lista de funcionalidades oferecidas pelas ferramentas na literatura e pelo ETL4NoSQL.
+Hipótese alternativa (H2): Na lista de funcionalidades oferecidas pelo ETL4NoSQL e pelas ferramentas de ETL da literatura possuem funcionalidades consideradas pouco úteis.
 
-Fp - Funcionalidades do ETL4NoSQL
+Fpl - Funcionalidades presentes no ETL4NoSQL e nas ferramentas da literatura;
 
-Fl - Funcionalidades das ferramentas da literatura
+Fplu - Funcionalidades presentes no ETL4NoSQL e nas ferramentas da literatura que são consideradas úteis.
 
-Fi - Funcionalidades que poderiam ser implementadas
+H2: Fpl - (Fpl $\cap$ Fplu) $\neq$ $\emptyset$
+\newline
 
-H2: Fi - (Fp $\cap$ Fl $\cap$ Fi) $\neq$ $\emptyset$
+
+Hipótese alternativa (H3): Na lista de funcionalidades oferecidas pelo ETL4NoSQL e pelas ferramentas de ETL da literatura possuem funcionalidades consideradas pouco úteis, cujo necessita de melhorias.
+
+Fplu - Funcionalidades presentes no ETL4NoSQL e nas ferramentas da literatura que são consideradas úteis;
+
+Fplun - Funcionalidades presentes no ETL4NoSQL e nas ferramentas da literatura que são consideradas úteis, cujo necessita melhorias.
+
+H3: Fplu - (Fplu $\cap$ Fplun)  $\neq$ $\emptyset$
+\newline
+
+Hipótese alternativa (H4): A lista de funcionalidades que estão presentes nas ferramentas da literatura e não estão presentes no ETL4NoSQL que são consideradas úteis.
+
+Fpn - Funcionalidades de ETL4NoSQL não presentes (Fpn $\equiv$  Fl - (Fp $\cap$ Fl))
+
+Fo - Funcionalidades não presentes no ETL4NoSQL, mas que são consideradas úteis.
+
+H4: Fpn - (Fpn $\cap$ Fo) $\neq$ $\emptyset$
 
 \subsection{Descrição da instrumentação}
 
@@ -142,21 +163,21 @@ Na tabela \ref{metricas} são apresentadas as métricas utilizadas neste experim
 		\hline
 		N$\circ$ & P & M & U & Descrição da Funcionalidade & Questões\\
 		\hline
-		1 & 0 & 0 & 0 & Não está presente, não necessita melhorar, não é útil & N/A\\
+		1 & 0 & 0 & 0 & Não está presente, não necessita melhorar, não é útil & Q1, Q4\\
 		\hline
-		2 & 0 & 0 & 1 & Não está presente, não necessita melhorar, é útil & Q3\\
+		2 & 0 & 0 & 1 & Não está presente, não necessita melhorar, é útil & Q1, Q4\\
 		\hline
 		3 & 0 & 1 & 0 & Não está presente, necessita melhorar, não é útil & N/A\\
 		\hline
-		4 & 0 & 1 & 1 & Não está presente, necessita melhorar, é útil & Q3\\
+		4 & 0 & 1 & 1 & Não está presente, necessita melhorar, é útil & Q1, Q4\\
 		\hline
-		5 & 1 & 0 & 0 & Está presente, não necessita melhorar, não é útil & Q1, Q2\\
+		5 & 1 & 0 & 0 & Está presente, não necessita melhorar, não é útil & Q2\\
 		\hline
-		6 & 1 & 0 & 1 & Está presente, não necessita melhorar, é útil & Q1, Q2\\
+		6 & 1 & 0 & 1 & Está presente, não necessita melhorar, é útil & Q3\\
 		\hline
-		7 & 1 & 1 & 0 & Está presente, necessita melhorar, não é útil & Q1, Q2\\
+		7 & 1 & 1 & 0 & Está presente, necessita melhorar, não é útil & Q2\\
 		\hline
-		8 & 1 & 1 & 1 & Está presente, necessita melhorar, é útil & Q1, Q2\\
+		8 & 1 & 1 & 1 & Está presente, necessita melhorar, é útil & Q3\\
 		\hline
 		
 		
@@ -565,7 +586,7 @@ Os valores na tabela significam P - presente:não presente; M - necessita melhor
 
 \subsection{Aplicação do teste estatístico}
 
-Para cada funcionalidade foi aplicado o teste de associação Qui-quadrado,com o objetivo de verificar se existe associação entre a ferramenta e a presença da sua funcionalidade. O teste do qui-quadrado pode ser usado em pesquisas de amostras independentes com a variável de resposta qualitativa (categórica) (\cite{barbetta:2012}). O quadro \ref{distribuicao} mostra os resultados da quantidade de funcionalidades presentes nas ferramentas do estudo.
+Para cada funcionalidade foi aplicado o teste de associação Qui-quadrado, com o objetivo de verificar se existe associação entre a ferramenta e a presença da sua funcionalidade. O teste do qui-quadrado pode ser usado em pesquisas de amostras independentes com a variável de resposta qualitativa (categórica) (\cite{barbetta:2012}). O quadro \ref{distribuicao} mostra os resultados da quantidade de funcionalidades presentes nas ferramentas do estudo.
 
 \begin{table}
 	\centering
@@ -631,28 +652,54 @@ Pela tabela de distribuição qui-quadrado, verificamos que a probabilidade de s
 
 Para verificar a similaridade entre as funcionalidades existentes nas ferramentas de ETL na literatura e as funcionalidades do ETL4NoSQL é necessário calcular o valor de variável dependente.
 
-1. Os conjuntos de funcionalidades existentes nas ferramentas de ETL da literatura e as funcionalidades do ETL4NoSQL não podem ser consideradas iguais (a quantidade de funcionalidades com valor PMU {1, X, X} ?? < 10), nem diferentes (a quantidade de funcionalidas com valor PMU {0, X, X} < 10). Assim, precisamos calcular o grau de similaridade segundo a fórmula do variável dependente 1:
+1. A mediana dos conjuntos de funcionalidades existentes nas ferramentas de ETL da literatura e as funcionalidades do ETL4NoSQL não podem ser consideradas iguais (a quantidade de funcionalidades com valor PMU \{ 1, X, X \} 7 < 10), nem diferentes (a quantidade de funcionalidades com valor PMU \{ 0, X, X \}  3 < 10). Assim, precisamos calcular o grau de similaridade segundo a fórmula do variável dependente 1:
 
-grau de similaridade = ?? / 10 * 100% = 
+grau de similaridade = 7 / 10 * 100\% = 70\% 
 
 2. Para verificar a utilidade das funcionalidades similares, é necessário calcular o valor da variável dependente 2:
 
-parte útil das funcionalidades similares = ??? / ?? * 100% = 
+parte útil das funcionalidades similares = 6 / 7 * 100\% =85,71\%
 
-parte inútil das funcionalidades similares  = ??? / ?? * 100% = 
+parte inútil das funcionalidades similares  = 1 / 7 * 100\% = 14,29\%
 
 3. Para verificar a necessidade de melhoria das funcionalidades similares é necessário calcular o valor de variável dependente 3:
 
-parte que necessita de melhoria das funcionalidades similares = 
+parte que necessita de melhoria das funcionalidades similares = 3 / 7 * 100\% = 42,85\%
 
-parte que não necessita de melhoria das funcionalidades similares =
+parte que não necessita de melhoria das funcionalidades similares = 4 / 7 * 100\% = 57,15\%
 
 \subsection{Análise qualitativa}
 
+Para verificar as funcionalidades que não estão presentes no ETL4NoSQL neste trabalho de pesquisa, mas que são consideradas úteis para melhoria dos processos de ETL, foi feita a análise qualitativa apresentada no quadro \ref{naooferecidas}.
+
+\begin{table}[h!]
+	\centering
+	\caption{Funcionalidades não oferecidas pelo ETL4NoSQL}
+	\label{naooferecidas}
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		Funcionalidade & 6 & 8 & 10 \\ \hline
+		\begin{tabular}[c]{@{}l@{}}Quantidade total de ferramentas que não possuem \\ ou possuem parcialmente a funcionalidade\end{tabular} & 4 & 5 & 4 \\ \hline
+		\begin{tabular}[c]{@{}l@{}}Quantidade de ferramentas que considera útil\end{tabular} & 2 & 6 & 9 \\ \hline
+	\end{tabular}
+\end{table}
+
+Assim, podemos concluir que as funcionalidades 8 (implementação) e 10 (garantia de qualidade) despertam maior interesse à serem implantadas nas ferramentas de ETL. Isso pode ser explicado pelas características e aplicabilidade que as funcionalidades oferecem. As funcionalidades de implementação e garantia de qualidade, provavelmente, não estão presentes em geral ou são oferecidas de forma parcial, não sendo o foco de boa parte das ferramentas de ETL detalhadas neste trabalho. Porém, essas funcionalidades melhorariam o desempenho geral dos processos de ETL. Outras funcionalidades, não oferecidas pelas ferramentas de ETL demonstradas, e que, possivelmente são conhecidas pela literatura, mas a falta de exemplos ou aplicabilidade dessas funcionalidades reduzem o interesse ao implementá-las.
 
 \subsection{Verificação das hipóteses}
+
+Para verificar o hipótese nula (H0) precisamos responder a questão Q1 (Existem funcionalidades listadas pelas ferramentas pesquisadas que não estão presentes no ETL4NoSQL?) utilizando a métrica M2 (PMU \{0, 0, 1\} - Não está presente, não necessita melhorar, é útil). O resultado do teste Qui-quadrado mostra que 3 das 10 funcionalidades analisadas não podem ser consideradas como oferecidas pela ferramenta apresentada. Assim, podemos concluir que a lista de funcionalidades oferecidas pelas ferramentas de ETL da literatura é diferente das funcionalidades oferecidas pelo ETL4NoSQL. Então, podemos concluir que "As funcionalidades oferecidas pelo ETL4NoSQL são diferentes das funcionalidades oferecidas pelas ferramentas da literatura" (hipótese alternativa H1).
+
+Podemos dizer ainda que existe uma funcionalidade considerada pouco útil para as ferramentas de ETL analisadas (hipótese alternativa H2), pois respondendo a questão Q2 (Existem funcionalidades listadas pelas ferramentas pesquisadas que estão presentes no ETL4NoSQL, mas são consideradas pouco úteis?) (métrica M5 - PMU \{1, 0, 0\} - Está presente, não necessita melhorar, não é útil) o resultado do teste Qui-quadrado mostra que a funcionalidade 6 (Apoio ao nível de debugging) é considerada pouco útil para a realização de processos de ETL.
+
+Por conseguinte, para funcionalidades presentes no ETL4NoSQL e nas ferramentas da literatura, que são úteis e necessitam melhoraria (hipótese H3), respondendo a questão Q3 (Existem funcionalidades que estão presentes nas ferramentas de ETL da literatura e no ETL4NoSQL, consideradas úteis, e que poderiam ser melhoradas?) (métrica M8 - PMU \{1, 1, 1\} - Está presente, necessita melhorar, é útil) o resultado de Qui-quadrado mostra que 3 funcionalidades necessitam melhoria (2, 3, 5) e outras 3 podem melhorar, mas não tem necessidade (6, 8, 9).
+
+Finalmente, para realizar conclusões relevantes sobre a hipótese alternativa (H4) foi feita a análise qualitativa. Os resultados da análise apresentou 2 funcionalidades (8 e 10) não presentes no ETL4NoSQL e que são úteis. Assim, podemos concluir que existem funcionalidades não presentes no ETL4NoSQL, mas que são úteis e poderiam ser implementadas futuramente como melhoria para a ferramenta.
+ 
 
 %O teste Chi-2 consiste na comparação das distribuições re resposta entre as ferramentas com a ferramenta ideal.
 
 
 \section{Considerações Finais}
+
+
