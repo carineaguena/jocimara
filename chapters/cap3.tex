@@ -5,96 +5,173 @@ Neste capítulo são apresentados os conceitos do framework ETL4NoSQL, que consi
 O ETL4NoSQL oferece um ambiente integrado para modelar processos de ETL e implementar funcionalidades utilizando uma linguagem de programação independente de uma GUI (\emph{Graphical User Interface} - Interface Gráfica do Usuário).
 
 
-Para a especificação do framework proposto foram definidas as estruturas de dados dos ambientes de origem, destino e da área de processamento de dados e suas respectivas linguagens de manipulação de dados, e também, as principais funcionalidades dos sistemas de ETL, chamados mecanismos de ETL. Para realizar os processos de ETL, por meio de seus mecanismos, foi definido um controlador de operações que é capaz de se comunicar com os ambientes e os mecanismos de ETL. 
+Para a especificação do \textit{framework} proposto foram  elencados os requisitos de software, utilizada a abordagem de desenvolvimento baseado em componentes fundamentada no estudo de \cite{cheesman:2001}, onde tem-se a separação entre modelagem do domínio e da especificação. A modelagem de domínio consiste na definição dos casos de uso, do modelo conceitual e do modelo comportamental. Já a modelagem de especificação é segmentada em três partes, a parte de identificação de componentes, de interação entre os componentes e a especificação de componentes.  
 
-A seguir, são detalhados os requisitos de software, a arquitetura do sistema e a estrutura dos componentes utilizados no desenvolvimento do framework.
+%definidas as estruturas de dados dos ambientes de origem, destino e da área de processamento de dados e suas respectivas linguagens de manipulação de dados, e também, as principais funcionalidades dos sistemas de ETL, chamados mecanismos de ETL. Para realizar os processos de ETL, por meio de seus mecanismos, foi definido um controlador de operações que é capaz de se comunicar com os ambientes e os mecanismos de ETL. 
+
+A seguir, são detalhados os requisitos de software, os modelo de domínio, os modelos de especificação e as especificações dos componentes do ETL4NoSQL
+
+% a arquitetura do sistema e a estrutura dos componentes utilizados no desenvolvimento do framework.
 
 \clearpage
 % ---
 \section{Requisitos de software do ETL4NoSQL}
 
 
-Requisitos de software são descrições de como o sistema deve se comportar, definidos durante as fases iniciais do desenvolvimento do sistema como uma especificação do que deveria ser implementado (\cite{sommerville:2013}). Os requisitos podem ser divididos em funcionais e não funcionais, onde o primeiro descrevem o que o sistema deve fazer, ou seja, as transformações a
-serem realizadas nas entradas de um sistema, a fim de que se produzam saídas, já o outro expressa as características que este software vai apresentar.(\cite{sommerville:2013}). 
+Requisitos de software são descrições de como o sistema deve se comportar, definidos durante as fases iniciais do desenvolvimento do sistema como uma especificação do que deveria ser implementado (\cite{sommerville:2013}). Os requisitos podem ser divididos em funcionais e não funcionais, onde o primeiro descreve o que o sistema deve fazer, ou seja, as transformações a serem realizadas nas entradas de um sistema a fim de que se produzam saídas, já o outro expressa as características que este software vai apresentar (\cite{sommerville:2013}). 
 
-O ETL4NoSQL é um framework que tem como principal objetivo auxiliar na criação de processos de ETL ao se utilizar diversas estruturas de armazenamento de dados. Um sistema de software pode ter seus dados armazenados em bases relacionais, que seguem o modelo entidade e relacionamento, ou não relacionais, onde esta possui pouca definição de esquema, não segue um modelo específico e são regularmente chamados de NoSQL. As bases NoSQL possuem quatro paradigmas frequentemente utilizados: Chave-Valor, Família de Colunas, Documentos e Grafo.
+O ETL4NoSQL é um \textit{framework} que tem como principal objetivo auxiliar na criação de processos de ETL ao se utilizar diversas estruturas de armazenamento de dados. Um sistema de software pode ter seus dados armazenados em bases relacionais, que seguem o modelo entidade e relacionamento, ou não relacionais, onde esta possui pouca definição de esquema, não segue um modelo específico e são regularmente chamados de NoSQL (\cite{fowler:2013}). As bases NoSQL possuem quatro paradigmas frequentemente utilizados: Chave-Valor, Família de Colunas, Documentos e Grafo (\cite{fowler:2013}).
 
-As bases de dados relacionais utilizam uma linguagem de gerenciamento de dados padrão conhecida por SQL (Structure Query Language), porém as bases de dados NoSQL não possuem uma linguagem em comum, como as relacionais, cada estrutura de armazenamento possui sua própria linguagem de gerenciamento de dados. Por isso, é essencial que haja um mecanismo que integre a leitura e escrita dos diversos SGBDs NoSQL. 
+As bases de dados relacionais utilizam uma linguagem de gerenciamento de dados padrão conhecida por SQL (Structure Query Language) (REFERENCIA), porém as bases de dados NoSQL não possuem uma linguagem em comum, como as relacionais, cada estrutura de armazenamento possui sua própria linguagem de gerenciamento de dados (REFERENCIA). Por isso, é essencial que haja um componente que seja capaz de fazer a leitura diretamente da fonte de dados e um componente que também possa carregar esses dados diretamente no seu destino, independente do seu tipo, saber se é um arquivo texto,  um arquivo XML, RDBMS, NoSQL, entre outros. Um componente tem como uma de suas definições ser uma unidade de \textit{software} independente, que encapsula a sua implementação, e oferece serviços por meio de suas interfaces (\cite{itana:2005}).
 
-Outra importante características são os processos de ETL que possuem quatro etapas básicas: extração, limpeza/transformação e carga (\cite{kimball:2004}). O fluxo do processo de ETL inicia-se com a extração dos dados a partir de uma fonte, que podem ser bases de dados relacionais, bases NoSQL ou arquivos textuais. A partir da extração, os dados passam para uma Área de Processamento de Dados (APD), onde é possível executar processos de limpeza e transformação por meio de mecanismos de junção, filtro, união, agregação e outros. Finalmente, os dados podem ser carregados em estrutura de dados como repositórios analíticos, data warehouses, ou até mesmo em arquivos Linguagem de Marcação Flexível (XML).
+Outra importante características para especificar o uso do ETL4NoSQL são os processos de ETL, que possuem quatro etapas básicas: extração, limpeza/transformação e carga (\cite{kimball:2004}). O fluxo do processo de ETL inicia-se com a extração dos dados a partir de uma fonte. A partir da extração, é possível que um componente passe os dados para uma Área de Processamento de Dados (APD), onde é possível modelar os dados executando processos de limpeza e transformação por meio de mecanismos de junção, filtro, união, agregação e outros. Finalmente, os dados podem ser carregados em estrutura de dados.
 
-Dessa forma, o ETL4NoSQL possui um ambiente que importa os dados dos diversos SGBDs NoSQL, de arquivos textuais, além dos SGBDs relacionais, e que faz a leitura e escrita dos dados permitindo a execução dos processos de ETL. No quadro \ref{requisitos} é apresentado os principais requisitos elencados do ETL4NoSQL. Foi definido como importante as prioridades que são imprescindíveis para o desenvolvimento e funcionamento do framework, e desejável as funcionalidades que aprimoram o uso do framework, porém não interferem no seu principal objetivo.
+Dessa forma, o ETL4NoSQL possui um componente que permite a leitura dos dados de diversos SGBDs NoSQL, de arquivos textuais, além dos SGBDs relacionais. Outro componente que permite a execução dos mecanismos de ETL, este componente também faz uso de componentes para o gerenciamento da execução dos processos, bem como a construção e sequência dos processos de ETL e a escolha do tipo de processamento. O ETL4NoSQL é composto também de um componente que permite carregar diretamente os dados no destino independente do seu tipo. No quadro \ref{requisitos} é apresentado os principais requisitos elencados do ETL4NoSQL. Foi definido como importante as prioridades que são imprescindíveis para o desenvolvimento e funcionamento do framework, e desejável as funcionalidades que aprimoram o uso do framework, porém não interferem no seu principal objetivo.
 
-\begin{table*}[h]
+\begin{table}[h]
 	\centering
 	\caption{Requisitos do ETL4NoSQL}
 	\label{requisitos}
-	\begin{tabular}{|p{11cm}| p{2cm} |}
+	\begin{tabular}{|p{3cm}| p{10cm}| p{2cm} |}
 		\hline
-		Requisito & Prioridade\\
+		Funcionalidade & Requisito & Prioridade\\
 		\hline
-		O sistema deve importar os dados de diversas bases relacionais e não relacionais & Importante\\
+		Suporte à plataforma &  Ser independente de plataforma & Importante\\
 		\hline
-		O sistema deve permitir a leitura e escrita dos dados importados & Importante\\
+		Suporte à fonte &  Ser capaz de ler diretamente da fonte de dados, independente do seu tipo, saber se é uma fonte RDBMS, arquivo de texto, XML ou NoSQL. & Importante\\
 		\hline
-		O sistema deve permitir mapear os dados no modelo relacional & Importante\\
+		Suporte ao destino & Ser capaz de carregar diretamente os dado no destino, independente do  seu tipo, saber se o destino é RDBMS, arquivo de texto, XML ou NoSQL. & Importante\\
 		\hline
-		O sistema deve permitir mapear os dados em quaisquer modelo desejado pelo usuário & Importante\\
+		Suporte à modelagem & Apoiar na extração de dados de múltiplas fontes, na limpeza dos dados, e na transformação, agregação, reorganização e operações de carga. & Importante\\
 		\hline
-		O sistema deve possuir os mecanismos ETL mais conhecidos na literatura & Importante\\
+		Paralelismo &Apoiar as operações de vários segmentos e execução em paralelo, internamente. A ferramenta deve ser capaz de distribuir tarefas entre múltiplos servidores. & Importante\\
 		\hline
-		O sistema deve possibilitar a criação de novos mecanismos ETL desejado pelo usuário & Importante\\
+		Programável &Apoiar o agendamento de tarefas de ETL e ter suporte para programação em linha de comandos usando programação externa. & Importante\\
 		\hline
-		O sistema deve possuir um ambiente que possibilite a execução dos mecanismos de ETL em operações & Importante\\
+		Reutilização & Apoiar a reutilização dos componentes do framework e da lógica das transformações para evitar a reescrita. & Importante\\
 		\hline
-		O sistema deve permitir o reutilização dos seus mecanismos para vários cenários & Importante\\
+		Apoio ao nível de debugging & Apoiar o tempo de execução e a limpeza da lógica de transformação. O usuário deve ser capaz de ver os dados antes e depois da transformação. & Desejável\\
 		\hline
-		O sistema deve permitir processamento distribuído & Desejável\\
+		Implementação & Suportar a capacidade de agrupar os objetos ETL e implementá-los em ambiente de teste ou de produção, sem a intervenção de um administrador de ETL. & Desejável\\
 		\hline
-		O sistema deve permitir a importação de dados a partir de uma nuvem & Desejável\\
+		Garantia de Qualidade & Ser capaz de estabelecer processos, métricas e avaliações que possibilitem e garantam a qualidade de software. & Desejável\\
 		\hline
 		
 		
 	\end{tabular}
-\end{table*}
+\end{table}
 
-O modelo de processo do funcionamento da ferramenta ETL4NoSQL, baseado nas notações da UML 2.0 (\cite{clements:2002}), é representado na figura \ref{modeloprocesso}. Esse modelo descreve o processamento dos dados nas atividades de identificação dos dados, obtenção das informações para a importação e o mapeamento dos dados para os esquemas desejados, e também, a atividade dos processos de ETL para por fim dar carga dos dados em DWs, repositórios analíticos ou em arquivos XML.
+\section{Desenvolvimento baseado em componentes}
+
+Para \cite{cheesman:2001}, o processo de desenvolvimento baseado em componentes baseia-se na separação entre modelagem de domínio e especificação.
+
+A modelagem do domínio consiste no entendimento do contexto de um negócio ou situação, o seu propósito é compreender os conceitos do domínio, seus relacionamentos e suas tarefas. Os resultados da modelagem de domínio são um modelo de casos de uso, um modelo conceitual e um modelo de comportamento (\cite{itana:2005}).
+
+Por outro lado, a modelagem da especificação do software é dividida em três etapas: a etapa de identificação dos componentes, onde produz uma especificação e arquitetura inicial; interação entre componentes, nesta etapa descobre-se as operações necessárias e aloca responsabilidades; e finalmente, a etapa de especificação de componentes, que cria uma especificação precisa das operações, interfaces e componentes.  
+
+O objetivo da modelagem de especificação é definir, em alto nível de abstração, os serviços oferecidos pelos componentes vistos como caixas pretas. É nela que a arquitetura é definida e os componentes especificados (\cite{itana:2005}).
+
+\subsection{Modelagem do Domínio}
+
+A modelagem do domínio de ETL4NoSQL é exposta a seguir através de seus três modelos: modelo conceitual, modelo de casos de uso e modelo de comportamento.
+
+\subsubsection{Modelo Conceitual}
+
+Os conceitos de aplicações ETL, identificados para o ETL4NoSQL, são: Fonte, Destino, Modelagem, Processamento, Operações, ProcessamentoDistribuído e ProcessamentoCentralizado. O modelo conceitual pode ser visualizado na figura \ref{modeloconceitual}.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.6]{fig/modelo_processo.png}
-	\caption{Modelo de Processos do ETL4NoSQL}
-	\label{modeloprocesso}
+	\includegraphics[scale=0.5]{fig/modeloconceitual.png}
+	\caption{Modelo conceitual do ETL4NoSQL}
+	\label{modeloconceitual}
 \end{figure}
 
-Outro modelo importante para o entendimento do fluxo de processos da ferramenta ETL4NoSQL é o diagrama de atividades, que de acordo com a UML 2.0 tem como objetivo mostrar o fluxo de atividades em um único processo. O diagrama mostra como um atividade depende uma da outra. Na figura \ref{diagramaatividades} o diagrama mostra a interação dos componentes ao executar um processo de ETL, onde o estágio inicial é a importação dos dados seguido pelo mapeamento, após a obtenção dos dados necessários é possível a execução dos diversos processos de ETL em uma área de processamento para finalmente os dados serem exportados para base de destino.
+\subsubsection{Modelo de Casos de Uso}
+
+Um conjunto de casos de uso pode ser identificado tal como: Ler fonte de dados, Escrever no destino, Modelar dados, Executar operação, Processar operações. O quadro \ref{casosdeuso} mostra a descrição sucinta de cada caso de uso.
+
+\clearpage
+
+\begin{table}[h]
+	\centering
+	\caption{Modelo de Casos de Uso do ETL4NoSQL}
+	\label{casosdeuso}
+	\begin{tabular}{|p{14cm}|}
+		\hline
+			\textbf{Nome:} Ler fonte de dados\\ 
+			\textbf{Objetivo:} Fazer a leitura de qualquer tipo de dados a partir de uma fonte de dados.\\ 
+			\textbf{Pré-condição:} os parâmetros para permissão de conexão com a fonte de dados devem estar disponíveis.\\ 
+			\textbf{Ação:} ler (Fonte)\\ 
+		\hline
+			\textbf{Nome:} Escrever no destino\\ 
+			\textbf{Objetivo:} Fazer a escrita de qualquer tipo de dado a partir do modelo processado pelo ETL4NoSQL em uma base de destino.\\ 
+			\textbf{Pré-condição:} os parâmetros para permissão de conexão e escrita com o destino devem estar disponíveis.\\ 
+			\textbf{Ação:} escrever (Destino)  \\ 
+	\hline
+			\textbf{Nome:} Modelar dados\\ 
+			\textbf{Objetivo:} Permitir a modelagem dos dados por meio de mecanismos de junção, filtro, união, agregação e outros. \\
+			 \textbf{Pré-condição:} os mecanismos de transformação e limpeza devem estar disponíveis para executar a modelagem.\\ 
+			 \textbf{Ação:} modelar (Modelagem, Operação)\\ 
+	 \hline
+	 		\textbf{Nome:} Executar operação\\ 
+	 		\textbf{Objetivo:} Armazenar, gerenciar e executar as operações criadas pela ação de modelar.\\
+	 		\textbf{Pré-condição:} as operações devem ser criadas previamente pela ação de modelar.\\ 
+	 		\textbf{Ação:} executar (Operação, Processamento)\\ 
+	 \hline
+	 	\textbf{Nome:} Processar operações\\ 
+	 	\textbf{Objetivo:} Processar as operações armazenadas de forma centralizada ou distribuída.\\
+	 	\textbf{Pré-condição:} as operações precisam estar disponíveis para o processamento.\\ 
+	 	\textbf{Ação:} processar (Processamento, Operação)\\ 
+	 \hline
+	 
+	\end{tabular}
+\end{table}
+
+\subsubsection{Modelo Comportamental}
+
+Ao construir o modelo comportamental é possível identificar os conceitos com comportamentos mais relevantes para o negócio, bem como os estados e eventos que disparam transições de estados (\cite{itana:2005}). Dessa forma, o diagrama de estados do ETL4NoSQL é apresentado na figura \ref{diagrama_estado}, nele podemos ver as transições de leitura da fonte, validação e identificação dos dados, assim como o tratamento caso os dados não possam ser identificados, subsequente a isso, o armazenamento dos dados para o processamento, a criação dos processos de ETL, a escolha da forma de processamento, execução das operações, e também o tratamento para operações que não puderem ser executadas, e finalmente, a carga dos dados na base destino seguido de uma mensagem de tratamento caso haja sucesso ou não da execução.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.6]{fig/diagrama_estado.png}
+	\caption{Diagrama de Estado do ETL4NoSQL}
+	\label{diagrama_estado}
+\end{figure}
+
+\subsection{Modelagem da Especificação}
+
+
+
+\subsubsection{Interfaces de sistema}
+
+\subsubsection{Interfaces de Negócio}
+
+\subsubsection{Especificação da Arquitetura do Componente}
+
+\cite{sommerville:2013}, define o projeto de arquitetura como um processo criativo em que se tenta organizar o sistema de acordo com os requisitos funcionais e não funcionais. Um estilo de arquitetura é um padrão de organização de sistema (\cite{shaw:1996}, \cite{sommerville:2013}), como uma organização cliente-servidor ou uma arquitetura em camadas. Porém, a arquitetura não necessariamente utilizará apenas um estilo, a maioria dos sistemas de médio e grande porte utilizam vários estilos. Para \cite{shaw:1996}, há três questões a serem definidas na escolha do projeto de arquitetura, a primeira é a escolha da estrutura, cliente-servidor ou em camadas, que permita atender melhor aos requisitos. A segunda questão é a respeito da decomposição dos subsistemas em módulos ou em componentes. E por fim, deve-se tomar a decisão de sobre como a execução dos subsistemas é controlada. A descrição da arquitetura pode ser representada graficamente utilizando modelos informais e notações como a UML (\cite{clements:2002}, \cite{sommerville:2013}).
+
+
+\subsection{Interação entre Componentes}
+
+\subsubsection{Operações da interface de negócio}
+
+
+\subsection{Especificação de Componentes}
+
+
+
+%De forma a detalhar a modelagem de especificação dos componentes deste trabalho, criamos um \textit{workflow} que é apresentado na figura \ref{modeloespecificacao} utilizando modelos informais e notações como a UML (\cite{clements:2002}).
+
+%O modelo de processo do funcionamento da ferramenta ETL4NoSQL, baseado nas notações da UML 2.0 (\cite{clements:2002}), é representado na figura \ref{modeloprocesso}. Esse modelo descreve o processamento dos dados nas atividades de identificação dos dados, obtenção das informações para a importação e o mapeamento dos dados para os esquemas desejados, e também, a atividade dos processos de ETL para por fim dar carga dos dados em DWs, repositórios analíticos ou em arquivos XML.
+
+
+% fluxo de processos da ferramenta ETL4NoSQL é o diagrama de atividades, que de acordo com a UML 2.0 tem como objetivo mostrar o fluxo de atividades em um único processo. O diagrama mostra como um atividade depende uma da outra. Na figura \ref{diagramaatividades} o diagrama mostra a interação dos componentes ao executar um processo de ETL, onde o estágio inicial é a importação dos dados seguido pelo mapeamento, após a obtenção dos dados necessários é possível a execução dos diversos processos de ETL em uma área de processamento para finalmente os dados serem exportados para base de destino.
 %% utilizar diagrama de fluxo de dados para descrever os requisitos do sistema e diagrama de interações
 
 
 %%construir um diagrama de atividades da execução de um processo de ETL
-\begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.9]{fig/diagrama_atividades.png}
-	\caption{Diagrama de Atividades do ETL4NoSQL}
-	\label{diagramaatividades}
-\end{figure}
 
 
-
-\section{Arquitetura do ETL4NoSQL}
-
-
-\cite{sommerville:2013}, define o projeto de arquitetura como um processo criativo em que se tenta organizar o sistema de acordo com os requisitos funcionais e não funcionais. Um estilo de arquitetura é um padrão de organização de sistema (\cite{shaw:1996}, \cite{sommerville:2013}), como uma organização cliente-servidor ou uma arquitetura em camadas. Porém, a arquitetura não necessariamente utilizará apenas um estilo, a maioria dos sistemas de médio e grande porte utilizam vários estilos. Para Garlan e Shaw, há três questões a serem definidas na escolha do projeto de arquitetura, a primeira é a escolha da estrutura, cliente-servidor ou em camadas, que permita atender melhor aos requisitos. A segunda questão é a respeito da decomposição dos subsistemas em módulos ou em componentes. E por fim, deve-se tomar a decisão de sobre como a execução dos subsistemas é controlada. A descrição da arquitetura pode ser representada graficamente utilizando modelos informais e notações como a UML (\cite{clements:2002}, \cite{sommerville:2013}).
-
-A arquitetura do ETL4NoSQL, representada graficamente na figura \ref{arquitetura}, é baseada no requisito de reutilização. A possibilidade do reuso, reduz o trabalho repetitivo na implementação de componentes e o custo de manutenção (\cite{aoyama:2002}), e sua estrutura é em camadas, onde há a camada de sistema e a camada de interface. A camada de sistema lida com todas as operações internas e a camada de interface faz toda a interligação do sistema com o ambiente externo. A decomposição dos subsistemas do ETL4NoSQL é em componentes, pois componentes podem ser subsistemas ou simples objetos que podem ser reusados (\cite{sommerville:2013}). Os componentes que integram o framework e representados na figura \ref{arquitetura} são os componentes de importação, mapeamento, mecanismos ETL e Operações. Estes componentes serão melhor detalhados na seção seguinte.
-
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[scale=0.5]{fig/arquitetura_camadas.png}
-	\caption{Arquitetura do Framework ETL4NoSQL}
-	\label{arquitetura}
-\end{figure}
 
 \section{Componentes do ETL4NoSQL}
 
