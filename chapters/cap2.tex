@@ -17,14 +17,14 @@ ETL sigla para \textit{Extraction, Transform and Load} (Extração, Limpeza/Tran
 \cite{kimball:2004} definem ETL em 4 macroprocessos, com 34 subsistemas listados a seguir. 
 
 \begin{itemize}
-	\item \textbf{Extração}: Busca os dados dos sistemas de origem e grava na área de processamento de dados antes de qualquer alteração significativa. Esta etapa possui 3 subsistemas.
+	\item[\textbf{a)}] \textbf{Extração}: Busca os dados dos sistemas de origem e grava na área de processamento de dados antes de qualquer alteração significativa. Esta etapa possui 3 subsistemas.
 		\begin{itemize}
 			\item \textbf{Data Profiling:} Explora uma origem de dados para determinar seu ajuste para inclusão como uma fonte associado à limpeza e ajuste de requisitos.
 			\item \textbf{Change Data Capture:} Isola as mudanças ocorridas nos sistemas de origem de forma a reduzir os processos de ETL - Carga Incremental.
 			\item \textbf{Sistema de Extração:} Extração e movimentação dos dados de origem para dentro do DW para processamento futuro.
 		\end{itemize}
 	
-	\item \textbf{Limpeza e Transformação}: Envia os dados de origem, por meio de várias etapas de processamento no sistema ETL; melhora a qualidade dos dados recebidos da fonte; mescla dados de duas ou mais fontes; cria dimensões; e aplica métricas. Esta etapa possui 5 subsistemas.
+	\item[\textbf{b)}] \textbf{Limpeza e Transformação}: Envia os dados de origem, por meio de várias etapas de processamento no sistema ETL; melhora a qualidade dos dados recebidos da fonte; mescla dados de duas ou mais fontes; cria dimensões; e aplica métricas. Esta etapa possui 5 subsistemas.
 		\begin{itemize}
 			\item \textbf{Data Cleasing System - Sistema de Limpeza de Dados:}  Implementa processos de qualidade para identificar violações nos dados.
 			\item \textbf{Criação de Dimensão de auditoria:} Junta metadados para cada tabela fato como uma dimensão. Estes metadados estarão disponíveis para a geração de aplicações de BI que visualizem  a qualidade dos dados.
@@ -32,7 +32,7 @@ ETL sigla para \textit{Extraction, Transform and Load} (Extração, Limpeza/Tran
 			\item \textbf{Data Conformance - conformidade de dados:} Força o uso de atributos comuns entre as principais Conformed Dimensions versus as métricas comuns nas tabelas fato relacionadas.
 		\end{itemize}
 	
-	\item \textbf{Entrega ou Carga}: Estrutura fisicamente e carrega os dados conforme desejado em DWs ou repositórios analíticos. Esta etapa possui 13 subsistemas.
+	\item[\textbf{c)}] \textbf{Entrega ou Carga}: Estrutura fisicamente e carrega os dados conforme desejado em DWs ou repositórios analíticos. Esta etapa possui 13 subsistemas.
 		\begin{itemize}
 			\item \textbf{Slowly Changing Dimension (SCD) Manager:} Implementa a lógica para os atributos SCD.
 			\item \textbf{Surrogate Key Generator:} Cria as chaves substitutas (chaves de negócio) - surrogate keys independentes para cada dimensão.
@@ -49,7 +49,7 @@ ETL sigla para \textit{Extraction, Transform and Load} (Extração, Limpeza/Tran
 			\item \textbf{Data Propagation Manager:} Prepara dados conformados e integrados no servidor de apresentação do \textit{data warehouse}, para entrega em outros ambientes, para propósitos especiais.
 		\end{itemize}
 	
-	\item \textbf{Gerenciamento}: Gerencia os sistemas e processos relacionados ao ambiente ETL de forma coerente. Esta etapa possui 13 subsistemas.
+	\item[\textbf{d)}] \textbf{Gerenciamento}: Gerencia os sistemas e processos relacionados ao ambiente ETL de forma coerente. Esta etapa possui 13 subsistemas.
 		\begin{itemize}
 			\item  \textbf{Job Scheduler:} A estratégia de gerenciamento da execução dos ETLs deve ser confiável, incluindo os relacionamentos e dependências entre os ETLs.
 			\item \textbf{Backup System:} Mantem cópia do ambiente de ETL para propósito de recuperação, \textit{restart} e arquivamento. 
@@ -66,8 +66,6 @@ ETL sigla para \textit{Extraction, Transform and Load} (Extração, Limpeza/Tran
 		\end{itemize}
 	
 \end{itemize}
-
-
 
 
 \subsection{Bancos de Dados NoSQL}
@@ -99,7 +97,17 @@ Em Bancos de dados Chave-Valor os dados são organizados como uma associação d
 Os bancos de dados Chave-Valor mais populares são Riak, Voldemort e Redis [\cite{kaur:2013}].
 
 
-\subsection{Frameworks}
+\subsection{Desenvolvimento Baseado em Componentes e Frameworks}
+
+A engenharia de software baseada em componentes é uma abordagem fundamentada em reuso para desenvolvimento de sistemas de software, ela envolve o processo de definição, implementação e integração ou composição de componentes independentes não firmemente acoplados ao sistema. Os componentes são independentes, ou seja, não interferem na operação uns dos outros e se comunicam por meio de interfaces bem definidas, os detalhes de implementação são ocultados, de forma que as alterações de implementação não afetam o restante do sistema (\cite{sommerville:2013}). Segundo \cite{sametinger:1997}, componentes são uma parte do sistema de software que podem ser identificados e reutilizados, onde descrevem ou executam funções específicas e possuem interfaces claras, documentação apropriada e a possibilidade de reuso bem definida. Ainda de acordo com o autor, um componente deve ser autocontido, identificável, funcional, possuir uma interface, ser documentado e ter uma condição de reuso. 
+
+Para \cite{cheesman:2001}, o processo de desenvolvimento baseado em componentes baseia-se na separação entre modelagem de domínio e especificação.
+
+A modelagem do domínio consiste no entendimento do contexto de um negócio ou situação, o seu propósito é compreender os conceitos do domínio, seus relacionamentos e suas tarefas. Os resultados da modelagem de domínio são um modelo de casos de uso, um modelo conceitual e um modelo de comportamento (\cite{itana:2005}).
+
+Por outro lado, a modelagem da especificação do software é dividida em três etapas: a etapa de identificação dos componentes, onde produz uma especificação e arquitetura inicial; interação entre componentes, nesta etapa descobre-se as operações necessárias e aloca responsabilidades; e finalmente, a etapa de especificação de componentes, que cria uma especificação precisa das operações, interfaces e componentes.  
+
+O objetivo da modelagem de especificação é definir, em alto nível de abstração, os serviços oferecidos pelos componentes vistos como caixas pretas. É nela que a arquitetura é definida e os componentes especificados (\cite{itana:2005}).
 
 \textit{Frameworks} podem ser considerados aglomerados de softwares, onde estes são capazes de serem estendidos e adaptados para utilidades específicas [\cite{taligent:1994}]. \cite{pree:1997}, consideram que  \textit{frameworks} são aplicações semi-completas e que podem ser reutilizadas para especializar produtos de software customizados. \cite{sommerville:2013}, ressalta que \textit{framework} é uma estrutura genérica estendida com o intuito de criar uma aplicação mais específica e \cite{schmidt:2004} define como sendo um conjunto de artefatos de software (como classes, objetos e componentes) que colaboram para fornecer uma arquitetura reusável.
 
