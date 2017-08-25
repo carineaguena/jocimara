@@ -81,7 +81,7 @@ Os conceitos de aplicações ETL, identificados para o ETL4NoSQL, são: Fonte, D
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.5]{fig/modeloconceitual.png}
+	\includegraphics[scale=0.6]{fig/modeloconceitual.png}
 	\caption{Modelo conceitual do ETL4NoSQL}
 	\label{modeloconceitual}
 \end{figure}
@@ -140,16 +140,261 @@ Ao construir o modelo comportamental é possível identificar os conceitos com c
 
 \subsection{Modelagem da Especificação}
 
+A modelagem de especificação visa definir, em um nível alto de abstração, os serviços oferecidos pelos componentes \cite{itana:2005}. Dessa forma, é possível determinar a arquitetura e especificar os componentes. É importante dar ênfase a especificação das interfaces, pois isso contribui para uma clara separação entre os componentes, e também, para assegurar o princípio de encapsulamento de dados e comportamento \cite{itana:2005}. \cite{cheesman:2001} divide a modelagem da especificação em três estágio, sendo assim, os estágios da modelagem do ETL4NoSQL são apresentados a seguir.
 
 
-\subsubsection{Interfaces de sistema}
+\subsubsection{Identificação de Componentes}
+Seguindo o modelo de conceitos do negócio e do modelo de casos de uso foi possível identificar as interfaces para os componentes de negócio, as interfaces de sistema para os componentes de sistema e gerar a arquitetura de componentes inicial. As interfaces de negócio são reconhecidas por meio do modelo conceitual e as interfaces de sistema e operações a partir dos casos de uso.
+
+\subsubsection{Interfaces de Sistemas}
+
+As interfaces de sistemas do ETL4NoSQL identificadas, por meio do modelo de casos de uso apresentado no quadro \ref{casosdeuso}, foram: IReadData, IWriteData, IModelData, IExeOp e IProcOp. Para especificar as interfaces foi utilizado OCL (\cite{warmer:1998}).
+
+
+\begin{minipage}[t][][b]{0.9\textwidth}
+	\ttfamily
+	\hrulefill
+
+\textbf{context} System :: IReadData (source : Fonte)
+
+\textbf{pre:}
+
+- A fonte é reconhecida, a conexão foi estabelecida
+
+Fonte.allInstances@includes(Fonte) Fonte.connection = estabelecido
+
+- Se não for possível estabelecer conexão
+
+Fonte.allInstances@includes(Fonte) Fonte.connection = retorna mensagem de erro
+
+- A estrutura de dados da fonte é reconhecida
+
+Fonte.allInstances@includes(Fonte) Fonte.structureType = reconhecido
+
+- Se a estrutura não puder ser reconhecida
+
+Fonte.allInstances@includes(Fonte)Fonte.structureType = retorna mensagem de erro
+
+\textbf{post:}
+
+- Um novo objeto f do tipo Fonte foi criado
+
+Fonte. allInstances@includes (f: Fonte | not Fonte.allInstances@pre@includes (f) and
+
+- Os atributos do objeto f foram inicializados)
+
+
+\hrulefill
+
+A partir da especificação foram identificadas as operações:
+
+Interface IReadData
+(Connection(connect), structureType())
+
+\end{minipage}
+
+\clearpage
+
+\begin{minipage}[t][][b]{0.9\textwidth}
+\ttfamily
+
+\hrulefill
+
+\textbf{context} System :: IWriteData (load : Destino)
+
+
+\textbf{pre:}
+
+- O repositório destino estabeleceu conexão
+
+Destino.allInstances@includes(Destino) Destino.connection = estabelecido
+
+- Se não for possível estabelecer conexão
+
+Destino.allInstances@includes(Destino) Destino.connection = retorna  erro
+
+- A estrutura de dados de destino é reconhecida
+
+Destino.allInstances@includes(Destino) Destino.structureType = reconhecido
+
+- Se a estrutura não puder ser reconhecida
+
+Destino.allInstances@includes(Destino)Destino.structureType = retorna  erro
+
+- A estrutura de dados de destino permite a escrita dos dados
+
+Destino.allInstances@includes(Destino) Destino.structureType = permissão de escrita
+
+- Se a estrutura não permitir a escrita
+
+Destino.allInstances@includes(Destino)Destino.structureType = retorna  erro
+
+\textbf{post:}
+
+- Um novo objeto d do tipo Destino foi criado
+
+Fonte. allInstances@includes (d: Destino | not Destino.allInstances@pre@includes (d) and
+
+- Os atributos do objeto d foram inicializados)
+
+\hrulefill
+
+As operações identificadas foram:
+
+Interface IWriteData (connection(connect), structureType(), allowWrite())
+
+\end{minipage}
+
+\begin{minipage}[t][][b]{0.9\textwidth}
+	\ttfamily
+\hrulefill
+
+\textbf{context} System :: IModelData (model : Modelagem; source: Fonte; operation: Operação)
+
+
+\textbf{pre:}
+
+- O repositório fonte e sua estrutura são reconhecidas
+
+Fonte.allInstances@includes(Fonte) Fonte.connection = estabelecido 
+and  Fonte.structureType = reconhecido
+
+- Se não for possível estabelecer conexão
+
+Fonte.allInstances@includes(Destino) Fonte.connection = retorna  erro
+
+- Verifica se a operação existe
+
+Operação.allInstances@includes(Operação) Operação.mecanismo = existe
+
+- Se a operação não existir
+
+Operação.allInstances@includes(Operação) Operação.mecanismo = retorna erro
+
+- Cria a operação
+
+Modelagem.allInstances@includes(Modelagem) Modelagem.operacao(dados)
+
+\textbf{post:}
+
+- Um novo objeto m do tipo Modelagem foi criado
+
+Modelagem. allInstances@includes (m: Modelagem | not Destino.allInstances@pre@includes (m) and
+
+- Os atributos do objeto m foram inicializados
+- m foi ligado ao objeto f
+f.Fonte = Fonte
+- m foi ligado ao objeto o
+o.Operação = Operação
+- Todas as operações de modelagem foram criadas e armazenadas em um APD)
+
+\hrulefill
+
+As operações identificadas foram:
+Interface IModelData (readData(CodFonte), createOp(CodOperação, data))
+
+\end{minipage}
+
+
+\begin{minipage}[t][][b]{0.9\textwidth}
+	\ttfamily
+\hrulefill
+
+\textbf{context} System :: IExeOp (model : Modelagem; operation: Operação, processing: Processamento)
+
+
+\textbf{pre:}
+
+- As operações foram modeladas
+
+Modelagem.allInstances@includes(Modelagem) Modelagem.operações = existem 
+
+- Se não houver operações para executar
+
+Operação.allInstances@includes(Operação) Operação.executa = retorna  erro
+
+- As operações devem ser colocadas em ordem de execução
+
+Operação.allInstances@includes(Operação) Operação.manage(operações)
+
+\textbf{post:}
+
+- Um novo objeto o do tipo Operação foi criado
+
+Operação. allInstances@includes (o: Operação | not Operação.allInstances@pre@includes (o) and
+
+- Os atributos do objeto o foram inicializados
+- o foi ligado ao objeto m
+m.Modelagem = Modelagem
+- o foi ligado ao objeto p
+p.Processamento = Processamento
+- Todas as operações escalonadas e estão pronta para o processamento)
+
+\hrulefill
+
+As operações identificadas foram:
+Interface IExeOp (modelOperation(CodModelagem), operationManagement())
+
+\end{minipage}
+
+
+\begin{minipage}[t][][b]{0.9\textwidth}
+	\ttfamily
+	\hrulefill
+	
+	\textbf{context} System :: IProcOp (operation: Operação, processing: Processamento)
+	
+	
+	\textbf{pre:}
+	
+	- As operações devem estar na ordem para execução
+	
+	Operação.allInstances@includes(Operação) Operação.toExec = pronto
+	
+	- O tipo de processamento foi escolhido
+	
+	Processamento.allInstances@includes(Processamento) Processamento.typeProc(tipoProcessamento)
+		
+	\textbf{post:}
+	
+	- Um novo objeto p do tipo Processamento foi criado
+	
+	Processamento. allInstances@includes (m: Processamento | not Destino.allInstances@pre@includes (p) and
+	
+	- Os atributos do objeto p foram inicializados
+	- p foi ligado ao objeto o
+	o.Operação = Operação
+	- É gerado o processamento das operações de acordo com o tipo escolhido)
+	
+	\hrulefill
+	
+	As operações identificadas foram:
+	Interface IModelData (process(CodOperação), typeProc(tipoProcessamento))
+	
+\end{minipage}
 
 \subsubsection{Interfaces de Negócio}
 
+Para definir as dependências no modelo \cite{cheesman:2001}, identificam o conceito de tipos principais, sendo estes tipos que possuem existência independente.
+No ETL4NoSQL foi possível identificar quatro tipos principais: Fonte, Modelagem, Operação e Processamento. Para cada tipo principal foi possível definir uma interface de negócio, como é apresentado na figura \ref{modelo_negocio}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.58]{fig/modelo_negocio.png}
+	\caption{Definição de interfaces do modelo de negócio do ETL4NoSQL}
+	\label{modelo_negocio}
+\end{figure}
+
 \subsubsection{Especificação da Arquitetura do Componente}
 
-\cite{sommerville:2013}, define o projeto de arquitetura como um processo criativo em que se tenta organizar o sistema de acordo com os requisitos funcionais e não funcionais. Um estilo de arquitetura é um padrão de organização de sistema (\cite{shaw:1996}, \cite{sommerville:2013}), como uma organização cliente-servidor ou uma arquitetura em camadas. Porém, a arquitetura não necessariamente utilizará apenas um estilo, a maioria dos sistemas de médio e grande porte utilizam vários estilos. Para \cite{shaw:1996}, há três questões a serem definidas na escolha do projeto de arquitetura, a primeira é a escolha da estrutura, cliente-servidor ou em camadas, que permita atender melhor aos requisitos. A segunda questão é a respeito da decomposição dos subsistemas em módulos ou em componentes. E por fim, deve-se tomar a decisão de sobre como a execução dos subsistemas é controlada. A descrição da arquitetura pode ser representada graficamente utilizando modelos informais e notações como a UML (\cite{clements:2002}, \cite{sommerville:2013}).
+\cite{sommerville:2013}, define o projeto de arquitetura como um processo criativo em que se tenta organizar o sistema de acordo com os requisitos funcionais e não funcionais. Um estilo de arquitetura é um padrão de organização de sistema (\cite{shaw:1996}, \cite{sommerville:2013}), como uma organização cliente-servidor ou uma arquitetura em camadas. Porém, a arquitetura não necessariamente utilizará apenas um estilo, a maioria dos sistemas de médio e grande porte utilizam vários estilos. Para \cite{shaw:1996}, há três questões a serem definidas na escolha do projeto de arquitetura, a primeira é a escolha da estrutura, cliente-servidor ou em camadas, que permita atender melhor aos requisitos. A segunda questão é a respeito da decomposição dos subsistemas em módulos ou em componentes. E por fim, deve-se tomar a decisão de sobre como a execução dos subsistemas é controlada. A descrição da arquitetura pode ser representada graficamente utilizando modelos informais e notações como a UML (\cite{clements:2002}, \cite{sommerville:2013}). Para o ETL4NoSQL, cada componente foi associado à sua interface de negócio identificada e uma interface de gerenciamento foi separada das outras interfaces de negócio, como pode ser visto na figura \ref{arquitetura}.
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5]{fig/arquitetura_comp.png}
+	\caption{Especificação da arquitetura do componente de ETL4NoSQL}
+	\label{arquitetura}
+\end{figure}
 
 \subsection{Interação entre Componentes}
 
