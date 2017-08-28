@@ -319,7 +319,7 @@ com o tipo escolhido)
 \hrulefill
 
 \textnormal{As operações identificadas foram:
-Interface IModelData (process(CodOperação), typeProc(tipoProcessamento))}
+Interface IProcOp (process(CodOperação), typeProc(tipoProcessamento))}
 
 \end{alltt}
 
@@ -349,11 +349,18 @@ No ETL4NoSQL foi possível identificar quatro tipos principais: Fonte, Modelagem
 
 \section{Interação entre Componentes}
 
-Descrição
+Esta etapa é detalhada, em termos de interações, utilizando diagramas de colaboração. Dessa forma, apresentamos os diagramas de colaboração para as interações do ETL4NoSQL na seção a seguir.
 
 \subsection{Operações da interface de negócio}
 
-diagramas de colaboração
+As operações de negócio são identificadas quando as interações forem analisadas para cada interface do sistema. Analisando as pré e pós-condições das operações de interface do sistema identificadas anteriormente foi possível detalhar usando diagramas de colaboração as interações necessárias para efetuar as operações do ETL4NoSQL. Os diagramas de cada operação podem ser visto na figura 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5]{fig/arquitetura_comp.png}
+	\caption{Diagrama de colaboração para conectar à base de fonte de dados}
+	\label{op_interface}
+\end{figure}
 
 \section{Especificação de Componentes}
 
