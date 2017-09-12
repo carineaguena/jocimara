@@ -353,7 +353,7 @@ Esta etapa é detalhada, em termos de interações, utilizando diagramas de cola
 
 \subsection{Operações da interface de negócio}
 
-As operações de negócio são identificadas quando as interações forem analisadas para cada interface do sistema. Analisando as pré e pós-condições das operações de interface do sistema identificadas anteriormente foi possível detalhar usando diagramas de colaboração as interações necessárias para efetuar as operações do ETL4NoSQL. Os diagramas de cada operação podem ser visto nas figuras \ref{colaboracao1}, \ref{colaboracao2}, \ref{colaboracao3}.
+As operações de negócio são identificadas quando as interações forem analisadas para cada interface do sistema. Analisando as pré e pós-condições das operações de interface do sistema identificadas anteriormente foi possível detalhar usando diagramas de colaboração as interações necessárias para efetuar as operações do ETL4NoSQL. Os diagramas de cada operação podem ser visto nas figuras \ref{colaboracao1}, \ref{colaboracao2}, \ref{colaboracao3}, \ref{readData}, \ref{createOp}, \ref{createOp}, \ref{modelOperation}, \ref{operationManagement} e \ref{process}.
 
 A conexão com a fonte de dados é estabelecida:
 
@@ -382,7 +382,50 @@ A escrita na base de dados destino é permitida:
 	\label{colaboracao3}
 \end{figure}
 
+A leitura dos dados da fonte é feita e armazenada na área de processamento de dados:
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5]{fig/readData.png}
+	\caption{Diagrama de colaboração para leitura dos dados da fonte}
+	\label{readData}
+\end{figure}
+
+Após a leitura dos dados da fonte é possível a criação das operações por meio dos mecanismos existentes:
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.5]{fig/createOp.png}
+	\caption{Diagrama de colaboração criação das operações de ETL}
+	\label{createOp}
+\end{figure}
+
+Com as operações criadas, deve-se colocá-las em ordem de execução:
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.5]{fig/modelOperation.png}
+	\caption{Diagrama de colaboração modelar as operações criadas}
+	\label{modelOperation}
+\end{figure}
+
+É possível também que as operações sejam apagadas e alteradas:
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5]{fig/operationManagement.png}
+	\caption{Diagrama de colaboração para gerenciar as operações}
+	\label{operationManagement}
+\end{figure}
+
+Com as operações criadas é possível processá-las de forma a escolher o tipo de processamento (centralizado ou distribuído):
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5]{fig/process.png}
+	\caption{Diagrama de colaboração para processar as operações}
+	\label{process}
+\end{figure}
 
 \section{Especificação de Componentes}
 
