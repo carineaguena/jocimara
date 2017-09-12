@@ -429,9 +429,83 @@ Com as operações criadas é possível processá-las de forma a escolher o tipo
 
 \section{Especificação de Componentes}
 
-Descrição das operações
+Posteriormente à definição das interfaces de negócio, é possível detalhá-las. Para cada interface, as operações são especificadas com suas assinaturas, pré e pós-condições.
 
-Diagrama de especificação da interface
+\begin{alltt}
+	
+	\textbf{context} IDataMgt :: connection(connect):Fonte
+		\textbf{pré:}
+		- Existe um parâmetro de conexão "connect"
+		- Existe uma fonte para ser conectada
+		\textbf{pós:}
+		- A conexão com a fonte é estabelecida ou não
+		- Recebe uma mensagem de conexão bem sucedida ou erro
+
+	\textbf{context} IDataMgt :: strutuctureType():Fonte
+		\textbf{pré:}
+		- A conexão com a fonte foi bem sucedida
+		\textbf{pós:}
+		- A estrutura de dados é reconhecida ou não
+		- Retorna mensagem de sucesso ou erro
+		
+	\textbf{context} IDataMgt :: allowWrite():Destino
+		\textbf{pré:}
+		- A conexão com o destino foi bem sucedida
+		\textbf{pós:}
+		- A base de dados destino permite escrita ou não
+		- Retorna mensagem de sucesso ou erro
+	
+	\textbf{context} IModelMgt :: readData(codFonte, data):APD
+		\textbf{pré:}
+		- A conexão com a fonte foi bem sucedida
+		- A estrutura de dados é reconhecida
+		- Existe um parâmetro de busca "data" válido para 
+		estrutura de dados reconhecida
+		\textbf{pós:}
+		- A leitura dos dados é realizada ou não
+		- Retorna os dados em uma APD ou uma mensagem de erro
+		
+	\textbf{context} IModelMgt :: createOp(codOp, data):Operação
+		\textbf{pré:}
+		- Existe o mecanismo desejado para a criação da operação
+		- Existe um parâmetro "data" com os dados a serem 
+		usados na operação
+		\textbf{pós:}
+		- A operação é criada ou não
+		- Retorna o codOp ou uma mensagem de erro
+		
+	\textbf{context} IOpMgt :: modelOperation(codModel)
+		\textbf{pré:}
+		- Existem operações criadas na APD (codModel)
+		\textbf{pós:}
+		- As operações são ordenadas para execução
+		
+	\textbf{context} IOpMgt :: operationManagement(codModel)
+		\textbf{pré:}
+		- Existem operações criadas na APD (codModel)
+		\textbf{pós:}
+		- As operações foram alteradas, apagadas ou não
+		- Retorna mensagem de sucesso ou erro
+	
+	\textbf{context} IProcMgt :: process(codOp)
+		\textbf{pré:}
+		- Existe a operação (codOp)
+		- Foi escolhido o tipo de processamento (centralizado ou distribuído)
+		\textbf{pós:}
+		- A operação foi processada ou não
+		- Retorna mensagem de sucesso ou erro
+		
+			
+\end{alltt}
+
+Depois das operações terem sido especificadas, o diagrama de especificação das interfaces foi criado e está representado na figura \ref{interfaces}. Essas especificações se referem ao uso dos componentes. Elas representam o que o usuário precisa saber sobre os componentes.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.4]{fig/interfaces.png}
+	\caption{Diagrama de especificação das interfaces de ETL4NoSQL}
+	\label{interfaces}
+\end{figure}
 
 %De forma a detalhar a modelagem de especificação dos componentes deste trabalho, criamos um \textit{workflow} que é apresentado na figura \ref{modeloespecificacao} utilizando modelos informais e notações como a UML (\cite{clements:2002}).
 
@@ -447,3 +521,5 @@ Diagrama de especificação da interface
 
 
 \section{Considerações Finais}
+
+
