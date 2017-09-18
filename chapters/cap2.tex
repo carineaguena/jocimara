@@ -69,7 +69,7 @@ ETL sigla para \textit{Extraction, Transform and Load} (Extração, Limpeza/Tran
 
 \subsection{Bancos de Dados NoSQL}
 
-Bancos de dados NoSQL consistem em bancos de dados não relacionais projetados para gerenciar grandes volumes de dados e que disponibilizam estruturas e interfaces de acesso simples (Lima; Mello, 2015). Cada SGBD (Sistema Gerenciador de Banco de Dados) NoSQL possui um esquema de modelagem diferente, nos quais são divididas em quatro categorias: Chave-Valor, Orientado a Documentos, Famílias de Colunas e Baseado em Grafos [\cite{fowler:2013}, \cite{kaur:2013}].
+Bancos de dados NoSQL consistem em bancos de dados não relacionais projetados para gerenciar grandes volumes de dados e que disponibilizam estruturas e interfaces de acesso simples (\cite{lima:2015}). Cada SGBD (Sistema Gerenciador de Banco de Dados) NoSQL possui um esquema de modelagem diferente, nos quais são divididas em quatro categorias: Chave-Valor, Orientado a Documentos, Famílias de Colunas e Baseado em Grafos (\cite{fowler:2013}, \cite{kaur:2013}).
 
 As principais características dos banco de dados NoSQL são: distribuído, escalabilidade horizontal, construído para grande volume de dados, BASE (Basicamente disponível, Estado leve, Eventualmente consistente) ao invés de ACID (atomicidade, consistência, isolamento e durabilidade), modelo de dados não relacional, não suporta SQL (\cite{fowler:2013}, \cite{nasholm:2012}).
 
@@ -83,17 +83,17 @@ Existem vários sistemas gerenciadores de banco de dados orientados a documentos
 
 Banco de dados baseados em Famílias de Colunas são desenvolvidos para abranger três áreas: número enorme de colunas, a natureza esparsa dos dados e frequentes mudanças no esquema. Os dados em Famílias de colunas são armazenados em colunas de forma contínua, enquanto que em bancos de dados relacionais as linhas é que são contínuas. Essa mudança faz com que operações como agregação, suporte para ad-hoc e consultas dinâmicas se tornem mais eficientes (\cite{kaur:2013}, \cite{fowler:2013}).
 
-A maioria dos bancos de dados baseados em Famílias de Colunas são também compatíveis com o framework MapReduce, no qual acelera o processamento de enormes volumes de dados pela distribuição do problema em um grande número de sistemas. Os bancos de dados  de Família de Colunas textit{open-source} mais populares são Hypertable, HBase e Cassandra (\cite{kaur:2013}).
+A maioria dos bancos de dados baseados em Famílias de Colunas são também compatíveis com o framework MapReduce, no qual acelera o processamento de enormes volumes de dados pela distribuição do problema em um grande número de sistemas. Os bancos de dados  de Família de Colunas \textit{open-source} mais populares são Hypertable, HBase e Cassandra (\cite{kaur:2013}).
 
 \subsubsection{Banco de dados Baseado em Grafos}
 
-Bancos de dados baseado em Grafos são como uma estrutura de rede contendo nós e arestas, onde as arestas interligam os nós representando a relação entre eles. Comparando com o modelo Entidade-Relacionamento, o nó corresponde à entidade, a propriedade do nó à um atributo e as arestas são a relação entre os nós. Nos bancos de dados relacionais as consultas requerem atributos de mais de uma tabela resultando numa operação de junção, por outro lado, bancos de dados baseado em Grafos são desenvolvidos para encontrar relações dentro de uma enorme quantidade de dados rapidamente, tendo em vista que não é preciso fazer junções, ao invés disso, ele fornece indexação livre de adjacência \cite{kaur:2013}.
+Bancos de dados baseado em Grafos são como uma estrutura de rede contendo nós e arestas, onde as arestas interligam os nós representando a relação entre eles. Comparando com o modelo Entidade-Relacionamento, o nó corresponde à entidade, a propriedade do nó à um atributo e as arestas são a relação entre os nós. Nos bancos de dados relacionais as consultas requerem atributos de mais de uma tabela resultando numa operação de junção, por outro lado, bancos de dados baseado em Grafos são desenvolvidos para encontrar relações dentro de uma enorme quantidade de dados rapidamente, tendo em vista que não é preciso fazer junções, ao invés disso, ele fornece indexação livre de adjacência (\cite{kaur:2013}).
 
 \subsubsection{Banco de dados Chave-Valor}
 
-Em Bancos de dados Chave-Valor os dados são organizados como uma associação de vetores de entrada consistindo em pares de chave-valor. Cada chave é única e usada para recuperar os valores associados a ele. Esses bancos de dados podem ser visualizados como um banco de dados relacional contendo múltiplas linhas e apenas duas colunas: chave e valor. Buscas baseadas em chaves resultam num baixo tempo de execução, além disso, os valores podem ser qualquer coisa como objetos, hashes, entre outros [\cite{kaur:2013}].
+Em Bancos de dados Chave-Valor os dados são organizados como uma associação de vetores de entrada consistindo em pares de chave-valor. Cada chave é única e usada para recuperar os valores associados a ele. Esses bancos de dados podem ser visualizados como um banco de dados relacional contendo múltiplas linhas e apenas duas colunas: chave e valor. Buscas baseadas em chaves resultam num baixo tempo de execução, além disso, os valores podem ser qualquer coisa como objetos, hashes, entre outros (\cite{kaur:2013}).
 
-Os bancos de dados Chave-Valor mais populares são Riak, Voldemort e Redis [\cite{kaur:2013}].
+Os bancos de dados Chave-Valor mais populares são Riak, Voldemort e Redis (\cite{kaur:2013}).
 
 
 \subsection{Desenvolvimento Baseado em Componentes e Frameworks}
@@ -108,13 +108,13 @@ Por outro lado, a modelagem da especificação do software é dividida em três 
 
 O objetivo da modelagem de especificação é definir, em alto nível de abstração, os serviços oferecidos pelos componentes vistos como caixas pretas. É nela que a arquitetura é definida e os componentes especificados (\cite{itana:2005}).
 
-\textit{Frameworks} podem ser considerados aglomerados de softwares, onde estes são capazes de serem estendidos e adaptados para utilidades específicas [\cite{taligent:1994}]. \cite{pree:1997}, consideram que  \textit{frameworks} são aplicações semi-completas e que podem ser reutilizadas para especializar produtos de software customizados. \cite{sommerville:2013}, ressalta que \textit{framework} é uma estrutura genérica estendida com o intuito de criar uma aplicação mais específica e \cite{schmidt:2004} define como sendo um conjunto de artefatos de software (como classes, objetos e componentes) que colaboram para fornecer uma arquitetura reusável.
+\textit{Frameworks} podem ser considerados aglomerados de softwares, onde estes são capazes de serem estendidos e adaptados para utilidades específicas (\cite{taligent:1994}). \cite{pree:1997}, consideram que  \textit{frameworks} são aplicações semi-completas e que podem ser reutilizadas para especializar produtos de software customizados. \cite{sommerville:2013}, ressalta que \textit{framework} é uma estrutura genérica estendida com o intuito de criar uma aplicação mais específica e \cite{schmidt:2004} define como sendo um conjunto de artefatos de software (como classes, objetos e componentes) que colaboram para fornecer uma arquitetura reusável.
 
-Os \textit{frameworks} possibilitam a reusabilidade de projeto, bem como ao reúso de classes específicas, pois fornecem uma arquitetura de esqueleto para a aplicação, que é definida por classes de objetos e suas interações. As classes são reusadas diretamente e podem ser estendidas usando-se recursos, como a herança \cite{sommerville:2013}. 
+Os \textit{frameworks} possibilitam a reusabilidade de projeto, bem como ao reúso de classes específicas, pois fornecem uma arquitetura de esqueleto para a aplicação, que é definida por classes de objetos e suas interações. As classes são reusadas diretamente e podem ser estendidas usando-se recursos, como a herança (\cite{sommerville:2013}). 
 
 \cite{fayad:1997}, separam os \textit{frameworks} em três principais classes: de infraestrutura de sistema, de integração de \textit{middleware} e de aplicações corporativas. \textit{Frameworks} de infraestrutura de sistema apoiam o desenvolvimento de infraestruturas, como comunicações, interfaces de usuários e compiladores. Já os \textit{frameworks} de integração de \textit{middleware} são um conjunto de normas e classes de objetos associados que suportam componentes de comunicação e troca de informações. E finalmente, os \textit{frameworks} de aplicações corporativas estão relacionados com domínios de aplicação específicos, como sistemas financeiros. Eles incorporam conhecimentos sobre o domínios de aplicações e apoiam o desenvolvimento para o usuário final.
 
-Muitas vezes, os \textit{frameworks} são implementações de padrões de projeto, como por exemplo o \textit{framework} MVC (Model-View-Control). A natureza geral dos padrões e o uso de classes abstratas e concretas permitem a extensibilidade \cite{sommerville:2013}.
+Muitas vezes, os \textit{frameworks} são implementações de padrões de projeto, como por exemplo o \textit{framework} MVC (Model-View-Control). A natureza geral dos padrões e o uso de classes abstratas e concretas permitem a extensibilidade (\cite{sommerville:2013}).
 
 Para estender um \textit{framework} não é necessário alterar o seu código, apenas é preciso adicionar classes concretas que herdam operações de classes abstratas. Ademais, há a possibilidade de definir \textit{callbacks}, que são métodos chamados em resposta a eventos reconhecidos pelo \textit{framework}.Esses métodos são reconhecido como 'inversão de controle' (\cite{schmidt:2004}). A figura \ref{inversaodecontrole} expressa o funcionalidade da inversão de controle. Os responsáveis pelo controle no sistema são os objetos do \textit{framework}, ao invés de serem objetos específicos de aplicação. E em resposta aos eventos de interface do usuário, banco de dados, entre outros, esses objetos do \textit{framework} invocam 'métodos hook' que, em seguida, são vinculados à funcionalidade fornecida ao usuário. A funcionalidade específica de aplicação responde ao evento de forma adequada. Por exemplo, um \textit{framework} terá um método que lida com um toque em uma tecla a partir do ambiente. Esse método chama o método \textit{hook}, que deve ser configurado para chamar os métodos de aplicação adequada para tratar o toque na tecla (\cite{sommerville:2013}).
 
@@ -175,7 +175,7 @@ PygramETL é um \textit{framework} programável para desenvolvedores de ETL. Ele
 
 \subsection{ETLMR}
 
-ETLMR é um framework de ETL que utiliza \textit{MapReduce} para atingir escalabilidade. Ele suporta esquemas de DW como o esquema estrela, o \textit{snowflake}, e o \textit{slowly changing dimensions} \cite{liu:2011}. 
+ETLMR é um framework de ETL que utiliza \textit{MapReduce} para atingir escalabilidade. Ele suporta esquemas de DW como o esquema estrela, o \textit{snowflake}, e o \textit{slowly changing dimensions} (\cite{liu:2011}). 
 
 A figura \ref{etlmr} ilustra o fluxo de dados usando o ETLMR e MapReduce. O processamento da dimensão é feito em uma tarefa do MapReduce, e o processamento do fato é feito por outra tarefa MapReduce. A tarefa MapReduce gera um número de tarefas map/reduce paralelas para processar a dimensão ou o fato. Cada tarefa consiste em inúmeros passos, incluindo a leitura dos dados no sistema de arquivos distribuído (DFS - distributed file system), execução da função de mapeamento, particionamento, combinação do mapeamento de saída, execução da função reduce e escrita dos resultados (\cite{liu:2011}).
 
@@ -194,7 +194,7 @@ O principal objetivo do ETLMR é otimizar o tempo de processamento dos processos
 
 O framework CloudETL é uma solução para processos de ETL que usa \textit{Hadoop} para paralelizar fluxos de ETL e \textit{Hive} para processar os dados de forma distribuída. Para o CloudETL o \textit{Hadoop} é a plataforma de execução dos processos de ETL e o \textit{Hive} é o sistema de armazenamento. Conforme a figura \ref{cloudetl}, os componentes do CloudETL são as APIs (interfaces de programação de aplicação), um conjunto de elementos para efetuar as transformações nos dados identificados como ETL \textit{transformers}, e um gerenciador de tarefas que controla a execução das tarefas submetidas ao \textit{Hadoop}. 
 
-CloudETL fornece suporte de alto nível em ETL para construção de diferentes esquemas de DW, como esquema estrela, \textit{snowflake} e SCD (\textit{slowly changing dimensions}). Ele facilita a implementação de processos de ETL em paralelo e aumenta a produtividade do programador significativamente. Esta abordagem facilita as atualizações de SCDs em um ambiente distribuído \cite{liu:2013}.
+CloudETL fornece suporte de alto nível em ETL para construção de diferentes esquemas de DW, como esquema estrela, \textit{snowflake} e SCD (\textit{slowly changing dimensions}). Ele facilita a implementação de processos de ETL em paralelo e aumenta a produtividade do programador significativamente. Esta abordagem facilita as atualizações de SCDs em um ambiente distribuído (\cite{liu:2013}).
 
 \begin{figure}[h]
 	\centering
