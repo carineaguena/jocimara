@@ -1,43 +1,11 @@
-O gerenciamento eficiente de solicitações de mudança (SM) é fundamental para o
-sucesso das atividades de manutenção e evolução de software. Entretanto, a
-atribuição de SMs a desenvolvedores de software é um aspecto custoso desse
-gerenciamento, pois demanda tempo e requer conhecimento apropriado do projeto de
-software. Com o propósito de diminuir esse custo, várias pesquisas já propuseram
-métodos de atribuição automática de SMs. Embora representem avanços na área,
-existem vários fatores inerentes a atribuição de SMs que não são considerados
-nessas pesquisas e são essenciais para a automação.
 
-Como demonstrado nesse trabalho, a atribuição automática deve, por exemplo,
-considerar a carga de trabalho, a experiência e o conhecimento dos
-desenvolvedores, a prioridade e a severidade das SMs, a afinidade dos
-desenvolvedores com os problemas descritos nas SMs, e até mesmo os
-relacionamentos interpessoais. Para tornar esse cenário ainda mais complexo,
-esses fatos podem variar de acordo com o projeto de software que está sendo
-desenvolvido. Assim, uma solução para o problema de atribuição de SMs depende de
-informações contextuais.
+Os procedimentos crucias para a criação de data warehouses e sistemas \acp{bi} são a integração de dados e os processos de ETL. Porém, os processo para ETL e integração de dados são comumente desenvolvidos para dados estruturados em modelos relacionais que representam apenas uma pequena parte dos dados mantidos por muitas empresas. Por isso, existe uma demanda crescente para integrar também os dados não estruturados e semi estruturados em um repositório unificado. Porém, devido a complexidade desses dados, novos desafios estão surgindo ao lidarmos com a heterogeneidade e distribuição dos dados no ambiente de integração.
 
-Assim, esse trabalho propõe, implementa e valida uma solução arquitetural
-sensível ao contexto para atribuição automática de SMs. Dado o aspecto
-contextual da solução, a arquitetura enfatiza a necessidade de considerar as
-diversas fontes de informações presentes na organização, assim como a
-necessidade de se desenvolver algorítimos que implementem diferentes estratégias
-de atribuição. A proposta e implementação dessa solução é embasada em resultados
-de duas pesquisas quantitativas: um estudo de mapeamento sistemático da
-literatura, e uma pesquisa de questionário com desenvolvedores de software. Esse
-último forneceu um conjunto de requisitos que a solução automatizada deve
-satisfazer para que as estratégias de atribuição sejam atendidas, enquanto o
-mapeamento da literatura identificou técnicas, algoritmos, e outros requisitos
-necessários a automação.
+Ademais, muitas empresas encontram dificuldades ao lidar com as ferramentas ETL disponíveis no mercado. Aprender a lidar com essas ferramentas pode ser muito custoso em termos financeiros e de tempo, e por isso, acabam optando desenvolver os seus processos por meio de uma linguagem de programação de propósito geral.
 
-A implementação da arquitetura segue uma estratégia de automação, também
-elabo\-rada nesse trabalho, que possui dois componentes principais: um sistema
-especialista baseado em regras (SEBR); e um modelo de recuperação de informação
-(MRI) com técnicas de aprendizagem. Em nossa estratégia, esses dois componentes
-são executados alternadamente em momentos diferentes a fim de atribuir uma SM
-automaticamente. O SEBR processa regras simples e complexas, considerando
-informações contextuais do projeto de software e da organização que o
-desenvolve. O MRI é utilizado para fazer o casamento entre SMs e desenvolvedores
-de acordo com o histórico de atribuições.
+Portanto, propomos um \textit{framework} programável para desenvolvimento de sistemas de ETL que possibilita a integração de dados estruturados, não estruturados e semi estruturados armazenados em bases relacionais ou NoSQL, denominado ETL4NoSQL. Apresentamos os componentes do \textit{framework} ETL4NoSQL, bem como suas funcionalidades. Além disso, realizamos um estudo experimental de software, cujo teve como objetivo definir se o ETL4NoSQL é adequado para auxiliar no desenvolvimento de processos de ETL em dados estruturados, semi estruturados e não estruturados. Os resultados do estudo mostraram que o ETL4NoSQL possui um grau de similaridade de 70\% em relação com as outras 11 ferramentas estudadas nesta pesquisa, e que dessa similaridade 85,71\% das funcionalidades são consideradas úteis para desenvolver processos de ETL em dados estruturados, semi estruturados e não estruturados. 
+
+Assim, podemos concluir que o objetivo da presente proposta, de especificar um \textit{framework} programável, flexível e integrado para extração, transformação e carga dos dados em BDs NoSQL foi atingido de forma efetiva e satisfatória, no sentido de facilitar e flexibilizar a atividade de desenvolvimento de novas ferramentas de ETL para dados estruturados, semi estruturados e não estruturados.
 
 \begin{keywords}
 ETL, Frameworks, NoSQL, Data Warehouse, Estudo Experimental de Software
