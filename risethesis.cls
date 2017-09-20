@@ -648,25 +648,16 @@ requirements for the degree of \@degree\ in \@majorfielden.
   Prof.\\
   Centro de Informática/UFPE
   
-  \vspace{\baselineskip}
+  \vspace{3\baselineskip}
   -----------------------------------------------------------------------\\
   Prof. \\
   Centro de Informática/UFPE
   
-  \vspace{\baselineskip}
-  -----------------------------------------------------------------------\\
-  Prof. \\
-  Departamento de Ciência da Computação/UFBA
   
-  \vspace{\baselineskip}
+  \vspace{3\baselineskip}
   -----------------------------------------------------------------------\\
   Prof. \\
-  Instituto de Computação/UFF
-  
-  \vspace{\baselineskip}
-  -----------------------------------------------------------------------\\
-  Prof. \\
-  Departamento de Estatística e Informática/UFRPE
+  Centro de Informática/UFPE
   
   \vfill
   \@address
