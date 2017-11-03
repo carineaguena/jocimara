@@ -1,6 +1,6 @@
 \chapter{Fundamentação Teórica}
 
-Neste capítulo são apresentados os conceitos relacionados ao desenvolvimento desta pesquisa, bem como o embasamento teórico necessário para o entendimento do estudo. Os assuntos abordados são: ETL, Banco de Dados NoSQL, Frameworks, Estudo Experimental de Software e trabalhos correlatos ao tema deste trabalho.
+Neste capítulo são apresentados os conceitos relacionados ao desenvolvimento desta pesquisa, bem como o embasamento teórico necessário para o entendimento do estudo. Os assuntos abordados são: ETL, Banco de Dados NoSQL, \textit{Frameworks}, Estudo Experimental de \textit{Software} e trabalhos correlatos ao tema deste trabalho.
 
 
 \clearpage
@@ -8,11 +8,11 @@ Neste capítulo são apresentados os conceitos relacionados ao desenvolvimento d
 
 \section{Conceitos Básicos}
 
-Conceitos de ETL, banco de dados NoSQL, \textit{frameworks} e estudo experimental de software são essenciais para esta pesquisa. Dessa forma, os princípios básicos desses conceitos são apresentados nesta seção. Ainda que estudo experimental de software não seja o tema principal deste trabalho, seus conceitos são essenciais para avaliar e medir nossa proposta, sendo assim é fundamental entender seus conceitos.
+Conceitos de ETL, banco de dados NoSQL, \textit{frameworks} e estudo experimental de software são essenciais para esta pesquisa. Dessa forma, os princípios básicos desses conceitos são apresentados nesta seção. Ainda que estudo experimental de \textit{software} não seja o tema principal deste trabalho, seus conceitos são essenciais para avaliar e medir nossa proposta, sendo assim é fundamental entender seus conceitos.
 
 \subsection{ETL}
 
-ETL sigla para \textit{Extraction, Transform and Load} (Extração, Limpeza/Transformação e Carga) é conhecido na literatura por definir processos que permitem a integração de dados, centralizando-os numa base destino facilitando o gerenciamento e análise dos dados (\cite{kimball:2004}, \cite{rud:2009}). O fluxo do processo de ETL inicia-se com extração dos dados a partir de uma fonte, que podem ser arquivos textuais, banco de dados relacionais ou banco de dados NoSQL. Os dados são propagados para uma Área de Processamento de Dados onde são executadas a limpeza e transformação por meio de mecanismos de ETL definidos como agregação, junção, filtro, união, entre outros. Finalmente, os dados são carregados em estruturas que podem ser data warehouses ou repositórios analíticos (\cite{silva:2016}, \cite{silva:2012}, \cite{kimball:2004}). 
+ETL sigla para \textit{Extraction, Transform and Load} (Extração, Limpeza/Transformação e Carga) é conhecido na literatura por definir processos que permitem a integração de dados, centralizando-os numa base destino facilitando o gerenciamento e análise dos dados (\cite{kimball:2004}, \cite{rud:2009}). O fluxo do processo de ETL inicia-se com extração dos dados a partir de uma fonte, que podem ser arquivos textuais, banco de dados relacionais ou banco de dados NoSQL. Os dados são propagados para uma Área de Processamento de Dados onde são executadas a limpeza e transformação por meio de mecanismos de ETL definidos como agregação, junção, filtro, união, entre outros. Finalmente, os dados são carregados em estruturas que podem ser \textit{data warehouses} ou repositórios analíticos (\cite{silva:2016}, \cite{silva:2012}, \cite{kimball:2004}). 
 
 \cite{kimball:2004} definem ETL em 4 macroprocessos, com 34 subsistemas listados a seguir. 
 
@@ -83,7 +83,7 @@ Existem vários sistemas gerenciadores de banco de dados orientados a documentos
 
 Banco de dados baseados em Famílias de Colunas são desenvolvidos para abranger três áreas: número enorme de colunas, a natureza esparsa dos dados e frequentes mudanças no esquema. Os dados em Famílias de colunas são armazenados em colunas de forma contínua, enquanto que em bancos de dados relacionais as linhas é que são contínuas. Essa mudança faz com que operações como agregação, suporte para ad-hoc e consultas dinâmicas se tornem mais eficientes (\cite{kaur:2013}, \cite{fowler:2013}).
 
-A maioria dos bancos de dados baseados em Famílias de Colunas são também compatíveis com o framework MapReduce, no qual acelera o processamento de enormes volumes de dados pela distribuição do problema em um grande número de sistemas. Os bancos de dados  de Família de Colunas \textit{open-source} mais populares são Hypertable, HBase e Cassandra (\cite{kaur:2013}).
+A maioria dos bancos de dados baseados em Famílias de Colunas são também compatíveis com o \textit{framework} MapReduce, no qual acelera o processamento de enormes volumes de dados pela distribuição do problema em um grande número de sistemas. Os bancos de dados  de Família de Colunas \textit{open-source} mais populares são Hypertable, HBase e Cassandra (\cite{kaur:2013}).
 
 \subsubsection{Banco de dados Baseado em Grafos}
 
