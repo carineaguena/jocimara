@@ -507,6 +507,58 @@ Depois das operações terem sido especificadas, o diagrama de especificação d
 	\label{interfaces}
 \end{figure}
 
+
+\section{Ambiente de Implementação}
+
+Para a implementação da proposta, utilizamos a linguagem de programação Python, pois ela segue o paradigma de orientação à objetos que é adequado para a proposta desta pesquisa. Devido a natureza do \textit{framework} ser flexível, reusável e integrado faz com que a orientação à objetos torne-se um bom paradigma a ser aproveitado neste trabalho.
+
+\section{Interfaces de Programação}
+
+O ETL4NoSQL possui cinco principais interfaces de programação. O ETL4NoSQLMgr é a interface principal que interliga as demais interfaces, ela é a interface \textit{controller} do \textit{framework}. Na figura \ref{etl4nosqlmgr} podemos ver a implementação da interface ETL4NoSQLMgr, nota-se que todas as outras quatro interfaces foram importadas nela. Nesta interface é realizada também a execução dos processos de leitura e escrita das bases de dados fonte, destino e área de processamento de dados, cria a amostra dos dados a serem manipulados, as operações, realiza a execução das operações e as gerencia.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.8]{fig/etl4nosqlmgr.png}
+	\caption{Tela do IDE LiClipse com a implementação da interface ETL4NoSQLMgr}
+	\label{etl4nosqlmgr}
+\end{figure}
+
+A interface IDataMgr pode ser vista na figura \ref{idatamgr}, ela é responsável pela conexão de todas as bases de dados, bem como determina o tipo de estrutura que é a base, e também, informa se há permissão para escrita na base de dados.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.7]{fig/idatamgr.png}
+	\caption{Tela do IDE LiClipse com a implementação da interface IDataMgr}
+	\label{idatamgr}
+\end{figure}
+
+Na figura \ref{imodelmgr} é apresentada a interface IModelMgr, esta realiza a leitura dos dados da base determinada pela interface IDataMgr e configurada no controlador ETL4NoSQLMgr. A interface IModelMgr também cria as operações de ETL e grava os dados na base de dados determinada no controlador.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.6]{fig/imodelmgr.png}
+	\caption{Tela do IDE LiClipse com a implementação da interface IModelMgr}
+	\label{imodelmgr}
+\end{figure}
+
+As operações criadas pela interface IModelMgr são listadas na interface IOpMgr (figura \ref{iopmgr}). Ela gerencia a inserção, alteração e remoção das operações, bem como ordena a sequência de operações a serem executadas.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.6]{fig/iopmgr.png}
+	\caption{Tela do IDE LiClipse com a implementação da interface IOpMgr}
+	\label{iopmgr}
+\end{figure}
+
+E finalmente, na figura \ref{iprocmgr}, é apresentada a interface IProcMgr. Esta interface é responsável pela execução das operações listadas pela IOpMgr. Na IProcMgr também é possível determinar o tipo de processamento desejável. 
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.6]{fig/iprocmgr.png}
+	\caption{Tela do IDE LiClipse com a implementação da interface IProcMgr}
+	\label{iprocmgr}
+\end{figure}
+
 %De forma a detalhar a modelagem de especificação dos componentes deste trabalho, criamos um \textit{workflow} que é apresentado na figura \ref{modeloespecificacao} utilizando modelos informais e notações como a UML (\cite{clements:2002}).
 
 %O modelo de processo do funcionamento da ferramenta ETL4NoSQL, baseado nas notações da UML 2.0 (\cite{clements:2002}), é representado na figura \ref{modeloprocesso}. Esse modelo descreve o processamento dos dados nas atividades de identificação dos dados, obtenção das informações para a importação e o mapeamento dos dados para os esquemas desejados, e também, a atividade dos processos de ETL para por fim dar carga dos dados em DWs, repositórios analíticos ou em arquivos XML.
