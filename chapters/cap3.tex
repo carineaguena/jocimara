@@ -146,189 +146,159 @@ Seguindo o modelo de conceitos do negócio e do modelo de casos de uso foi poss�
 \subsection{Interfaces de Sistemas}
 
 As interfaces de sistemas do ETL4NoSQL identificadas, por meio do modelo de casos de uso apresentado no quadro \ref{casosdeuso}, foram: IReadData, IWriteData, IModelData, IExeOp e IProcOp. Para especificar as interfaces foi utilizado \acp{OCL} (\cite{warmer:1998}).
+\\
+\lstset{emph={%  
+		context, pre, post%
+	},emphstyle={\color{black}\bfseries\underbar}%
+}%
+\begin{lstlisting}[frame=single, language=Oberon-2]
+	context System :: IReadData (source : Fonte)	
+	pre:	
+	
+	Fonte.allInstances@includes(Fonte) 
+	Fonte.connection = estabelecido
+		
+	Fonte.allInstances@includes(Fonte) 
+	Fonte.connection = retorna mensagem de erro
+	
+	Fonte.allInstances@includes(Fonte) 
+	Fonte.structureType =  reconhecido	
 
+	Fonte.allInstances@includes(Fonte)
+	Fonte.structureType = retorna mensagem de erro	
+	
+	post:
+	
+	Fonte. allInstances@includes 
+	(f: Fonte | not Fonte.allInstances@pre@includes (f) and	
+	Os atributos do objeto f foram inicializados)	
+\end{lstlisting}
 
+A partir da especificação foram identificadas as operações: Interface IReadData (Connection(connect), structureType()).
 
-\begin{alltt}
-\sffamily	
-\hrulefill	
-\textbf{context} System :: IReadData (source : Fonte)
+\begin{lstlisting}[frame=single, language=Oberon-2]
+context System :: IWriteData (load : Destino)
 
-\textbf{pre:}
-- A fonte é reconhecida, a conexão foi estabelecida	
-Fonte.allInstances@includes(Fonte) Fonte.connection =
- estabelecido	
- 
-- Se não for possível estabelecer conexão
-Fonte.allInstances@includes(Fonte) Fonte.connection = 
-retorna mensagem de erro
+pre:
 
-- A estrutura de dados da fonte é reconhecido
-Fonte.allInstances@includes(Fonte) Fonte.structureType = 
-reconhecido
+Destino.allInstances@includes(Destino) 
+Destino.connection = estabelecido
 
-- Se a estrutura não puder ser reconhecida
-Fonte.allInstances@includes(Fonte)Fonte.structureType = 
-retorna mensagem de erro
+Destino.allInstances@includes(Destino) 
+Destino.connection = retorna  erro
 
-\textbf{post:}
-- Um novo objeto f do tipo Fonte foi criado
-Fonte. allInstances@includes (f: Fonte | not 
-Fonte.allInstances@pre@includes (f) and
+Destino.allInstances@includes(Destino)
+Destino.structureType = reconhecido
 
-- Os atributos do objeto f foram inicializados)	
-\hrulefill
+Destino.allInstances@includes(Destino)
+Destino.structureType = retorna  erro
 
-\textnormal{A partir da especificação foram identificadas as operações: Interface IReadData(Connection(connect), structureType())}
+Destino.allInstances@includes(Destino) 
+Destino.structureType = permissao de escrita
 
-\hrulefill
-\textbf{context} System :: IWriteData (load : Destino)
+Destino.allInstances@includes(Destino)
+Destino.structureType = retorna  erro
 
-\textbf{pre:}
-- O repositório destino estabeleceu conexão
-Destino.allInstances@includes(Destino) Destino.connection = 
-estabelecido
+post:
 
-- Se não for possível estabelecer conexão
-Destino.allInstances@includes(Destino) Destino.connection = 
-retorna  erro
-
-- A estrutura de dados de destino é reconhecida
-Destino.allInstances@includes(Destino) Destino.structureType = 
-reconhecido
-
-- Se a estrutura não puder ser reconhecida
-Destino.allInstances@includes(Destino)Destino.structureType = 
-retorna  erro
-
-- A estrutura de dados de destino permite a escrita dos dados
-Destino.allInstances@includes(Destino) Destino.structureType = 
-permissão de escrita
-
-- Se a estrutura não permitir a escrita
-Destino.allInstances@includes(Destino)Destino.structureType = 
-retorna  erro
-
-\textbf{post:}
-- Um novo objeto d do tipo Destino foi criado
 Fonte. allInstances@includes (d: Destino | not 
 Destino.allInstances@pre@includes (d) and
+Os atributos do objeto d foram inicializados)
+\end{lstlisting}
 
-- Os atributos do objeto d foram inicializados)
-\hrulefill
+As operações identificadas foram: Interface IWriteData (connection(connect), structureType(), allowWrite()).
 
-\textnormal{As operações identificadas foram: Interface IWriteData (connection(connect), structureType(), allowWrite())}
+\begin{lstlisting}[frame=single, language=Oberon-2]
+	context System :: IModelData (model : Modelagem; 
+	source: Fonte; operation: Operacao)
+	
+	pre:
+	Fonte.allInstances@includes(Fonte) 
+	Fonte.connection = estabelecido and  
+	Fonte.structureType = reconhecido
+	
+	Fonte.allInstances@includes(Destino) 
+	Fonte.connection = retorna  erro
+	
+	Operacao.allInstances@includes(Operacao) 
+	Operacao.mecanismo = existe
+	
+	Operacao.allInstances@includes(Operacao) 
+	Operacao.mecanismo = retorna erro
+	
+	Modelagem.allInstances@includes(Modelagem) 
+	Modelagem.operacao(dados)
+	
+	post:
+	
+	Modelagem. allInstances@includes (m: Modelagem | not 
+	Destino.allInstances@pre@includes (m) and
+	Os atributos do objeto m foram inicializados
+	m foi ligado ao objeto f
+	f.Fonte = Fonte
+	m foi ligado ao objeto o
+	o.Operacao = Operacao
+	Todas as operacoes de modelagem foram criadas e 
+	armazenadas em um APD)
+\end{lstlisting}
 
-\hrulefill
-\textbf{context} System :: IModelData (model : Modelagem; 
-source: Fonte; operation: Operação)
+As operações identificadas foram: Interface IModelData (readData(CodFonte), createOp(CodOperação, data)).
 
-\textbf{pre:}
-- O repositório fonte e sua estrutura são reconhecidas
-Fonte.allInstances@includes(Fonte) Fonte.connection = 
-estabelecido and  Fonte.structureType = reconhecido
+\begin{lstlisting}[frame=single, language=Oberon-2]
+	context System :: IExeOp (model : Modelagem; operation: 
+	Operacao, processing: Processamento)
+	
+	pre:
+	Modelagem.allInstances@includes(Modelagem) 
+	Modelagem.operacoes = existem 
+	
+	Operaaoo.allInstances@includes(Operacao) 
+	Operacao.executa = retorna  erro
+	
+	Operacao.allInstances@includes(Operacao) 
+	Operacao.manage(operacoes)
+	
+	post:
+	Operacao. allInstances@includes (o: Operacao | not 
+	Operacao.allInstances@pre@includes (o) and
+	
+	Os atributos do objeto o foram inicializados
+	o foi ligado ao objeto m
+	m.Modelagem = Modelagem
+	o foi ligado ao objeto p
+	p.Processamento = Processamento
+	Todas as operacoes escalonadas e estao pronta para 
+	o processamento)
 
-- Se não for possível estabelecer conexão
-Fonte.allInstances@includes(Destino) Fonte.connection = 
-retorna  erro
+\end{lstlisting}
 
-- Verifica se a operação existe
-Operação.allInstances@includes(Operação) 
-Operação.mecanismo = existe
+As operações identificadas foram: Interface IExeOp (modelOperation(CodModelagem), operationManagement())
 
-- Se a operação não existir
-Operação.allInstances@includes(Operação) 
-Operação.mecanismo = retorna erro
+\begin{lstlisting}[frame=single, language=Oberon-2]
+	context System :: IProcOp (operation: Operacao, 
+	processing: Processamento)
+	
+	pre:
+	Operacao.allInstances@includes(Operacao) 
+	Operacao.toExec = pronto
+	
+	Processamento.allInstances@includes(Processamento) 
+	Processamento.typeProc(tipoProcessamento)
+	
+	post:
+		
+	Processamento. allInstances@includes (m: Processamento 
+	| not Destino.allInstances@pre@includes (p) and
+	
+	Os atributos do objeto p foram inicializados
+	p foi ligado ao objeto o
+	o.Operacao = Operacao
+	- Foi gerado o processamento das operacoes de acordo 
+	com o tipo escolhido)
 
-- Cria a operação
-Modelagem.allInstances@includes(Modelagem) 
-Modelagem.operacao(dados)
+\end{lstlisting}
 
-\textbf{post:}
-- Um novo objeto m do tipo Modelagem foi criado
-
-Modelagem. allInstances@includes (m: Modelagem | not 
-Destino.allInstances@pre@includes (m) and
-
-- Os atributos do objeto m foram inicializados
-- m foi ligado ao objeto f
-f.Fonte = Fonte
-- m foi ligado ao objeto o
-o.Operação = Operação
-- Todas as operações de modelagem foram criadas e 
-armazenadas em um APD)
-\hrulefill
-
-\textnormal{As operações identificadas foram:
-Interface IModelData (readData(CodFonte), createOp(CodOperação, data))}
-
-\hrulefill
-\textbf{context} System :: IExeOp (model : Modelagem; operation: 
-Operação, processing: Processamento)
-
-\textbf{pre:}
-- As operações foram modeladas
-Modelagem.allInstances@includes(Modelagem) 
-Modelagem.operações = existem 
-
-- Se não houver operações para executar
-Operação.allInstances@includes(Operação) 
-Operação.executa = retorna  erro
-
-- As operações devem ser colocadas em ordem de execução
-Operação.allInstances@includes(Operação) 
-Operação.manage(operações)
-
-\textbf{post:}
-- Um novo objeto o do tipo Operação foi criado
-Operação. allInstances@includes (o: Operação | not 
-Operação.allInstances@pre@includes (o) and
-
-- Os atributos do objeto o foram inicializados
-- o foi ligado ao objeto m
-m.Modelagem = Modelagem
-- o foi ligado ao objeto p
-p.Processamento = Processamento
-- Todas as operações escalonadas e estão pronta para 
-o processamento)
-\hrulefill
-
-\textnormal{As operações identificadas foram:
-Interface IExeOp (modelOperation(CodModelagem), operationManagement())}
-
-\hrulefill
-\textbf{context} System :: IProcOp (operation: Operação, 
-processing: Processamento)
-
-\textbf{pre:}
-- As operações devem estar na ordem para execução
-Operação.allInstances@includes(Operação) Operação.toExec = 
-pronto
-
-- O tipo de processamento foi escolhido
-Processamento.allInstances@includes(Processamento) 
-Processamento.typeProc(tipoProcessamento)
-
-\textbf{post:}
-
-- Um novo objeto p do tipo Processamento foi criado
-
-Processamento. allInstances@includes (m: Processamento | not 
-Destino.allInstances@pre@includes (p) and
-
-- Os atributos do objeto p foram inicializados
-- p foi ligado ao objeto o
-o.Operação = Operação
-- É gerado o processamento das operações de acordo 
-com o tipo escolhido)
-
-\hrulefill
-
-\textnormal{As operações identificadas foram:
-Interface IProcOp (process(CodOperação), typeProc(tipoProcessamento))}
-
-\end{alltt}
-
+As operações identificadas foram: Interface IProcOp (process(CodOperação), typeProc(tipoProcessamento))
 
 \subsection{Interfaces de Negócio}
 
