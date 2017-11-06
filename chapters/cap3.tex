@@ -85,7 +85,7 @@ A seguir é apresentado o modelo de casos de uso do ETL4NoSQL.
 
 Um conjunto de casos de uso foram identificados tais como: Ler fonte de dados, Escrever no destino, Modelar dados, Executar operação e Processar operações. O quadro \ref{casosdeuso} mostra a descrição sucinta de cada caso de uso. Os casos de uso expressam as funcionalidades fundamentais ao desenvolvimento e uso do ETL4NoSQL. Eles permitem ao programador a visão do que é imprescindível ao implementar e determinar as interfaces de sistema e operações do \textit{framework}. 
 
-Para finalizar a modelagem do domínio de ETL4NoSQL, na subseção seguinte é apresentado o modelo comportamental do \textit{framework}.
+Para finalizar a modelagem do domínio de ETL4NoSQL, na subseção seguinte é apresentado o modelo comportamental do \textit{framework} proposto neste trabalho.
 
 
 
@@ -331,43 +331,43 @@ Esta etapa é detalhada, em termos de interações, utilizando diagramas de cola
 
 As operações de negócio são identificadas quando as interações forem analisadas para cada interface do sistema. Analisando as pré e pós-condições das operações de interface do sistema identificadas anteriormente foi possível detalhar usando diagramas de colaboração as interações necessárias para efetuar as operações do ETL4NoSQL. Os diagramas de cada operação podem ser visto nas figuras \ref{colaboracao1}, \ref{colaboracao2}, \ref{colaboracao3}, \ref{readData}, \ref{createOp}, \ref{createOp}, \ref{modelOperation}, \ref{operationManagement} e \ref{process}.
 
-A conexão com a fonte de dados é estabelecida:
+A conexão com a fonte de dados é estabelecida (figura \ref{colaboracao1}).
 
-\begin{figure}[h]
+\begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.5]{fig/colaboracao1.png}
 	\caption{Diagrama de colaboração para conectar à base de fonte de dados}
 	\label{colaboracao1}
 \end{figure}
 
-A estrutura de dados da fonte é reconhecido:
+A estrutura de dados da fonte é reconhecida (figura \ref{colaboracao2}).
 
-\begin{figure}[h]
+\begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.5]{fig/colaboracao2.png}
 	\caption{Diagrama de colaboração para verificar a estrutura de dados}
 	\label{colaboracao2}
 \end{figure}
 
-A escrita na base de dados destino é permitida:
+A escrita na base de dados destino é permitida (figura \ref{colaboracao3}).
 
-\begin{figure}[h]
+\begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.5]{fig/colaboracao3.png}
 	\caption{Diagrama de colaboração para verificar se existe permissão de escrita na base de dados destino}
 	\label{colaboracao3}
 \end{figure}
 
-A leitura dos dados da fonte é feita e armazenada na área de processamento de dados:
+A leitura dos dados da fonte é feita e armazenada na área de processamento de dados figura (\ref{readData}).
 
-\begin{figure}[h]
+\begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.5]{fig/readData.png}
 	\caption{Diagrama de colaboração para leitura dos dados da fonte}
 	\label{readData}
 \end{figure}
 
-Após a leitura dos dados da fonte é possível a criação das operações por meio dos mecanismos existentes:
+Após a leitura dos dados da fonte é possível a criação das operações por meio dos mecanismos existentes (figura \ref{createOp}).
 
 \begin{figure}[h!]
 	\centering
@@ -376,7 +376,7 @@ Após a leitura dos dados da fonte é possível a criação das operações por 
 	\label{createOp}
 \end{figure}
 
-Com as operações criadas, deve-se colocá-las em ordem de execução:
+Com as operações criadas, deve-se colocá-las em ordem de execução (figura \ref{modelOperation}).
 
 \begin{figure}[h!]
 	\centering
@@ -385,18 +385,18 @@ Com as operações criadas, deve-se colocá-las em ordem de execução:
 	\label{modelOperation}
 \end{figure}
 
-É possível também que as operações sejam apagadas e alteradas:
+É possível também que as operações sejam apagadas e alteradas (figura \ref{operationManagement}).
 
-\begin{figure}[h]
+\begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.5]{fig/operationManagement.png}
 	\caption{Diagrama de colaboração para gerenciar as operações}
 	\label{operationManagement}
 \end{figure}
 
-Com as operações criadas é possível processá-las de forma a escolher o tipo de processamento (centralizado ou distribuído):
+Com as operações criadas é possível processá-las de forma a escolher o tipo de processamento (centralizado ou distribuído) (figura \ref{process}).
 
-\begin{figure}[h]
+\begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.5]{fig/process.png}
 	\caption{Diagrama de colaboração para processar as operações}
@@ -474,11 +474,11 @@ Posteriormente à definição das interfaces de negócio, é possível detalhá-
 			
 \end{alltt}
 
-Depois das operações terem sido especificadas, o diagrama de especificação das interfaces foi criado e está representado na figura \ref{interfaces}. Essas especificações se referem ao uso dos componentes. Elas representam o que o usuário precisa saber sobre os componentes.
+Depois das operações terem sido especificadas, o diagrama de especificação das interfaces foi criado e está representado na figura \ref{interfaces}. Essas especificações referem-se ao uso dos componentes. Elas representam o que o usuário precisa saber sobre os componentes.
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[scale=0.4]{fig/interfaces.png}
+	\includegraphics[scale=0.49]{fig/interfaces.png}
 	\caption{Diagrama de especificação das interfaces de ETL4NoSQL}
 	\label{interfaces}
 \end{figure}
@@ -486,11 +486,16 @@ Depois das operações terem sido especificadas, o diagrama de especificação d
 
 \section{Ambiente de Implementação}
 
-Para a implementação da proposta, utilizamos a linguagem de programação Python, pois ela segue o paradigma de orientação à objetos que é adequado para a proposta desta pesquisa. Devido a natureza do \textit{framework} ser flexível, reusável e integrado faz com que a orientação à objetos torne-se um bom paradigma a ser aproveitado neste trabalho.
+Para a implementação do ETL4NoSQL utilizamos a linguagem de programação Python, pois ela segue o paradigma de orientação à objetos que é adequado para a proposta desta pesquisa. Além disso, Python tem uma sintaxe de fácil aprendizado e pode ser usada em diversas áreas, como Web e computação gráfica. Ela é uma linguagem de alto nível interpretada e também é um software livre. Devido a natureza do \textit{framework} ser flexível, reusável e integrado faz com que a orientação à objetos torne-se um bom paradigma a ser aproveitado neste trabalho.
+
+Assim, a implementação do \textit{framework} foi baseada nos princípios do design orientado a objetos de inversão de controle, onde-se determina que os módulos de alto nível não devem ser dependentes de módulos de baixo nível, e sim, de abstrações, ou seja, os detalhes devem depender das abstrações. Esse princípio sugere que dois módulos não devem ser ligados diretamente, pois devem estar desacoplados com uma camada de abstração entre eles. Para suprir esse princípio, o ETL4NoSQL possui interfaces como o ETL4NoSQLMgr, IDataMgr, IModelMgr, IOpMgr e IProcMgr. Elas utilizam dos mesmos comportamentos para as diversas variações, porém aplicados de acordo com a especificidade de cada um. Outro princípio importante utilizado é o da segregação de interfaces onde os usuários não devem ser forçados a depender de interfaces que não necessitam, elas dever ser enxutas com métodos específicos para a interface. 
+
+Na seção seguinte apresentaremos as interfaces de programação do ETL4NoSQL, como uma sugestão a ser utilizada para a implementação deste trabalho de dissertação.
+
 
 \section{Interfaces de Programação}
 
-O ETL4NoSQL possui cinco principais interfaces de programação. O ETL4NoSQLMgr é a interface principal que interliga as demais interfaces, ela é a interface \textit{controller} do \textit{framework}. Na figura \ref{etl4nosqlmgr} podemos ver a implementação da interface ETL4NoSQLMgr, nota-se que todas as outras quatro interfaces foram importadas nela. Nesta interface é realizada também a execução dos processos de leitura e escrita das bases de dados fonte, destino e área de processamento de dados, cria a amostra dos dados a serem manipulados, as operações, realiza a execução das operações e as gerencia.
+O ETL4NoSQL possui cinco principais interfaces de programação (a arquitetura com as interfaces é apresentada na figura \ref{arquitetura}). O ETL4NoSQLMgr é a interface principal que interliga as demais interfaces, ela é a \textit{controller} (controlador) do \textit{framework}. Na figura \ref{etl4nosqlmgr} podemos ver a implementação da interface ETL4NoSQLMgr, nota-se que todas as outras quatro interfaces foram importadas nela. Nesta interface, também é realizada a execução dos processos de leitura e escrita das bases de dados fonte, destino e área de processamento de dados, cria a amostra dos dados a serem manipulados, as operações, realiza a execução das operações e as gerencia.
 
 \begin{figure}[h!]
 	\centering
@@ -550,7 +555,7 @@ E finalmente, na figura \ref{iprocmgr}, é apresentada a interface IProcMgr. Est
 
 \section{Considerações Finais}
 
-Este capítulo descreveu o ETL4NoSQL. Para isso, foram apresentados os requisitos de desenvolvimento de um \textit{framework} de ETL para dados estruturados, semi estruturados e não estruturados expondo a modelagem do domínio de ETL4NoSQL por meio de seu modelo conceitual, de casos de uso e comportamental. Foram demonstradas a modelagem da especificação, identificando os componentes, as interfaces de sistemas e de negócio do  \textit{framework} proposto. A especificação da arquitetura dos componentes do ETL4NoSQL e suas interações também foram evidenciadas.
+Este capítulo descreveu o ETL4NoSQL. Para isso, foram apresentados os requisitos de desenvolvimento de um \textit{framework} de ETL para dados estruturados, semi estruturados e não estruturados expondo a modelagem do domínio de ETL4NoSQL por meio de seu modelo conceitual, de casos de uso e comportamental. Foram demonstradas a modelagem da especificação, identificando os componentes, as interfaces de sistemas e de negócio do  \textit{framework} proposto. A especificação da arquitetura dos componentes do ETL4NoSQL e suas interações também foram evidenciadas. Mostramos como solução para implementação, as interfaces de programação utilizando a linguagem orientada à objetos Python.
 
 O capítulo seguinte apresentará um estudo experimental de software que tem por objetivo avaliar se o ETL4NoSQL é um \textit{framework} adequado para modelar e executar operações de ETL para dados estruturados, semi estruturados e não estruturados.
 
