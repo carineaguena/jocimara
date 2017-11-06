@@ -1,15 +1,15 @@
 \chapter{O Framework ETL4NoSQL}
 % ---
-Neste capítulo são apresentados os conceitos do \textit{framework} ETL4NoSQL, que consiste numa plataforma de software para desenvolvimento de sistemas de ETL, mais especificamente uma ferramenta que auxilia a construção de processos de ETL buscando apoiar a modelagem e o desempenho dos processos. 
+Neste capítulo são apresentados os conceitos do \textit{framework} ETL4NoSQL, que consiste numa plataforma de \textit{software} para desenvolvimento de sistemas de ETL, mais especificamente uma ferramenta que auxilia a construção de processos de ETL buscando apoiar a modelagem e o desempenho dos processos. 
 
-O ETL4NoSQL oferece um ambiente integrado para modelar processos de ETL e implementar funcionalidades utilizando uma linguagem de programação independente de uma GUI (\emph{Graphical User Interface} - Interface Gráfica do Usuário).
+O ETL4NoSQL oferece um ambiente com componentes integrados para modelar processos de ETL e implementar funcionalidades utilizando uma linguagem de programação independente de uma GUI (\emph{Graphical User Interface} - Interface Gráfica do Usuário).
 
 
-Para a especificação do \textit{framework} proposto foram  elencados os requisitos de software, utilizada a abordagem de desenvolvimento baseado em componentes fundamentada no estudo de \cite{cheesman:2001}, onde tem-se a separação entre modelagem do domínio e da especificação. A modelagem de domínio consiste na definição dos casos de uso, do modelo conceitual e do modelo comportamental. Já a modelagem de especificação é segmentada em três partes, a parte de identificação de componentes, de interação entre os componentes e a especificação de componentes.  
+Para a especificação do \textit{framework} proposto neste trabalho, foram elencados os requisitos de \textit{software} utilizando a abordagem de desenvolvimento baseado em componentes, fundamentada no estudo de \cite{cheesman:2001}. Neste estudo, temos a separação entre a modelagem do domínio e da especificação. A modelagem de domínio consiste na definição dos casos de uso, do modelo conceitual e do modelo comportamental. Já a modelagem de especificação é segmentada em três partes, a parte de identificação de componentes, de interação entre os componentes e a especificação de componentes.  
 
 %definidas as estruturas de dados dos ambientes de origem, destino e da área de processamento de dados e suas respectivas linguagens de manipulação de dados, e também, as principais funcionalidades dos sistemas de ETL, chamados mecanismos de ETL. Para realizar os processos de ETL, por meio de seus mecanismos, foi definido um controlador de operações que é capaz de se comunicar com os ambientes e os mecanismos de ETL. 
 
-A seguir, são detalhados os requisitos de software, os modelo de domínio, os modelos de especificação e as especificações dos componentes do ETL4NoSQL
+A seguir, são detalhados os requisitos de \textit{software}, os modelo de domínio, os modelos de especificação, as especificações dos componentes, o ambiente de implementação e as interfaces de programação do ETL4NoSQL.
 
 % a arquitetura do sistema e a estrutura dos componentes utilizados no desenvolvimento do framework.
 
@@ -18,15 +18,15 @@ A seguir, são detalhados os requisitos de software, os modelo de domínio, os m
 \section{Requisitos de software do ETL4NoSQL}
 
 
-Requisitos de software são descrições de como o sistema deve se comportar, definidos durante as fases iniciais do desenvolvimento do sistema como uma especificação do que deveria ser implementado (\cite{sommerville:2013}). Os requisitos podem ser divididos em funcionais e não funcionais, onde o primeiro descreve o que o sistema deve fazer, ou seja, as transformações a serem realizadas nas entradas de um sistema a fim de que se produzam saídas, já o outro expressa as características que este software vai apresentar (\cite{sommerville:2013}). 
+Requisitos de software são descrições de como o sistema deve se comportar, definidos durante as fases iniciais do desenvolvimento do sistema como uma especificação do que deveria ser implementado (\cite{sommerville:2013}). Os requisitos podem ser divididos em funcionais e não funcionais, onde o primeiro descreve o que o sistema deve fazer, ou seja, as transformações a serem realizadas nas entradas de um sistema, a fim de que se produzam saídas, já o outro expressa as características que este \textit{software} vai apresentar (\cite{sommerville:2013}). 
 
-O ETL4NoSQL é um \textit{framework} que tem como principal objetivo auxiliar na criação de processos de ETL ao se utilizar diversas estruturas de armazenamento de dados. Um sistema de software pode ter seus dados armazenados em bases relacionais, que seguem o modelo entidade e relacionamento, ou não relacionais, onde esta possui pouca definição de esquema, não segue um modelo específico e são regularmente chamados de NoSQL (\cite{fowler:2013}). As bases NoSQL possuem quatro paradigmas frequentemente utilizados: Chave-Valor, Família de Colunas, Documentos e Grafo (\cite{fowler:2013}).
+O ETL4NoSQL é um \textit{framework} que tem como principal objetivo auxiliar na criação de processos de ETL ao se utilizar diversas estruturas de armazenamento de dados. Um sistema de \textit{software} pode ter seus dados armazenados em bases relacionais, que seguem o modelo entidade e relacionamento, ou não relacionais, no qual possui pouca definição de esquema, não seguem um modelo específico e são regularmente chamados de NoSQL (\cite{fowler:2013}). As bases NoSQL possuem quatro paradigmas frequentemente utilizados: Chave-Valor, Família de Colunas, Documentos e Grafo (\cite{fowler:2013}).
 
-As bases de dados relacionais utilizam uma linguagem de gerenciamento de dados padrão conhecida por SQL (Structure Query Language) (\cite{fowler:2013}), porém as bases de dados NoSQL não possuem uma linguagem em comum, como as relacionais, cada estrutura de armazenamento possui sua própria linguagem de gerenciamento de dados (\cite{fowler:2013}). Por isso, é essencial que haja um componente que seja capaz de fazer a leitura diretamente da fonte de dados e um componente que também possa carregar esses dados diretamente no seu destino, independente do seu tipo, saber se é um arquivo texto,  um arquivo XML, RDBMS, NoSQL, entre outros. Um componente tem como uma de suas definições ser uma unidade de \textit{software} independente, que encapsula a sua implementação, e oferece serviços por meio de suas interfaces (\cite{itana:2005}).
+As bases de dados relacionais utilizam uma linguagem de gerenciamento de dados padrão conhecida por SQL (Structure Query Language) (\cite{fowler:2013}), porém as bases de dados NoSQL não possuem uma linguagem em comum, como as relacionais, cada estrutura de armazenamento possui sua própria linguagem de gerenciamento de dados (\cite{fowler:2013}). Por isso, é essencial que haja um componente que seja capaz de fazer a leitura diretamente da fonte de dados e um componente que também possa carregar esses dados diretamente no seu destino, independente do seu tipo, saber se é um arquivo texto, um arquivo XML, RDBMS, NoSQL, entre outros. Um componente tem como uma de suas definições ser uma unidade de \textit{software} independente, que encapsula a sua implementação, e oferece serviços por meio de suas interfaces (\cite{itana:2005}).
 
-Outra importante características para especificar o uso do ETL4NoSQL são os processos de ETL, que possuem quatro etapas básicas: extração, limpeza/transformação e carga (\cite{kimball:2004}). O fluxo do processo de ETL inicia-se com a extração dos dados a partir de uma fonte. A partir da extração, é possível que um componente passe os dados para uma \acp{apd}, onde é permitido modelar os dados executando processos de limpeza e transformação por meio de mecanismos de junção, filtro, união, agregação e outros. Finalmente, os dados podem ser carregados em estrutura de dados.
+Outra importante características ao especificar o uso do ETL4NoSQL são os processos de ETL, que possuem quatro etapas básicas: extração, limpeza/transformação e carga (\cite{kimball:2004}). O fluxo do processo de ETL inicia-se com a extração dos dados a partir de uma fonte de dados. A começar da extração, é possível que um componente passe os dados para uma \acp{apd}, onde é permitido modelar os dados executando processos de limpeza e transformação por meio de mecanismos como de junção, filtro, união, agregação e outros. Finalmente, os dados podem ser carregados em uma estrutura de dados destino.
 
-Dessa forma, o ETL4NoSQL possui um componente que permite a leitura dos dados de diversos SGBDs NoSQL, de arquivos textuais, além dos SGBDs relacionais. Outro componente que permite a execução dos mecanismos de ETL, este componente também faz uso de componentes para o gerenciamento da execução dos processos, bem como a construção e sequência dos processos de ETL e a escolha do tipo de processamento. O ETL4NoSQL é composto também de um componente que permite carregar diretamente os dados no destino independente do seu tipo. No quadro \ref{requisitos} é apresentado os principais requisitos elencados do ETL4NoSQL. Foi definido como importante as prioridades que são imprescindíveis para o desenvolvimento e funcionamento do framework, e desejável as funcionalidades que aprimoram o uso do framework, porém não interferem no seu principal objetivo.
+Dessa forma, o ETL4NoSQL possui um componente que permite a leitura dos dados de diversos SGBDs NoSQL, de arquivos textuais, além dos SGBDs relacionais. Outro componente que permite a execução dos mecanismos de ETL, este componente também faz uso de componentes para o gerenciamento da execução dos processos, bem como a construção da sequência dos processos de ETL e a escolha do tipo de processamento. O ETL4NoSQL é composto também de um componente que permite carregar diretamente os dados no destino independente do seu tipo. No quadro \ref{requisitos} é apresentado os principais requisitos elencados do ETL4NoSQL. Foi definido como importante as prioridades que são imprescindíveis para o desenvolvimento e funcionamento do \textit{framework}, e desejável as funcionalidades que aprimoram o uso do \textit{framework}, porém não interferem no seu principal objetivo.
 
 \begin{table}[h]
 	\centering
@@ -42,7 +42,7 @@ Dessa forma, o ETL4NoSQL possui um componente que permite a leitura dos dados de
 		\hline
 		Suporte ao destino & Ser capaz de carregar diretamente os dado no destino, independente do  seu tipo, saber se o destino é RDBMS, arquivo de texto, XML ou NoSQL. & Importante\\
 		\hline
-		Suporte à modelagem & Apoiar na extração de dados de múltiplas fontes, na limpeza dos dados, e na transformação, agregação, reorganização e operações de carga. & Importante\\
+		Suporte à modelagem & Apoiar na extração de dados de múltiplas fontes, na limpeza dos dados, na transformação, agregação, reorganização e operações de carga. & Importante\\
 		\hline
 		Paralelismo &Apoiar as operações de vários segmentos e execução em paralelo, internamente. A ferramenta deve ser capaz de distribuir tarefas entre múltiplos servidores. & Importante\\
 		\hline
@@ -64,7 +64,7 @@ Dessa forma, o ETL4NoSQL possui um componente que permite a leitura dos dados de
 
 \section{Modelagem do Domínio de ETL4NoSQL}
 
-A modelagem do domínio de ETL4NoSQL é exposta a seguir através de seus três modelos: modelo conceitual, modelo de casos de uso e modelo de comportamento.
+A modelagem do domínio de ETL4NoSQL é apresentada a seguir por meio de seus três modelos: modelo conceitual, modelo de casos de uso e modelo de comportamento.
 
 \subsection{Modelo Conceitual}
 
@@ -77,9 +77,17 @@ Os conceitos de aplicações ETL, identificados para o ETL4NoSQL, são: Fonte, D
 	\label{modeloconceitual}
 \end{figure}
 
+A entidade Modelagem faz a leitura de uma ou mais Fontes de dados, executa nenhuma ou muitas Operações. As Operações por sua vez são processadas por um ou mais Processamentos de forma a serem Processamentos Centralizados ou Processamentos Distribuídos. E por fim, a Modelagem carrega o resultado das Operações processadas à um ou mais Destinos.
+
+A seguir é apresentado o modelo de casos de uso do ETL4NoSQL.
+
 \subsection{Modelo de Casos de Uso}
 
-Um conjunto de casos de uso pode ser identificado tal como: Ler fonte de dados, Escrever no destino, Modelar dados, Executar operação, Processar operações. O quadro \ref{casosdeuso} mostra a descrição sucinta de cada caso de uso.
+Um conjunto de casos de uso foram identificados tais como: Ler fonte de dados, Escrever no destino, Modelar dados, Executar operação e Processar operações. O quadro \ref{casosdeuso} mostra a descrição sucinta de cada caso de uso. Os casos de uso expressam as funcionalidades fundamentais ao desenvolvimento e uso do ETL4NoSQL. Eles permitem ao programador a visão do que é imprescindível ao implementar e determinar as interfaces de sistema e operações do \textit{framework}. 
+
+Para finalizar a modelagem do domínio de ETL4NoSQL, na subseção seguinte é apresentado o modelo comportamental do \textit{framework}.
+
+
 
 \begin{table}[h!]
 	\centering
@@ -118,7 +126,7 @@ Um conjunto de casos de uso pode ser identificado tal como: Ler fonte de dados, 
 
 \subsection{Modelo Comportamental}
 
-Ao construir o modelo comportamental é possível identificar os conceitos com comportamentos mais relevantes para o negócio, bem como os estados e eventos que disparam transições de estados (\cite{itana:2005}). Dessa forma, o diagrama de estados do ETL4NoSQL é apresentado na figura \ref{diagrama_estado}, nele podemos ver as transições de leitura da fonte, validação e identificação dos dados, assim como o tratamento caso os dados não possam ser identificados, subsequente a isso, o armazenamento dos dados para o processamento, a criação dos processos de ETL, a escolha da forma de processamento, execução das operações, e também o tratamento para operações que não puderem ser executadas, e finalmente, a carga dos dados na base destino seguido de uma mensagem de tratamento caso haja sucesso ou não da execução.
+Ao construir o modelo comportamental é possível identificar os conceitos com comportamentos mais relevantes para o negócio, bem como os estados e eventos que disparam as transições entre os estados (\cite{itana:2005}). Dessa forma, o diagrama de estados do ETL4NoSQL é apresentado na figura \ref{diagrama_estado}, nele podemos ver as transições de leitura da fonte de dados, validação e identificação dos dados, assim como o tratamento caso os dados não possam ser identificados. Subsequente a isso, o armazenamento dos dados para o processamento, a criação dos processos de ETL, a escolha da forma de processamento, execução das operações, e também o tratamento para as operações que não puderem ser executadas. Finalmente, pode ser feita a carga dos dados na base de destino seguido da mensagem de tratamento, caso haja sucesso ou não na execução.
 
 \begin{figure}[h!]
 	\centering
@@ -137,12 +145,12 @@ Seguindo o modelo de conceitos do negócio e do modelo de casos de uso foi poss�
 
 \subsection{Interfaces de Sistemas}
 
-As interfaces de sistemas do ETL4NoSQL identificadas, por meio do modelo de casos de uso apresentado no quadro \ref{casosdeuso}, foram: IReadData, IWriteData, IModelData, IExeOp e IProcOp. Para especificar as interfaces foi utilizado OCL (\cite{warmer:1998}).
+As interfaces de sistemas do ETL4NoSQL identificadas, por meio do modelo de casos de uso apresentado no quadro \ref{casosdeuso}, foram: IReadData, IWriteData, IModelData, IExeOp e IProcOp. Para especificar as interfaces foi utilizado \acp{OCL} (\cite{warmer:1998}).
 
 
 
 \begin{alltt}
-	
+\sffamily	
 \hrulefill	
 \textbf{context} System :: IReadData (source : Fonte)
 
@@ -171,8 +179,7 @@ Fonte.allInstances@pre@includes (f) and
 - Os atributos do objeto f foram inicializados)	
 \hrulefill
 
-\textnormal{A partir da especificação foram identificadas as operações:		
-Interface IReadData(Connection(connect), structureType())}
+\textnormal{A partir da especificação foram identificadas as operações: Interface IReadData(Connection(connect), structureType())}
 
 \hrulefill
 \textbf{context} System :: IWriteData (load : Destino)
@@ -210,8 +217,7 @@ Destino.allInstances@pre@includes (d) and
 - Os atributos do objeto d foram inicializados)
 \hrulefill
 
-\textnormal{As operações identificadas foram:
-Interface IWriteData (connection(connect), structureType(), allowWrite())}
+\textnormal{As operações identificadas foram: Interface IWriteData (connection(connect), structureType(), allowWrite())}
 
 \hrulefill
 \textbf{context} System :: IModelData (model : Modelagem; 
