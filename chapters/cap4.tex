@@ -1,11 +1,11 @@
 \chapter{Estudo Experimental de Software}
 
-Este capítulo provê o roteiro de experimentação de software para ferramentas de ETL utilizando dados estruturados, semi estruturados e não estruturados. A Engenharia de Software Experimental tem como objetivo aprimorar métodos, técnicas e ferramentas de Engenharia de Software a partir de métodos experimentais (\cite{souza:2015}). As etapas definidas no processo de experimentação em Engenharia de Software proposto por \cite{souza:2015} consiste em etapas de definição, planejamento, operação, interpretação dos dados e empacotamento que serão melhor detalhados nas seções a seguir.
+Este capítulo provê o roteiro de experimentação de software para ferramentas de ETL. A Engenharia de \textit{Software} Experimental tem como objetivo aprimorar métodos, técnicas e ferramentas de Engenharia de  \textit{Software} a partir de métodos experimentais (\cite{souza:2015}). As etapas definidas no processo de experimentação em Engenharia de  \textit{Software} proposto por \cite{souza:2015} consiste em etapas de definição, planejamento, operação, interpretação dos dados e empacotamento que serão melhor detalhados nas seções a seguir.
 \clearpage
 
 \section{Objetivos do experimento}
 
-O objetivo principal da aplicação deste experimento é definir se o \textit{framework} proposto por esta pesquisa de dissertação é uma ferramenta adequada para auxiliar no desenvolvimento de processos de ETL em dados estruturados, semi estruturados e não estruturados.
+O objetivo principal da aplicação deste experimento é definir se o \textit{framework} proposto nesta dissertação é uma ferramenta adequada para auxiliar no desenvolvimento de processos de ETL em BDs NoSQL.
 
 \subsection{Objetivo da Medição}
 
@@ -14,8 +14,8 @@ Tendo como base as ferramentas de ETL existentes na literatura, caracterizar:
 \begin{enumerate}
 	\item Quais as principais funcionalidades que as ferramentas de ETL oferecem:
 	\begin{enumerate}
-		\item essas funcionalidades manipulam dados estruturados, semi estruturados e não estruturados.
-		\item  essas funcionalidades não manipulam dados estruturados, semi estruturados e não estruturados.
+		\item essas funcionalidades manipulam dados estruturados em modelos relacionais e não relacionais.
+		\item  essas funcionalidades não manipulam BDs NoSQL.
 	\end{enumerate}
 	\item Quais funcionalidades podem ser consideradas fundamentais para a produtividade na criação de processos de ETL:
 	\begin{enumerate}
@@ -28,7 +28,7 @@ Tendo como base as ferramentas de ETL existentes na literatura, caracterizar:
 \subsection{Objetivos do Estudo}
 
 \begin{itemize}
-	\item Analisar as ferramentas de ETL para dados estruturados, semi estruturados e não estruturados;
+	\item Analisar as ferramentas de ETL;
 	
 	\item Com o propósito de caracterizar;
 	
@@ -47,7 +47,7 @@ Tendo como base as ferramentas de ETL existentes na literatura, caracterizar:
 
 	Métrica: A lista de funcionalidades que não estão presentes no ETL4NoSQL.
 
-	\item[Q2.] Existem funcionalidades listadas pelas ferramentas pesquisadas que estão presentes no ETL4NoSQL, mas são consideradas pouco úteis?
+	\item[Q2.] Existem funcionalidades listadas pelas ferramentas pesquisadas que estão presentes no ETL4NoSQL, mas são consideradas pouco úteis (pouco útil nesta pesquisa é entendido como a funcionalidade ser pouco utilizada na criação ou execução dos processos de ETL)?
 
 	Métrica: A lista de funcionalidades que estão presentes nas ferramentas da literatura e no ETL4NoSQL e são consideradas inúteis.
 
@@ -147,7 +147,7 @@ Para cada funcionalidade aplicar teste estatístico qui-quadrado para definir:
 
 se pode considerar que essa funcionalidade é fornecida;
 
-se pode considerar que essa funcionalidade é útil;
+se pode considerar que essa funcionalidade é útil (ela é constantemente utilizada pelos processos de ETL);
 
 se pode considerar que essa funcionalidade necessita de melhoria.
 
@@ -232,7 +232,7 @@ Variáveis dependentes:
 
 \subsection{Análise Qualitativa}
 
-Para analisar a informação referente às funcionalidades não oferecidas no ETL4NoSQL, mas que poderiam ser implementadas, propõe-se aplicar a análise qualitativa. Essa análise deve apresentar a lista de funcionalidades presentes nas ferramentas da literatura, que não estão presentes na ferramenta proposta, mas que são consideradas necessárias para facilitar a manipulação de dados estruturados, semi estruturados e não estruturados.
+Para analisar a informação referente às funcionalidades não oferecidas no ETL4NoSQL, mas que poderiam ser implementadas, propõe-se aplicar a análise qualitativa. Essa análise deve apresentar a lista de funcionalidades presentes nas ferramentas da literatura, que não estão presentes na ferramenta proposta, mas que são consideradas necessárias para facilitar a manipulação de dados.
 Assim, essa análise deve considerar funcionalidades com valor PMU = {0, X, X} (métricas 1-4) e a opção ''É útil'' para ''utilidade da funcionalidade''.
 
 \subsection{Validade}
@@ -689,13 +689,13 @@ Para verificar as funcionalidades que não estão presentes no ETL4NoSQL neste t
 	\end{tabular}
 \end{table}
 
-Assim, podemos concluir que as funcionalidades 8 (implementação) e 10 (garantia de qualidade) despertam maior interesse à serem implantadas nas ferramentas de ETL. Isso pode ser explicado pelas características e aplicabilidade que as funcionalidades oferecem. As funcionalidades de implementação e garantia de qualidade, provavelmente, não estão presentes em geral ou são oferecidas de forma parcial, não sendo o foco de boa parte das ferramentas de ETL detalhadas neste trabalho. Porém, essas funcionalidades melhorariam o desempenho geral dos processos de ETL. Outras funcionalidades, não oferecidas pelas ferramentas de ETL demonstradas, e que, possivelmente são conhecidas pela literatura, mas a falta de exemplos ou aplicabilidade delas reduzem o interesse ao implementá-las.
+Assim, podemos concluir que as funcionalidades 8 (implementação) e 10 (garantia de qualidade) despertam maior interesse à serem implantadas nas ferramentas de ETL. Isso pode ser explicado pelas características e aplicabilidade que as funcionalidades oferecem. As funcionalidades de implementação e garantia de qualidade, provavelmente, não estão presentes em geral ou são oferecidas de forma parcial, não sendo o foco de boa parte das ferramentas de ETL detalhadas neste trabalho. Porém, essas funcionalidades melhorariam o desempenho geral dos processos de ETL. Outras funcionalidades existentes, não oferecidas pelas ferramentas de ETL demonstradas, e que, possivelmente são conhecidas pela literatura, mas a falta de exemplos ou aplicabilidade delas reduzem o interesse ao implementá-las.
 
 \subsection{Verificação das hipóteses}
 
 Para verificar o hipótese nula (H0) precisamos responder a questão Q1  (Existem funcionalidades listadas pelas ferramentas pesquisadas que não estão presentes no ETL4NoSQL?) utilizando a métrica M2. O resultado do teste Qui-quadrado mostra que 3 das 10 funcionalidades analisadas não podem ser consideradas como oferecidas pela ferramenta apresentada. Assim, podemos concluir que a lista de funcionalidades oferecidas pelas ferramentas de ETL da literatura é diferente das funcionalidades oferecidas pelo ETL4NoSQL, ou seja, "As funcionalidades oferecidas pelo ETL4NoSQL são diferentes das funcionalidades oferecidas pelas ferramentas da literatura" (hipótese alternativa H1).
 
-Podemos dizer ainda que existe uma funcionalidade considerada pouco útil para as ferramentas de ETL analisadas (hipótese alternativa H2), pois respondendo a questão Q2 utilizando a métrica M5, o resultado do teste Qui-quadrado mostra que a funcionalidade 6 (Apoio ao nível de debugging) é considerada pouco útil para a realização de processos de ETL.
+Podemos dizer ainda que existe uma funcionalidade considerada pouco útil (funcionalidades que são pouco utilizadas nos processos de ETL) para as ferramentas de ETL analisadas (hipótese alternativa H2), pois respondendo a questão Q2 utilizando a métrica M5, o resultado do teste Qui-quadrado mostra que a funcionalidade 6 (Apoio ao nível de debugging) é considerada pouco útil para a realização de processos de ETL.
 
 Por conseguinte, para funcionalidades presentes no ETL4NoSQL e nas ferramentas da literatura, que são úteis e necessitam melhoraria (hipótese H3), respondendo a questão Q3 com a métrica M8 o resultado de Qui-quadrado mostra que 3 funcionalidades necessitam melhoria (2, 3, 5) e outras 3 podem melhorar, mas não tem necessidade (6, 8, 9).
 
@@ -706,8 +706,8 @@ Finalmente, para realizar conclusões relevantes sobre a hipótese alternativa (
 
 \section{Considerações Finais}
 
-Este capítulo apresentou o estudo experimental de software com o objetivo principal de definir se o \textit{framework} proposto por esta pesquisa de dissertação é adequado para auxiliar no desenvolvimento de processos de ETL em dados estruturados, semi estruturados e não estruturados. Os resultados do experimento, tendo como base as ferramentas de ETL encontradas na literatura, indicaram que o \textit{framework} proposto possui uma quantidade significativa de grau de similaridade com as ferramentas encontradas na literatura, porém o estudo conclui também que existem funcionalidades úteis e não implementadas que poderiam ser melhoradas futuramente. 
+Este capítulo apresentou o estudo experimental de \textit{software} com o objetivo principal de definir se o \textit{framework} proposto por esta dissertação é adequado para auxiliar no desenvolvimento de processos de ETL em BDs NoSQL. Os resultados do experimento, tendo como base as ferramentas de ETL encontradas na literatura, indicaram que o \textit{framework} proposto possui uma quantidade significativa de grau de similaridade com as ferramentas encontradas na literatura, porém o estudo conclui também que existem funcionalidades úteis e não implementadas que poderiam ser melhoradas futuramente. 
 
-No capítulo posterior esta pesquisa de dissertação é finalizada, expondo as principais contribuições, discussões sobre dificuldades e as ameaças do trabalho de pesquisa, os resultados e trabalhos futuros a partir do ETL4NoSQL.
+No capítulo posterior, esta pesquisa é finalizada, expondo as principais contribuições, discussões sobre dificuldades e as ameaças do trabalho de pesquisa, os resultados e trabalhos futuros a partir do ETL4NoSQL.
 
 

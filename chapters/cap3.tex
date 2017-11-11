@@ -20,7 +20,7 @@ A seguir, são detalhados os requisitos de \textit{software}, os modelo de domí
 
 Requisitos de \textit{software} são descrições de como o sistema deve se comportar, definidos durante as fases iniciais do desenvolvimento do sistema como uma especificação do que deveria ser implementado (\cite{sommerville:2013}). Os requisitos podem ser divididos em funcionais e não funcionais, onde o primeiro descreve o que o sistema deve fazer, ou seja, as transformações a serem realizadas nas entradas de um sistema, a fim de que se produzam saídas, já o outro expressa as características que este \textit{software} vai apresentar (\cite{sommerville:2013}). 
 
-O ETL4NoSQL é um \textit{framework} que tem como principal objetivo auxiliar na criação de processos de ETL ao se utilizar diversas estruturas de armazenamento de dados. Um sistema de \textit{software} pode ter seus dados armazenados em BDs relacionais, que seguem o modelo entidade e relacionamento, ou não relacionais, no qual possui pouca definição de esquema, não seguem um modelo específico e são regularmente chamados de BDs NoSQL (\cite{fowler:2013}). Os BDs NoSQL possuem quatro paradigmas frequentemente utilizados: Chave-Valor, Família de Colunas, Documentos e Grafo (\cite{fowler:2013}).
+O ETL4NoSQL é um \textit{framework} que tem como principal objetivo auxiliar na criação de processos de ETL ao se utilizar principalmente BDs NoSQL. Um sistema de \textit{software} pode ter seus dados armazenados em BDs relacionais, que seguem o modelo entidade e relacionamento, ou não relacionais, no qual possui pouca definição de esquema, não seguem um modelo específico e são regularmente chamados de BDs NoSQL (\cite{fowler:2013}). Os BDs NoSQL possuem quatro paradigmas frequentemente utilizados: Chave-Valor, Família de Colunas, Documentos e Grafo (\cite{fowler:2013}).
 
 Os BDs relacionais utilizam uma linguagem de gerenciamento de dados padrão conhecida por SQL (Structure Query Language) (\cite{fowler:2013}), porém os BDs NoSQL não possuem uma linguagem em comum, como os BDs relacionais, cada estrutura de armazenamento possui sua própria linguagem de gerenciamento de dados (\cite{fowler:2013}). Por isso, é essencial que haja um componente que seja capaz de fazer a leitura diretamente da fonte de dados e um componente que também possa carregar esses dados diretamente no seu destino, independente do seu tipo, saber se é um arquivo texto, um arquivo XML, SGBD relacional, SGBD NoSQL, entre outros. Um componente tem como uma de suas definições ser uma unidade de \textit{software} independente, que encapsula a sua implementação, e oferece serviços por meio de suas interfaces (\cite{itana:2005}).
 
@@ -141,7 +141,7 @@ A modelagem de especificação visa definir, em um nível alto de abstração, o
 
 
 \subsection{Identificação de Componentes}
-Seguindo o modelo de conceitos do negócio e do modelo de casos de uso foi possível identificar as interfaces para os componentes de negócio, as interfaces de sistema para os componentes de sistema e gerar a arquitetura de componentes inicial. As interfaces de negócio são reconhecidas por meio do modelo conceitual e as interfaces de sistema e operações a partir dos casos de uso.
+Seguindo o modelo de conceitos do negócio e do modelo de casos de uso foi possível identificar as interfaces para os componentes de negócio, as interfaces de sistema para os componentes de sistema e gerar a arquitetura de componentes inicial. As interfaces de negócio são reconhecidas por meio do modelo conceitual,  as interfaces de sistema e operações a partir dos casos de uso.
 
 \subsection{Interfaces de Sistemas}
 
@@ -555,7 +555,7 @@ E finalmente, na figura \ref{iprocmgr}, é apresentada a interface IProcMgr. Est
 
 \section{Considerações Finais}
 
-Este capítulo descreveu o ETL4NoSQL. Para isso, foram apresentados os requisitos de desenvolvimento de um \textit{framework} de ETL para dados estruturados, semi estruturados e não estruturados expondo a modelagem do domínio de ETL4NoSQL por meio de seu modelo conceitual, de casos de uso e comportamental. Foram demonstradas a modelagem da especificação, identificando os componentes, as interfaces de sistemas e de negócio do  \textit{framework} proposto. A especificação da arquitetura dos componentes do ETL4NoSQL e suas interações também foram evidenciadas. Mostramos como solução para implementação, as interfaces de programação utilizando a linguagem orientada à objetos Python.
+Este capítulo descreveu o ETL4NoSQL. Para isso, foram apresentados os requisitos de desenvolvimento de um \textit{framework} de ETL expondo a modelagem do domínio de ETL4NoSQL por meio de seu modelo conceitual, de casos de uso e comportamental. Foram demonstradas a modelagem da especificação, identificando os componentes, as interfaces de sistemas e de negócio do  \textit{framework} proposto. A especificação da arquitetura dos componentes do ETL4NoSQL e suas interações também foram evidenciadas. Mostramos como solução para implementação, as interfaces de programação utilizando a linguagem orientada à objetos chamada Python.
 
-O capítulo seguinte apresentará um estudo experimental de software que tem por objetivo avaliar se o ETL4NoSQL é um \textit{framework} adequado para modelar e executar operações de ETL para dados estruturados, semi estruturados e não estruturados.
+O capítulo seguinte apresentará um estudo experimental de \textit{software} que tem por objetivo avaliar se o ETL4NoSQL é um \textit{framework} adequado para modelar e executar operações de ETL em BDs NoSQL.
 
