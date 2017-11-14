@@ -12,7 +12,7 @@ Conceitos de ETL, banco de dados NoSQL, desenvolvimento baseado em componentes, 
 
 \subsection{ETL}
 
-ETL sigla para \textit{Extraction, Transform and Load} (Extração, Limpeza/Transformação e Carga - ETL) é conhecido na literatura por definir processos que permitem a extração e transformação de dados, centralizando-os numa base destino facilitando o gerenciamento e análise desses dados (\cite{kimball:2004}, \cite{rud:2009}). O fluxo do processo de ETL inicia-se com extração dos dados a partir de uma fonte de dados, que podem ser arquivos textuais, banco de dados relacionais, banco de dados NoSQL, entre outros. Os dados são propagados para uma Área de Processamento de Dados onde são executadas a limpeza e transformação por meio de mecanismos de ETL definidos como agregação, junção, filtro, união, etc. Finalmente, os dados são carregados em estruturas que podem ser \textit{data warehouses} ou repositórios analíticos (\cite{silva:2016}, \cite{silva:2012}, \cite{kimball:2004}). 
+ETL sigla para \textit{Extraction, Transform and Load} (Extração, Limpeza/Transformação e Carga - ETL) é conhecido na literatura por definir processos que permitem a extração e transformação de dados, centralizando-os numa base destino facilitando o gerenciamento e análise desses dados (\cite{kimball:2004}, \cite{rud:2009}). O fluxo do processo de ETL inicia-se com extração dos dados a partir de uma fonte de dados, que podem ser arquivos textuais, banco de dados relacionais, banco de dados NoSQL, entre outros. Os dados são propagados para uma Área de Processamento de Dados (APD) onde são executadas a limpeza e transformação por meio de mecanismos de ETL definidos como agregação, junção, filtro, união, etc. Finalmente, os dados são carregados em estruturas que podem ser \textit{data warehouses} ou repositórios analíticos (\cite{silva:2016}, \cite{silva:2012}, \cite{kimball:2004}). 
 
 \cite{kimball:2004} definem os processos de ETL em 4 macroprocessos, com 34 subsistemas que são listados a seguir. 
 
@@ -66,7 +66,7 @@ ETL sigla para \textit{Extraction, Transform and Load} (Extração, Limpeza/Tran
 	
 \end{itemize}
 
-Dessa forma, o ETL4NoSQL estrutura-se de maneira a atender aos requisitos do processos de ETL, servindo como base para o desenvolvimento destes processos.
+Dessa forma, o ETL4NoSQL estrutura-se de maneira a atender aos requisitos do processos de ETL, servindo como base para o desenvolvimento de aplicações de ETL.
 
 
 \subsection{Bancos de Dados NoSQL}
@@ -83,19 +83,19 @@ Existem vários sistemas gerenciadores de banco de dados orientados à documento
 
 \subsubsection{Banco de dados Famílias de Colunas}
 
-Banco de dados baseados em Famílias de Colunas são desenvolvidos para abranger três áreas: número enorme de colunas, a natureza esparsa dos dados e frequentes mudanças no esquema. Os dados em famílias de colunas são armazenados em colunas de forma contínua, enquanto que em bancos de dados relacionais as linhas é que são contínuas. Essa mudança faz com que operações como agregação, suporte para ad-hoc e consultas dinâmicas se tornem mais eficientes (\cite{kaur:2013}, \cite{fowler:2013}).
+Banco de dados baseados em Famílias de Colunas são desenvolvidos para abranger três áreas: número enorme de colunas, a natureza esparsa dos dados e frequentes mudanças no esquema de dados. Os dados em famílias de colunas são armazenados em colunas de forma contínua, enquanto que em bancos de dados relacionais as linhas é que são contínuas. Essa mudança faz com que operações como agregação, suporte para \textit{ad-hoc} e consultas dinâmicas se tornem mais eficientes (\cite{kaur:2013}, \cite{fowler:2013}).
 
-A maioria dos bancos de dados baseados em famílias de colunas são também compatíveis com o \textit{framework} MapReduce, no qual acelera o processamento de enormes volumes de dados pela distribuição do problema em um grande número de sistemas. Os bancos de dados de família de colunas \textit{open-source} mais populares são Hypertable, HBase e Cassandra (\cite{kaur:2013}).
+A maioria dos bancos de dados baseados em famílias de colunas são também compatíveis com o \textit{framework} MapReduce, no qual acelera o processamento de enormes volumes de dados pela distribuição do problema em um grande número de sistemas. Os SGBDs de família de colunas \textit{open-source} mais populares são Hypertable, HBase e Cassandra (\cite{kaur:2013}).
 
 \subsubsection{Banco de dados Baseado em Grafos}
 
-Bancos de dados baseado em grafos são como uma estrutura de rede contendo nós e arestas, onde as arestas interligam os nós representando a relação entre eles. Comparando com os banco de dados relacionais, o nó corresponde à tabela, a propriedade do nó à um atributo e as arestas são a relação entre os nós. Nos bancos de dados relacionais as consultas requerem atributos de mais de uma tabela resultando numa operação de junção, por outro lado, bancos de dados baseado em grafos são desenvolvidos para encontrar relações dentro de uma enorme quantidade de dados rapidamente, tendo em vista que não é preciso fazer junções, ao invés disso, ele fornece indexação livre de adjacência (\cite{kaur:2013}).
+Bancos de dados baseado em grafos são como uma estrutura de rede contendo nós e arestas, onde as arestas interligam os nós representando a relação entre eles. Comparando com os banco de dados relacionais, o nó corresponde à tabela, a propriedade do nó à um atributo e as arestas são a relação entre os nós. Nos bancos de dados relacionais as consultas requerem atributos de mais de uma tabela resultando numa operação de junção, por outro lado, bancos de dados baseado em grafos são desenvolvidos para encontrar relações dentro de uma enorme quantidade de dados rapidamente, tendo em vista que não é preciso fazer junções, ao invés disso, ele fornece indexação livre de adjacência. Um exemplo de SGBD baseado em grafos é o Neo4j (\cite{kaur:2013}).
 
 \subsubsection{Banco de dados Chave-Valor}
 
 Em bancos de dados Chave-Valor, os dados são organizados como uma associação de vetores de entrada consistindo em pares de chave-valor. Cada chave é única e usada para recuperar os valores associados a ele. Esses bancos de dados podem ser visualizados como um banco de dados relacional contendo múltiplas linhas e apenas duas colunas: chave e valor. Buscas baseadas em chaves resultam num baixo tempo de execução. Além disso, os valores podem ser qualquer coisa como objetos, hashes, entre outros (\cite{kaur:2013}).
 
-Os bancos de dados Chave-Valor mais populares são Riak, Voldemort e Redis (\cite{kaur:2013}).
+Os SGBDs Chave-Valor mais populares são Riak, Voldemort e Redis (\cite{kaur:2013}).
 
 
 \subsection{Desenvolvimento Baseado em Componentes e Frameworks}
@@ -171,7 +171,7 @@ A customização no ARKTOS II é oferecida pela reusabilidade de seus \textit{te
 
 \subsection{PygramETL}
 
-PygramETL é um \textit{framework} programável para desenvolvedores de ETL. Ele oferece a funcionalidade para desenvolver ETL demonstrando como deve-se iniciar um projeto. O propósito da ferramenta é facilitar a carga dos dados no DW gerenciado por banco de dados relacionais (RDBMS). Focando nos RDBMS como destino torna o desenvolvimento simples, não considerando outros tipos de estrutura de dados e a integração deles. Dessa forma, o PygramETL oferece suporte apenas a bancos de dados relacionais (\cite{thomsen:2009}).
+PygramETL é um \textit{framework} programável para desenvolvedores de ETL. Ele oferece a funcionalidade para desenvolver ETL demonstrando como deve-se iniciar um projeto. O propósito da ferramenta é facilitar a carga dos dados no DW gerenciado por banco de dados relacionais (SGBDs). Focando nos SGBDs relacionais como destino torna o desenvolvimento simples, não considerando outros tipos de estrutura de dados e a integração deles. Dessa forma, o PygramETL oferece suporte apenas para SGBDs relacionais (\cite{thomsen:2009}).
 
 \subsection{ETLMR}
 
@@ -230,14 +230,14 @@ Futuramente os autores pretendem apresentar um \textit{benchmark} no qual compar
 
 \subsection{FramETL}
 
-O FramETL é um \textit{framework} para desenvolvimento de aplicações ETL. Ele oferece um ambiente programável e integrado para modelagem e execução de processos de ETL utilizando uma linguagem de programação. O autor utilizou conceitos de \textit{frameworks} como flexibilidade, extensibilidade, reuso e inversão de controle para o desenvolvimento do FramETL. Por meio desses conceitos, utilizando o \textit{framework}, o autor pode aplicar sua solução para construções de duas aplicações de ETL. Porém, \cite{silva:2012} não fez uso de BDs NoSQL, e o foco de sua ferramenta não era em dados \textit{Big Data}.
+O FramETL é um \textit{framework} para desenvolvimento de aplicações ETL. Ele oferece um ambiente programável e integrado para modelagem e execução de processos de ETL utilizando uma linguagem de programação. O autor utilizou conceitos de \textit{frameworks} como flexibilidade, extensibilidade, reuso e inversão de controle para o desenvolvimento do FramETL. Por meio desses conceitos, utilizando o \textit{framework}, o autor aplicou sua solução para construções de duas aplicações de ETL. Porém, \cite{silva:2012} não fez uso de SGBDs NoSQL, pois o foco de sua ferramenta não era lidar com esses tipos de SGBDs.
 
 \subsection{Outras Ferramentas}
 
-Esta seção apresenta outras ferramentas de ETL presentes no mercado e na literatura, mas que não possuem foco em BDs NoSQL apesar de darem algum tipo de suporte à eles.
+Esta subseção apresenta outras ferramentas de ETL presentes no mercado e na literatura, mas que não possuem foco em BDs NoSQL apesar de darem algum tipo de suporte à eles.
 \subsubsection{Pentaho}
 
-Pentaho Data Integration (conhecido também por \textit{\textbf{Kettle}}) é uma ferramenta \textit{open source} para aplicações de ETL. Ela é composta basicamente por quatro elementos: extração de diferentes fontes de dados, transporte de dados, transformação dos dados e carga em \textit{data warehouse}. O \textit{Kettle} pode ser implementado em um único nó, bem como na nuvem, ou em \textit{cluster}. Ele pode carregar e processar \textit{big data} de várias formas oferecendo flexibilidade e segurança (\cite{mali:2015}, \cite{ETLtools}, \cite{pentaho}). Porém, por ser uma ferramenta genérica ela é de difícil customização, e muitas vezes é considerada de difícil utilização por seus usuários. 
+Pentaho Data Integration (conhecido também por \textit{\textbf{Kettle}}) é uma ferramenta \textit{open source} para aplicações de ETL. Ela é composta basicamente por quatro elementos: extração de diferentes fontes de dados, transporte de dados, transformação dos dados e carga em \textit{data warehouse}. O \textit{Kettle} pode ser implementado em um único nó, bem como na nuvem, ou em \textit{cluster}. Ele pode carregar e processar \textit{big data} de várias formas oferecendo flexibilidade e segurança (\cite{mali:2015}, \cite{ETLtools}, \cite{pentaho}). Porém, por ser uma ferramenta genérica ela é de difícil customização, e muitas vezes é considerada de difícil utilização por seus usuários, além de ter partes de suas funcionalidades disponíveis apenas em edições comerciais.
 
 \subsubsection{Talend Studio}
 
@@ -253,8 +253,8 @@ Pentaho Data Integration (conhecido também por \textit{\textbf{Kettle}}) é uma
 
 \section{Considerações Finais}
 
-Este capítulo discorreu a respeito dos principais assuntos abordados nesta dissertação, bem como as ferramentas de ETL encontradas na literatura. A maioria delas foca no desempenho ao lidar com grandes volumes de dados e BDs NoSQL, nenhuma delas apresentou uma solução alternativa para modelagem de BDs NoSQL ficando a cargo do desenvolvedor encontrar meios para esquematizar os dados. A ferramenta P-ETL (\cite{bala:2014}) apresentou um arquivo "csv" como alternativa para obter diversos tipos de dados, porém não há um enfoque em BDs NoSQL. A abordagem PygramETL (\cite{thomsen:2009}) facilita a carga de dados, mas lida apenas com banco de dados relacionais. Outras ferramentas como o ETLMR, CloudETL, BigETL utilizam processamento paralelo e distribuído para facilitar os processos de ETL apenas.
+Este capítulo discorreu a respeito dos principais assuntos abordados nesta dissertação, bem como as ferramentas de ETL encontradas na literatura. A maioria delas foca no desempenho ao lidar com grandes volumes de dados e BDs NoSQL, nenhuma delas apresentou uma solução alternativa para modelagem de BDs NoSQL ficando a cargo do desenvolvedor encontrar meios para esquematizar os dados. A ferramenta P-ETL (\cite{bala:2014}) apresentou um arquivo "csv" como alternativa para obter diversos tipos de dados, porém não há um enfoque em BDs NoSQL. A abordagem PygramETL (\cite{thomsen:2009}) facilita a carga de dados, mas lida apenas com SGBDs relacionais. Outras ferramentas como o ETLMR, CloudETL, BigETL utilizam processamento paralelo e distribuído para facilitar os processos de ETL apenas.
 
-O capítulo seguinte irá apresentar os componentes de ETL4NoSQL, o \textit{framework} programável, flexível e integrado proposto por esta pesquisa de dissertação como uma alternativa para sanar a dificuldade de modelar, executar e reutilizar processos de ETL em BDs NoSQL.
+O capítulo seguinte irá apresentar os componentes de ETL4NoSQL, o \textit{framework} programável, flexível e integrado proposto por esta dissertação como uma alternativa para sanar a dificuldade de modelar, executar e reutilizar processos de ETL em BDs NoSQL.
 
 %Para suportar processos de ETL em BDsNoSQL, propomos um \textit{framework} integrado, flexível e programável de ETL para BDs NoSQL que permite o uso do processamento distribuído/paralelo e a integração das diversas bases de dados existentes por se tratar de um \textit{framework} baseado em componentes.  

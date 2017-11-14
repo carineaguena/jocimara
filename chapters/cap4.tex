@@ -1,6 +1,6 @@
 \chapter{Estudo Experimental de Software}
 
-Este capítulo provê o roteiro de experimentação de software para ferramentas de ETL. A Engenharia de \textit{Software} Experimental tem como objetivo aprimorar métodos, técnicas e ferramentas de Engenharia de  \textit{Software} a partir de métodos experimentais (\cite{souza:2015}). As etapas definidas no processo de experimentação em Engenharia de  \textit{Software} proposto por \cite{souza:2015} consiste em etapas de definição, planejamento, operação, interpretação dos dados e empacotamento que serão melhor detalhados nas seções a seguir.
+Este capítulo provê o roteiro de experimentação de \textit{software} para ferramentas de ETL. A Engenharia de \textit{Software} Experimental tem como objetivo aprimorar métodos, técnicas e ferramentas de Engenharia de  \textit{Software} a partir de métodos experimentais (\cite{souza:2015}). As etapas definidas no processo de experimentação em Engenharia de  \textit{Software} proposto por \cite{souza:2015} consiste em etapas de definição, planejamento, operação, interpretação dos dados e empacotamento que serão melhor detalhados nas seções a seguir.
 \clearpage
 
 \section{Objetivos do experimento}
@@ -47,11 +47,11 @@ Tendo como base as ferramentas de ETL existentes na literatura, caracterizar:
 
 	Métrica: A lista de funcionalidades que não estão presentes no ETL4NoSQL.
 
-	\item[Q2.] Existem funcionalidades listadas pelas ferramentas pesquisadas que estão presentes no ETL4NoSQL, mas são consideradas pouco úteis (pouco útil nesta pesquisa é entendido como a funcionalidade ser pouco utilizada na criação ou execução dos processos de ETL)?
+	\item[Q2.] Existem funcionalidades listadas pelas ferramentas pesquisadas que estão presentes no ETL4NoSQL, mas são consideradas pouco úteis (pouco útil nesta pesquisa é entendido como a funcionalidade ser pouco utilizada pelos processos de ETL)?
 
-	Métrica: A lista de funcionalidades que estão presentes nas ferramentas da literatura e no ETL4NoSQL e são consideradas inúteis.
+	Métrica: A lista de funcionalidades que estão presentes nas ferramentas da literatura e no ETL4NoSQL e são consideradas pouco úteis.
 
-	\item[Q3.] Existem funcionalidades que estão presentes nas ferramentas de ETL da literatura e no ETL4NoSQL, consideradas úteis, e que poderiam ser melhoradas?
+	\item[Q3.] Existem funcionalidades que estão presentes nas ferramentas de ETL da literatura e no ETL4NoSQL, consideradas úteis (nesta pesquisa, útil é entendido como constantemente requisitada pelos processos de ETL), e que poderiam ser melhoradas?
 
 	Métrica: A lista de funcionalidades que estão presentes nas ferramentas de ETL da literatura e no ETL4NoSQL, consideradas úteis e que necessitam melhorar.
 
@@ -131,7 +131,7 @@ Para cada funcionalidade presente nas ferramentas apresentada na literatura que 
 		\begin{enumerate}
 			\item Necessita melhorar
 			\item Não há necessidade de melhoria
-			\item Pode melhorar, mas não necessidade
+			\item Pode melhorar, mas não há necessidade
 		\end{enumerate} &
 		\begin{enumerate}
 			\item É útil
@@ -204,7 +204,7 @@ Nosso estudo supõe o processo off-line porque as ferramentas não estão sendo 
 
 Como participantes para o estudo propõe-se utilizar as ferramentas encontradas na literatura. Assume-se que esses indivíduos estão presente em diversos estudos realizados e avaliados no meio acadêmico.
 
-Para a escolha das ferramentas utilizadas neste estudo foi levado em consideração a semelhança da finalidade do uso com a ferramenta proposta. Seria conveniente utilizar para o estudo ferramentas que tem o objetivo de auxiliar processos de ETL em diversas estruturas de dados. Dessa forma, a seleção baseou-se nas características das ferramentas.
+Para a escolha das ferramentas utilizadas neste estudo foi levado em consideração a semelhança da finalidade do uso com a ferramenta proposta. Seria conveniente utilizar para o estudo ferramentas que tem o objetivo de auxiliar processos de ETL. Dessa forma, a seleção baseou-se nas características das ferramentas.
 
 \subsection{Variáveis}
 
@@ -237,7 +237,7 @@ Assim, essa análise deve considerar funcionalidades com valor PMU = {0, X, X} (
 
 \subsection{Validade}
 
-\textbf{Validade interna:} como mencionado na parte "Seleção dos indivíduos" para o estudo se propõe a utilizar ferramentas presentes na literatura, que são validadas pelo meio acadêmico. Assim, assume-se que elas são representativas para a população de ferramentas de ETL.
+\textbf{Validade interna:} como mencionado na parte "Seleção dos indivíduos" para o estudo propõe-se a utilizar ferramentas presentes na literatura, que são validadas pelo meio acadêmico. Assim, assume-se que elas são representativas para a população de ferramentas de ETL.
 
 Além disso, para redução da influência dos fatores que não são interesse do nosso estudo e, portanto, para aumento da validade interna do estudo supõe-se utilizar dados das ferramentas mais populares da literatura, cuja a validação já tenha passado por diversas avaliações.
 
@@ -247,7 +247,7 @@ Além disso, para redução da influência dos fatores que não são interesse d
 
 \textbf{Validade externa:} como foi mencionado nas partes "Seleção dos indivíduos" e "Validade interna" os participantes do estudo em geral podem ser considerados representativos para a população da literatura apresentada pela academia. Para avaliação do nível de importância das funcionalidades analisadas foi levada em consideração a frequência que a funcionalidade apareceu nas ferramentas da literatura.
 
-Os materiais utilizados no estudo podem ser considerados representativos e "em tempo" para o problema sob análise, porque se compõem das funcionalidades de ferramentas de ETL presentes na literatura atual.
+Os materiais utilizados no estudo podem ser considerados representativos e "em tempo" para o problema sob análise, porque compõem-se das funcionalidades de ferramentas de ETL presentes na literatura atual.
 
 \section{Operação}
 
@@ -309,7 +309,7 @@ Sob o ponto de vista das características das ferramentas e considerando a final
 		\begin{enumerate}
 			\item Necessita melhorar
 			\item Não há necessidade de melhoria
-			\item Pode melhorar, mas não necessidade
+			\item Pode melhorar, mas não há necessidade
 		\end{enumerate} &
 		\begin{enumerate}
 			\item É útil
@@ -333,7 +333,7 @@ Sob o ponto de vista das características das ferramentas e considerando a final
 \subsection{Resultado do Estudo}
 
 
-A figura \ref{presenca} apresenta o gráfico da quantidade de presença para cada funcionalidade de acordo com cada ferramenta de ETL. Já a figura \ref{utilidade} mostra o nível de importância que as ferramentas dão para cada funcionalidade e a figura \ref{melhoria} indica necessidade de melhorar funcionalidade em cada ferramenta.
+A figura \ref{presenca} apresenta o gráfico da quantidade de presença para cada funcionalidade de acordo com cada ferramenta de ETL. Já a figura \ref{utilidade} mostra o nível de utilidade que as ferramentas dão para cada funcionalidade e a figura \ref{melhoria} indica necessidade de melhoraria das funcionalidades em cada ferramenta.
 
 \begin{figure}[h]
 	\centering
@@ -505,7 +505,7 @@ Os valores na tabela significam P - presente:não presente; M - necessita melhor
 		N. & Funcionalidade & P & M & U & Característica  \\
 		\hline
 		6 & Apoio ao nível de debugging & 10:1 & 0:11 & 8:3 & - A funcionalidade existe na maioria das ferramentas, mas não dão o enfoque nela. \\
-		&&&&& - É uma funcionalidade trivial, pois é possível comparar os dados da fonte e destino mesmo sem debugging.\\
+		&&&&& - É uma funcionalidade trivial, pois é possível comparar os dados da fonte e destino mesmo sem \textit{debugging}.\\
 		&&&&& - Pode ser útil para evitar o trabalho de fazer a comparação da fonte com o destino, além de poder dar uma resposta em tempo de execução.\\
 		\hline
 		
@@ -521,7 +521,7 @@ Os valores na tabela significam P - presente:não presente; M - necessita melhor
 	\begin{tabular}{|l|l|l|l|l|l|}
 		\hline
 		N & Funcionalidade & P & M & U & Características \\ \hline
-		\multirow{4}{*}{2} & \multirow{4}{*}{Suporte à fonte} & \multirow{4}{*}{10:1} & \multirow{4}{*}{8:3} & \multirow{4}{*}{11:0} & \multirow{16}{*}{\begin{tabular}[c]{@{}l@{}}- As ferramentas oferecem algum suporte \\ em relação à leitura e carga da fonte e destino,  \\ porém muitas apenas lidam com RDBMS.\\ - Deve haver um enfoque nas novas soluções \\ de BDs como os BDs NoSQL.\\ - Algumas ferramentas não oferecem a opção \\ para utilizar linha de comando, o qual é \\ considerado importante para ter maior liberdade \\ na implementação de processos de ETL.\\ -Dependendo do foco da ferramenta, alguma\\ delas não dão importância ao processamento\\ em paralelo, porém em se tratando de Big Data,\\ o processamento em paralelo é fundamental\\ para possibilitar a execução de processos de\\ ETL em grandes volumes de dados.\end{tabular}} \\
+		\multirow{4}{*}{2} & \multirow{4}{*}{Suporte à fonte} & \multirow{4}{*}{10:1} & \multirow{4}{*}{8:3} & \multirow{4}{*}{11:0} & \multirow{16}{*}{\begin{tabular}[c]{@{}l@{}}- As ferramentas oferecem algum suporte \\ em relação à leitura e carga da fonte e destino,  \\ porém muitas apenas lidam com SGBDs relacionais.\\ - Deve haver um enfoque nas novas soluções \\ de SGBDs como os SGBDs NoSQL.\\ - Algumas ferramentas não oferecem a opção \\ para utilizar linha de comando, o qual é \\ considerado importante para ter maior liberdade \\ na implementação de processos de ETL.\\ -Dependendo do foco da ferramenta, alguma\\ delas não dão importância ao processamento\\ em paralelo, porém em se tratando de \textit{Big Data},\\ o processamento em paralelo é fundamental\\ para possibilitar a execução de processos de\\ ETL em grandes volumes de dados.\end{tabular}} \\
 		&  &  &  &  &  \\
 		&  &  &  &  &  \\
 		&  &  &  &  &  \\ \cline{1-5}
@@ -689,7 +689,7 @@ Para verificar as funcionalidades que não estão presentes no ETL4NoSQL neste t
 	\end{tabular}
 \end{table}
 
-Assim, podemos concluir que as funcionalidades 8 (implementação) e 10 (garantia de qualidade) despertam maior interesse à serem implantadas nas ferramentas de ETL. Isso pode ser explicado pelas características e aplicabilidade que as funcionalidades oferecem. As funcionalidades de implementação e garantia de qualidade, provavelmente, não estão presentes em geral ou são oferecidas de forma parcial, não sendo o foco de boa parte das ferramentas de ETL detalhadas neste trabalho. Porém, essas funcionalidades melhorariam o desempenho geral dos processos de ETL. Outras funcionalidades existentes, não oferecidas pelas ferramentas de ETL demonstradas, e que, possivelmente são conhecidas pela literatura, mas a falta de exemplos ou aplicabilidade delas reduzem o interesse ao implementá-las.
+Assim, podemos concluir que as funcionalidades 8 (implementação) e 10 (garantia de qualidade) despertam interesse à serem implantadas nas ferramentas de ETL. Isso pode ser explicado pelas características e aplicabilidade que as funcionalidades oferecem. As funcionalidades de implementação e garantia de qualidade, provavelmente, não estão presentes em geral ou são oferecidas de forma parcial, pois não são o foco de boa parte das ferramentas de ETL, em razão de seus usuários possuírem um certo grau de conhecimento a respeito de programação e criação de processos de ETL. Porém, essas funcionalidades melhorariam o desempenho geral dos processos de ETL facilitando o uso por usuários que não possuem conhecimento em linguagens de programação.
 
 \subsection{Verificação das hipóteses}
 
