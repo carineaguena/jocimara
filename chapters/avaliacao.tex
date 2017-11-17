@@ -2,7 +2,7 @@
 
 Este capítulo fornece aplicações exemplo baseadas no ETL4NoSQL em dois domínios de naturezas distintas utilizando SGBDs NoSQL para os dados de entrada. O desenvolvimento dessas aplicações pretende ilustrar a reusabilidade e flexibilidade do ETL4NoSQL em aplicações de ETL que apresentam requisitos distintos de inserção e transformação de dados, e assim avaliar o trabalho proposto neste documento.
 
-Nas seções seguintes apresentaremos as aplicações utilizadas como exemplo para a avaliação do nosso trabalho. Demonstraremos a implementação de um processo de ETL para carga de dados dimensionais utilizando os dados de entrada armazenados no SBGD MongoDB e outro armazenados no SGBD Cassandra.
+Nas seções seguintes apresentaremos as aplicações utilizadas como exemplo para a avaliação do nosso trabalho. Demonstraremos a implementação de um processo de ETL para carga de dados em modelos multidimensionais utilizando os dados de entrada armazenados no SBGD MongoDB e outro no SGBD Cassandra.
 
 \clearpage	
 
@@ -62,11 +62,11 @@ A partir do \textit{framework} ETL4NoSQL, pudemos estender uma nova aplicação 
 	\label{etl4nosqlmongostar}
 \end{figure}
 
-Na figura \ref{etl4nosqlmongostar} podemos ver a aplicação ETL4NoSQLMongoStar, no destaque 1 temos a árvore de arquivos da aplicação, incluindo os arquivos de saída, criados ao final da execução dos processos de ETL. Já no destaque 2 é importado as interfaces dos componentes do \textit{framework}. No destaque 3 é feita a leitura das bases de dados envolvidas nos processos, no destaque 4 é realizada a inserção das operações a serem realizadas e no destaque 5 os processos são executados. O destaque 6 apresenta as operações a serem realizadas pelo \textit{framework} para criar o modelo multidimensional do ETL4NoSQLMongoStar e sua saída de dados em arquivos JSON.
+Na figura \ref{etl4nosqlmongostar} podemos ver a aplicação ETL4NoSQLMongoStar, no destaque 1 temos a árvore de arquivos da aplicação, incluindo os arquivos de saída, criados ao final da execução dos processos de ETL. Já no destaque 2 é importada as interfaces dos componentes do \textit{framework}. No destaque 3 é feita a leitura das bases de dados envolvidas nos processos, no destaque 4 é realizada a inserção das operações a serem realizadas e no destaque 5 os processos são executados. O destaque 6 apresenta as operações a serem realizadas pelo \textit{framework} para criar o modelo multidimensional do ETL4NoSQLMongoStar e sua saída de dados em arquivos JSON.
 
 \section{Aplicação ETL4NoSQLCassandraStar}
 
-Para a criação da aplicação exemplo ETL4NoSQLCassandraStar, cujo esta é uma aplicação estendida do \textit{framework} ETL4NoSQL proposta neste trabalho, utilizamos o SGBD Cassandra e a base de dados de localizações de táxis em um determinado momento. A estrutura de dados da base de dados de origem pode ser vista a seguir.
+Para a criação da aplicação exemplo ETL4NoSQLCassandraStar, cujo esta é uma aplicação estendida do \textit{framework} ETL4NoSQL proposta neste trabalho, utilizamos o SGBD Cassandra e a base de dados de localizações de táxis de acordo com sua latitude e longitude em um determinado momento. A estrutura de dados da base de dados de origem pode ser vista a seguir.
 
 \begin{lstlisting}[frame=single, language=Oberon-2, basicstyle=\tiny]
 
@@ -88,7 +88,7 @@ Dessa forma, determinamos o modelo multidimensional para esta estrutura de dados
 	\label{cassandramultidim}
 \end{figure}
 
-Assim, utilizando a aplicação estendida do ETL4NoSQL, pudemos executar os processos de ETL para atender o modelo multidimensional.
+Assim, utilizando a aplicação estendida do ETL4NoSQL, pudemos executar os processos de ETL para atender ao modelo multidimensional.
 
 \begin{figure}[h!]
 	\centering
@@ -97,8 +97,10 @@ Assim, utilizando a aplicação estendida do ETL4NoSQL, pudemos executar os proc
 	\label{ETL4NoSQLCassandraStar}
 \end{figure}
 
-Na figura \ref{ETL4NoSQLCassandraStar} podemos ver a aplicação ETL4NoSQLCassandraStar. Da mesma forma que a aplicação ETL4NoSQLMongoStar, no destaque 1 temos a árvore de arquivos da aplicação, incluindo os arquivos de saída, criados ao final da execução dos processos de ETL. Já no destaque 2 é importado as interfaces dos componentes do \textit{framework}. No destaque 3 é feita a leitura das bases de dados envolvidas nos processos, no destaque 4 é realizada a inserção das operações a serem realizadas e no destaque 5 os processos são executados. O destaque 6 apresenta as operações a serem realizadas pelo \textit{framework} para criar o modelo multidimensional do ETL4NoSQLCassandraStar e sua saída de dados em arquivos JSON.
+Na figura \ref{ETL4NoSQLCassandraStar} podemos ver a aplicação ETL4NoSQLCassandraStar. Da mesma forma que a aplicação ETL4NoSQLMongoStar, no destaque 1 temos a árvore de arquivos da aplicação, incluindo os arquivos de saída, criados ao final da execução dos processos de ETL. Já no destaque 2 é importada as interfaces dos componentes do \textit{framework}. No destaque 3 é feita a leitura das bases de dados envolvidas nos processos, no destaque 4 é realizada a inserção das operações a serem realizadas e no destaque 5 os processos são executados. O destaque 6 apresenta as operações a serem realizadas pelo \textit{framework} para criar o modelo multidimensional do ETL4NoSQLCassandraStar e sua saída de dados em arquivos JSON.
 
 \section{Considerações Finais}
 
-Este capítulo apresentou duas aplicações de naturezas distintas estendidas do ETL4NoSQL, avaliando suas características de reusabilidade e flexibilidade. Uma aplicação foi baseada no SGBD NoSQL Mongo e a outra no SGBD NoSQL Cassandra. Utilizamos o ETL4NoSQLCassandraStar e o ETL4NoSQLMongoStar para desenvolver e executar os processos. Ao final da execução dos processos pudemos gerar um arquivo de saída em formato comum denominado JSON. O próximo capítulo apresentará o estudo experimental de software que tem como objetivo definir se o ETL4NoSQL é adequado para desenvolver processos de ETL em BDs NoSQL e aprimorá-los.
+Este capítulo apresentou duas aplicações de naturezas distintas estendidas do ETL4NoSQL, avaliando suas características de reusabilidade e flexibilidade. Uma aplicação foi baseada no SGBD NoSQL Mongo e a outra no SGBD NoSQL Cassandra. Utilizamos o ETL4NoSQLCassandraStar e o ETL4NoSQLMongoStar para desenvolver e executar os processos. Ao final da execução dos processos pudemos gerar um arquivo de saída em formato comum denominado JSON. 
+
+No capítulo posterior, esta pesquisa é finalizada, expondo as principais contribuições, discussões sobre dificuldades e as ameaças do trabalho de pesquisa, os resultados e trabalhos futuros a partir do ETL4NoSQL.
