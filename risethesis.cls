@@ -159,7 +159,7 @@
   \gdef\@bachelordegree{Bacharel}
   \gdef\@mastersdegree{Mestre}
   \gdef\@phddegree{Doutor}
-  \gdef\@maleadvisertitle{Orientador}
+  \gdef\@maleadvisertitle{Orientadora}
   \gdef\@femaleadvisertitle{Orientadora}
   \gdef\@malecoadvisertitle{Co-Orientador}
   \gdef\@femalecoadvisertitle{Co-Orientadora}
@@ -615,7 +615,7 @@ requirements for the degree of \@degree\ in \@majorfielden.
 	\hspace{0.5cm}
 		1. Palavra-chave1.
 		2. Palavra-chave2.
-		I. Orientador.
+		I. Orientadora.
 		II. Universidade xxx.
 		III. Faculdade de xxx.
 		IV. Título\\ 			
@@ -637,7 +637,7 @@ requirements for the degree of \@degree\ in \@majorfielden.
   \noindent
   Dissertação de Mestrado apresentada por \textbf{\@author} ao programa de Pós-Graduação em
   Ciência da Computação do Centro de Informática da Universidade Federal de
-  Pernambuco, sob o título \textbf{\@title}, orientada pelo \textbf{Prof.
+  Pernambuco, sob o título \textbf{\@title}, orientada pela \textbf{Prof.
   \@adviser} e aprovada pela banca examinadora formada pelos professores:
   
   \vspace{5\baselineskip}
