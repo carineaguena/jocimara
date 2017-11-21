@@ -510,10 +510,10 @@ requirements for the degree of \@degree\ in \@majorfielden.
   \if@openright\cleardoublepage\else\clearpage\fi
   \thispagestyle{empty}
   \begin{center}
-  \includegraphics[scale=0.65]{cinlogo} \\
+  \includegraphics[scale=0.85]{cinlogo} \\
   \vfill
   \begin{center}
-    {\normalsize\bfseries{\MakeUppercase{\@title}}}
+    {\large\bfseries{\@title}}
     \vskip1\baselineskip
     \if\@language0
         {\normalsize \bfseries{Por}}
@@ -521,7 +521,7 @@ requirements for the degree of \@degree\ in \@majorfielden.
         {\normalsize \bfseries{By}}
     \fi
     \vskip1\baselineskip
-    \normalsize \textit{\bfseries{\MakeUppercase{\@author}}}
+    \normalsize \textit{\bfseries{\@author}}
     \vskip1\baselineskip
     {{\normalsize \bfseries{\@texttype}}}\\
   \end{center}
@@ -553,7 +553,7 @@ requirements for the degree of \@degree\ in \@majorfielden.
   {\Large \@author}
   \vfill
   \begin{center}
-	{\large\bfseries{\MakeUppercase{\@title}}}\\
+	{\large\bfseries{\@title}}\\
   \end{center}
   \vskip 38mm
   \begin{flushright}
