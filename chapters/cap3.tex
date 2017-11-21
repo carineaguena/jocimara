@@ -1,6 +1,6 @@
 \chapter{O Framework ETL4NoSQL}
 % ---
-Neste capítulo são apresentados os conceitos do \textit{framework} ETL4NoSQL, que consiste numa plataforma de \textit{software} para desenvolvimento de aplicações de ETL, mais especificamente uma ferramenta que auxilia a construção de processos de ETL buscando apoiar a modelagem e o desempenho dos processos. 
+Neste capítulo são apresentados os conceitos do \textit{framework} ETL4NoSQL, que consiste numa plataforma de \textit{software} para desenvolvimento de aplicações de ETL, mais especificamente uma ferramenta que auxilia a construção de processos de ETL buscando apoiar a modelagem, reutilização e desempenho dos processos. 
 
 O ETL4NoSQL oferece um ambiente com componentes integrados para modelar processos de ETL e implementar funcionalidades utilizando uma linguagem de programação independente de uma GUI (\emph{Graphical User Interface} - Interface Gráfica do Usuário).
 
@@ -9,7 +9,7 @@ Para a especificação do \textit{framework} proposto neste trabalho, foram elen
 
 %definidas as estruturas de dados dos ambientes de origem, destino e da área de processamento de dados e suas respectivas linguagens de manipulação de dados, e também, as principais funcionalidades dos sistemas de ETL, chamados mecanismos de ETL. Para realizar os processos de ETL, por meio de seus mecanismos, foi definido um controlador de operações que é capaz de se comunicar com os ambientes e os mecanismos de ETL. 
 
-A seguir, são detalhados os requisitos de \textit{software}, os modelo de domínio, os modelos de especificação, as especificações dos componentes, o ambiente de implementação e as interfaces de programação do ETL4NoSQL.
+A seguir, são detalhados os requisitos de \textit{software}, os modelos de domínio, os modelos de especificação, as especificações dos componentes, o ambiente de implementação e as interfaces de programação do ETL4NoSQL.
 
 % a arquitetura do sistema e a estrutura dos componentes utilizados no desenvolvimento do framework.
 
@@ -36,7 +36,7 @@ Dessa forma, o ETL4NoSQL possui um componente que permite a leitura dos dados de
 		\hline
 		Funcionalidade & Requisito & Prioridade\\
 		\hline
-		Suporte à plataforma &  Ser independente de plataforma & Importante\\
+		Suporte à plataforma &  Ser independente de plataforma. & Importante\\
 		\hline
 		Suporte à fonte &  Ser capaz de ler diretamente da fonte de dados, independente do seu tipo, saber se é uma fonte SGBD relacional, arquivo de texto, XML ou NoSQL. & Importante\\
 		\hline
@@ -68,7 +68,7 @@ A modelagem do domínio de ETL4NoSQL é apresentada a seguir por meio de seus tr
 
 \subsection{Modelo Conceitual}
 
-Os conceitos de aplicações ETL, identificados para o ETL4NoSQL, são: Fonte, Destino, Modelagem, Processamento, Operações, ProcessamentoDistribuído e ProcessamentoCentralizado. O modelo conceitual pode ser visualizado na figura \ref{modeloconceitual}.
+Os conceitos de entidades para aplicações de ETL identificadas para o ETL4NoSQL são: Fonte, Destino, Modelagem, Processamento, Operações, ProcessamentoDistribuído e ProcessamentoCentralizado. O modelo conceitual pode ser visualizado na figura \ref{modeloconceitual}.
 
 \begin{figure}[h]
 	\centering
@@ -79,13 +79,15 @@ Os conceitos de aplicações ETL, identificados para o ETL4NoSQL, são: Fonte, D
 
 A entidade Modelagem faz a leitura de uma ou mais Fontes de dados, executa nenhuma ou muitas Operações. As Operações por sua vez são processadas por um ou mais Processamentos de forma a serem Processamentos Centralizados ou Processamentos Distribuídos. E por fim, a Modelagem carrega o resultado das Operações processadas à um ou mais Destinos.
 
-A seguir é apresentado o modelo de casos de uso do ETL4NoSQL.
+Na subseção seguinte é apresentado o modelo de casos de uso do ETL4NoSQL.
 
 \subsection{Modelo de Casos de Uso}
 
-Um conjunto de casos de uso foram identificados tais como: Ler fonte de dados, Escrever no destino, Modelar dados, Executar operação e Processar operações. O quadro \ref{casosdeuso} mostra a descrição sucinta de cada caso de uso. Os casos de uso expressam as funcionalidades fundamentais ao desenvolvimento e uso do ETL4NoSQL. Eles permitem ao programador a visão do que é imprescindível ao implementar e determinar as interfaces de sistema e operações do \textit{framework}. 
+Os casos de uso expressam as funcionalidades fundamentais ao desenvolvimento e uso do ETL4NoSQL. Eles permitem ao programador a visão do que é imprescindível ao implementar e determinar as interfaces de sistema e operações do \textit{framework}. 
 
-Para finalizar a modelagem do domínio de ETL4NoSQL, na subseção seguinte é apresentado o modelo comportamental do \textit{framework} proposto neste trabalho.
+Um conjunto de casos de uso foram identificados tais como: Ler fonte de dados, Escrever no destino, Modelar dados, Executar operação e Processar operações. O quadro \ref{casosdeuso} mostra a descrição sucinta de cada caso de uso. 
+
+Para finalizar a modelagem do domínio de ETL4NoSQL, a subseção seguinte apresenta o modelo comportamental do \textit{framework} proposto neste trabalho.
 
 
 
@@ -126,7 +128,7 @@ Para finalizar a modelagem do domínio de ETL4NoSQL, na subseção seguinte é a
 
 \subsection{Modelo Comportamental}
 
-Ao construir o modelo comportamental é possível identificar os conceitos com comportamentos mais relevantes para o negócio, bem como os estados e eventos que disparam as transições entre os estados (\cite{itana:2005}). Dessa forma, o diagrama de estados do ETL4NoSQL é apresentado na figura \ref{diagrama_estado}, nele podemos ver as transições de leitura da fonte de dados, validação e identificação dos dados, assim como o tratamento caso os dados não possam ser identificados. Subsequente a isso, o armazenamento dos dados para o processamento, a criação dos processos de ETL, a escolha da forma de processamento, execução das operações, e também o tratamento para as operações que não puderem ser executadas. Finalmente, a carga dos dados pode ser feita na base de destino seguido da mensagem de tratamento, caso haja sucesso ou não na execução.
+Ao construir o modelo comportamental é possível identificar os conceitos com comportamentos mais relevantes para o negócio, bem como os estados e eventos que disparam as transições entre os estados (\cite{itana:2005}). Dessa forma, o diagrama de estados do ETL4NoSQL é apresentado na figura \ref{diagrama_estado}, nele podemos ver as transições de leitura da fonte de dados, validação e identificação dos dados, assim como o tratamento caso os dados não possam ser identificados. Subsequente a isso, podemos ver as transições do armazenamento dos dados para o processamento, a criação dos processos de ETL, a escolha da forma de processamento, execução das operações, e também o tratamento para as operações que não puderem ser executadas. Finalmente, a transição da carga dos dados pode ser feita na base de destino seguido da mensagem de tratamento, caso haja sucesso ou não na execução.
 
 \begin{figure}[h!]
 	\centering
@@ -145,13 +147,13 @@ Seguindo o modelo de conceitos do negócio e do modelo de casos de uso foi poss�
 
 \subsection{Interfaces de Sistemas}
 
-As interfaces de sistemas do ETL4NoSQL identificadas, por meio do modelo de casos de uso apresentado no quadro \ref{casosdeuso}, foram: IReadData, IWriteData, IModelData, IExeOp e IProcOp. Para especificar as interfaces foi utilizado \acp{OCL} (\cite{warmer:1998}).
+As interfaces de sistemas do ETL4NoSQL identificadas, por meio do modelo de casos de uso apresentado no quadro \ref{casosdeuso}, foram: IReadData, IWriteData, IModelData, IExeOp e IProcOp. Para especificar as interfaces foi utilizado OCL (Object Constraint Language) (\cite{warmer:1998}).
 \\
 \lstset{emph={%  
 		context, pre, post%
 	},emphstyle={\color{black}\bfseries\underbar}%
 }%
-\begin{lstlisting}[frame=single, language=Oberon-2, basicstyle=\tiny]
+\begin{lstlisting}[frame=single, language=Oberon-2, basicstyle=\small]
 	context System :: IReadData (source : Fonte)	
 	pre:	
 	Fonte.allInstances@includes(Fonte) 
@@ -169,9 +171,9 @@ As interfaces de sistemas do ETL4NoSQL identificadas, por meio do modelo de caso
 	Os atributos do objeto f foram inicializados)	
 \end{lstlisting}
 
-A partir da especificação foram identificadas as operações: Interface IReadData (Connection(connect), structureType()).
+A partir da especificação foram identificadas as operações: Interface IReadData (Connection(connect) e structureType()).
 
-\begin{lstlisting}[frame=single, language=Oberon-2, basicstyle=\tiny]
+\begin{lstlisting}[frame=single, language=Oberon-2, basicstyle=\small]
 	context System :: IWriteData (load : Destino)
 	pre:
 	Destino.allInstances@includes(Destino) 
@@ -193,9 +195,9 @@ A partir da especificação foram identificadas as operações: Interface IReadD
 	Os atributos do objeto d foram inicializados)
 \end{lstlisting}
 
-As operações identificadas foram: Interface IWriteData (connection(connect), structureType(), allowWrite()).
+As operações identificadas foram: Interface IWriteData (connection(connect), structureType() e allowWrite()).
 
-\begin{lstlisting}[frame=single, language=Oberon-2, basicstyle=\tiny]
+\begin{lstlisting}[frame=single, language=Oberon-2, basicstyle=\small]
 	context System :: IModelData (model : Modelagem; 
 	source: Fonte; operation: Operacao)
 	pre:
@@ -222,9 +224,9 @@ As operações identificadas foram: Interface IWriteData (connection(connect), s
 	armazenadas em um APD)
 \end{lstlisting}
 
-As operações identificadas foram: Interface IModelData (readData(CodFonte), createOp(CodOperação, data)).
+As operações identificadas foram: Interface IModelData (readData(CodFonte) e createOp(CodOperação, data)).
 
-\begin{lstlisting}[frame=single, language=Oberon-2, basicstyle=\tiny]
+\begin{lstlisting}[frame=single, language=Oberon-2, basicstyle=\small]
 	context System :: IExeOp (model : Modelagem; operation: 
 	Operacao, processing: Processamento)
 	pre:
@@ -247,9 +249,9 @@ As operações identificadas foram: Interface IModelData (readData(CodFonte), cr
 
 \end{lstlisting}
 
-As operações identificadas foram: Interface IExeOp (modelOperation(CodModelagem), operationManagement())
+As operações identificadas foram: Interface IExeOp (modelOperation(CodModelagem) e operationManagement()).
 
-\begin{lstlisting}[frame=single, language=Oberon-2, basicstyle=\tiny]
+\begin{lstlisting}[frame=single, language=Oberon-2, basicstyle=\small]
 	context System :: IProcOp (operation: Operacao, 
 	processing: Processamento)	
 	pre:
@@ -268,11 +270,11 @@ As operações identificadas foram: Interface IExeOp (modelOperation(CodModelage
 
 \end{lstlisting}
 
-As operações identificadas foram: Interface IProcOp (process(CodOperação), typeProc(tipoProcessamento))
+As operações identificadas foram: Interface IProcOp (process(CodOperação) e typeProc(tipoProcessamento)).
 
 \subsection{Interfaces de Negócio}
 
-Para definir as dependências no modelo \cite{cheesman:2001}, identificam o conceito de tipos principais, sendo estes tipos que possuem existência independente.
+Para definir as dependências no modelo, \cite{cheesman:2001} identificam o conceito de tipos principais, sendo estes tipos que possuem existência independente.
 No ETL4NoSQL foi possível identificar quatro tipos principais: Fonte, Modelagem, Operação e Processamento. Para cada tipo principal foi possível definir uma interface de negócio, como é apresentado na figura \ref{modelo_negocio}.
 
 \begin{figure}[h]
@@ -286,7 +288,7 @@ Na figura \ref{modelo_negocio} pudemos perceber a interação entre os component
 
 \subsection{Especificação da Arquitetura do Componente}
 
-\cite{sommerville:2013}, define o projeto de arquitetura como um processo criativo em que se tenta organizar o sistema de acordo com os requisitos funcionais e não funcionais. Um estilo de arquitetura é um padrão de organização de sistema (\cite{shaw:1996}, \cite{sommerville:2013}), como uma organização cliente-servidor ou uma arquitetura em camadas. Porém, a arquitetura não necessariamente utilizará apenas um estilo, a maioria dos sistemas de médio e grande porte utilizam vários estilos. Para \cite{shaw:1996}, há três questões a serem definidas na escolha do projeto de arquitetura, a primeira é a escolha da estrutura, cliente-servidor ou em camadas, que permita atender melhor aos requisitos. A segunda questão é a respeito da decomposição dos subsistemas em módulos ou em componentes. E por fim, deve-se tomar a decisão de sobre como a execução dos subsistemas é controlada. A descrição da arquitetura pode ser representada graficamente utilizando modelos informais e notações como a UML (\cite{clements:2002}, \cite{sommerville:2013}). Para o ETL4NoSQL, cada componente foi associado à sua interface de negócio identificada e uma interface de gerenciamento foi separada das outras interfaces de negócio, como pode ser visto na figura \ref{arquitetura}.
+\cite{sommerville:2013}, define o projeto de arquitetura como um processo criativo em que se tenta organizar o sistema de acordo com os requisitos funcionais e não funcionais. Um estilo de arquitetura é um padrão de organização de sistema (\cite{shaw:1996}, \cite{sommerville:2013}), como uma organização cliente-servidor ou uma arquitetura em camadas. Porém, a arquitetura não necessariamente utilizará apenas um estilo, a maioria dos sistemas de médio e grande porte utilizam vários estilos. Para \cite{shaw:1996}, há três questões a serem definidas na escolha do projeto de arquitetura, a primeira é a escolha da estrutura, cliente-servidor ou em camadas, que permita atender melhor aos requisitos. A segunda questão é a respeito da decomposição dos subsistemas em módulos ou em componentes. E por fim, deve-se tomar a decisão de sobre como a execução dos subsistemas é controlada. A descrição da arquitetura pode ser representada graficamente utilizando modelos informais e notações como a UML (Unified Modeling Language) (\cite{clements:2002}, \cite{sommerville:2013}). Para o ETL4NoSQL, cada componente foi associado à sua interface de negócio identificada e uma interface de gerenciamento foi separada das outras interfaces de negócio, como pode ser visto na figura \ref{arquitetura}.
 
 \begin{figure}[h]
 	\centering
@@ -297,11 +299,11 @@ Na figura \ref{modelo_negocio} pudemos perceber a interação entre os component
 
 \section{Interação entre Componentes}
 
-Esta etapa é detalhada, em termos de interações, utilizando diagramas de colaboração. Dessa forma, apresentamos os diagramas de colaboração para as interações do ETL4NoSQL na seção a seguir.
+Esta etapa é detalhada, em termos de interações, utilizando diagramas de colaboração. Dessa forma, apresentamos os diagramas de colaboração para as interações do ETL4NoSQL na subseção a seguir.
 
 \subsection{Operações da interface de negócio}
 
-As operações de negócio são identificadas quando as interações forem analisadas para cada interface do sistema. Analisando as pré e pós-condições das operações de interface do sistema identificadas anteriormente foi possível detalhar usando diagramas de colaboração as interações necessárias para efetuar as operações do ETL4NoSQL. Os diagramas de cada operação podem ser visto nas figuras de \ref{colaboracao1} até \ref{process}.
+As operações de negócio são identificadas quando as interações forem analisadas para cada interface do sistema. Analisando as pré e pós-condições das operações de interface do sistema identificadas anteriormente foi possível detalhar usando diagramas de colaboração as interações necessárias para efetuar as operações do ETL4NoSQL. Os diagramas de colaboração de cada operação podem ser visto nas figuras de \ref{colaboracao1} até \ref{process}.
 
 A conexão com a fonte de dados é estabelecida (figura \ref{colaboracao1}).
 
@@ -379,69 +381,70 @@ Com as operações criadas é possível processá-las de forma a escolher o tipo
 
 Posteriormente à definição das interfaces de negócio, é possível detalhá-las. Para cada interface, as operações são especificadas com suas assinaturas, pré e pós-condições.
 
-\begin{lstlisting}[frame=single, language=Oberon-2, basicstyle=\tiny]
+\begin{lstlisting}[frame=single, language=Oberon-2, basicstyle=\small]
 
-	context IDataMgt :: connection(connect):Fonte
-		pre:
-		- Existe um parametro de conexao "connect"
-		- Existe uma fonte para ser conectada
-		post:
-		- A conexao com a fonte foi estabelecida ou nao
-		- Recebe uma mensagem de conexao bem sucedida ou erro
+ context IDataMgt :: connection(connect):Fonte
+	pre:
+	- Existe um parametro de conexao "connect"
+	- Existe uma fonte para ser conectada
+	post:
+	- A conexao com a fonte foi estabelecida ou nao
+	- Recebe uma mensagem de conexao bem sucedida ou erro
 
-	context IDataMgt :: strutuctureType():Fonte
-		pre:
-		- A conexao com a fonte foi bem sucedida
-		post:
-		- A estrutura de dados foi reconhecida ou nao
-		- Retorna mensagem de sucesso ou erro
+ context IDataMgt :: strutuctureType():Fonte
+	pre:
+	- A conexao com a fonte foi bem sucedida
+	post:
+	- A estrutura de dados foi reconhecida ou nao
+	- Retorna mensagem de sucesso ou erro
 		
-	context IDataMgt :: allowWrite():Destino
-		pre:
-		- A conexao com o destino foi bem sucedida
-		post:
-		- A base de dados destino permite escrita ou nao
-		- Retorna mensagem de sucesso ou erro
+ context IDataMgt :: allowWrite():Destino
+	pre:
+	- A conexao com o destino foi bem sucedida
+	post:
+	- A base de dados destino permite escrita ou nao
+	- Retorna mensagem de sucesso ou erro
 	
-	context IModelMgt :: readData(codFonte, data):APD
-		pre:
-		- A conexao com a fonte foi bem sucedida
-		- A estrutura de dados foi reconhecida
-		- Existe um parametro de busca "data" valido para 
+ context IModelMgt :: readData(codFonte, data):APD
+	pre:
+	- A conexao com a fonte foi bem sucedida
+	- A estrutura de dados foi reconhecida
+	- Existe um parametro de busca "data" valido para 
 		estrutura de dados reconhecida
-		post:
-		- A leitura dos dados foi realizada ou nao
-		- Retorna os dados em uma APD ou uma mensagem de erro
+	post:
+	- A leitura dos dados foi realizada ou nao
+	- Retorna os dados em uma APD ou uma mensagem de erro
 		
-	context IModelMgt :: createOp(codOp, data):Operacao
-		pre:
-		- Existe o mecanismo desejado para a criacao da operacao
-		- Existe um parametro "data" com os dados a serem 
-		usados na operacao
-		post:
-		- A operacao foi criada ou nao
-		- Retorna o codOp ou uma mensagem de erro
+ context IModelMgt :: createOp(codOp, data):Operacao
+	pre:
+	- Existe o mecanismo desejado para a criacao da operacao
+	- Existe um parametro "data" com os dados a serem 
+	usados na operacao
+	post:
+	- A operacao foi criada ou nao
+	- Retorna o codOp ou uma mensagem de erro
 		
-	context IOpMgt :: modelOperation(codModel)
-		pre:
-		- Existem operacoes criadas na APD (codModel)
-		post:
-		- As operacoes sao ordenadas para execucao
+ context IOpMgt :: modelOperation(codModel)
+	pre:
+	- Existem operacoes criadas na APD (codModel)
+	post:
+	- As operacoes sao ordenadas para execucao
 		
-	context IOpMgt :: operationManagement(codModel)
-		pre:
-		- Existem operacoes criadas na APD (codModel)
-		post:
-		- As operacoes foram alteradas, apagadas ou nao
-		- Retorna mensagem de sucesso ou erro
+ context IOpMgt :: operationManagement(codModel)
+	pre:
+	- Existem operacoes criadas na APD (codModel)
+	post:
+	- As operacoes foram alteradas, apagadas ou nao
+	- Retorna mensagem de sucesso ou erro
 	
-	context IProcMgt :: process(codOp)
-		pre:
-		- Existe a operacao (codOp)
-		- Foi escolhido o tipo de processamento (centralizado ou distribuido)
-		post:
-		- A operacao foi processada ou nao
-		- Retorna mensagem de sucesso ou erro
+ context IProcMgt :: process(codOp)
+	pre:
+	- Existe a operacao (codOp)
+	- Foi escolhido o tipo de processamento 
+	(centralizado ou distribuido)
+	post:
+	- A operacao foi processada ou nao
+	- Retorna mensagem de sucesso ou erro
 		
 \end{lstlisting}
 
@@ -454,12 +457,14 @@ Depois das operações terem sido especificadas, o diagrama de especificação d
 	\label{interfaces}
 \end{figure}
 
+Nas próximas seções mostraremos o ambiente de implementação utilizado para desenvolver o ETL4NoSQL, bem como suas interfaces de programação.
+
 
 \section{Ambiente de Implementação}
 
 Para a implementação do ETL4NoSQL utilizamos a linguagem de programação Python, pois ela segue o paradigma de orientação à objetos que é adequado para a proposta desta pesquisa. Além disso, Python tem uma sintaxe de fácil aprendizado e pode ser usada em diversas áreas, como Web e computação gráfica. Ela é uma linguagem de alto nível interpretada e também é um software livre. Devido a natureza do \textit{framework} ser flexível, reusável e integrado faz com que a orientação à objetos torne-se um bom paradigma a ser aproveitado neste trabalho.
 
-Assim, a implementação do \textit{framework} foi baseada nos princípios do \textit{design} orientado à objetos de inversão de controle, onde-se determina que os módulos de alto nível não devem ser dependentes de módulos de baixo nível, e sim, de abstrações, ou seja, os detalhes devem depender das abstrações. Esse princípio sugere que dois módulos não devem ser ligados diretamente, pois devem estar desacoplados com uma camada de abstração entre eles. Para suprir esse princípio, o ETL4NoSQL possui interfaces como o ETL4NoSQLMgr, IDataMgr, IModelMgr, IOpMgr e IProcMgr (figura \ref{arquitetura}). Elas utilizam dos mesmos comportamentos para as diversas variações, porém aplicados de acordo com a especificidade de cada um. Outro princípio importante utilizado é o da segregação de interfaces onde os usuários não devem ser forçados a depender de interfaces que não necessitam, elas dever ser enxutas com métodos específicos para a interface. 
+Assim, a implementação do \textit{framework} foi baseada nos princípios do \textit{design} orientado à objetos de inversão de controle, onde-se determina que os módulos de alto nível não devem ser dependentes de módulos de baixo nível, e sim, de abstrações, ou seja, os detalhes devem depender das abstrações. Esse princípio sugere que dois módulos não devem ser ligados diretamente, pois devem estar desacoplados com uma camada de abstração entre eles. Para suprir esse princípio, o ETL4NoSQL possui interfaces como o ETL4NoSQLMgr, IDataMgr, IModelMgr, IOpMgr e IProcMgr (figura \ref{arquitetura}). Elas utilizam dos mesmos comportamentos para as diversas variações, porém aplicados de acordo com a especificidade de cada um. Outro princípio importante utilizado é o da segregação de interfaces onde os usuários não devem ser forçados a depender de interfaces que não necessitam, elas devem ser enxutas com métodos específicos para cada interface. 
 
 Na seção seguinte apresentaremos as interfaces de programação do ETL4NoSQL, como uma sugestão a ser utilizada para a implementação deste trabalho de dissertação.
 
@@ -475,7 +480,7 @@ O ETL4NoSQL possui cinco principais interfaces de programação (a arquitetura c
 	\label{etl4nosqlmgr}
 \end{figure}
 
-A interface IDataMgr pode ser vista na figura \ref{idatamgr}, ela é responsável pela conexão de todas as bases de dados, bem como determina o tipo de estrutura que é a base, e também, informa se há permissão para escrita na base de dados.
+A interface IDataMgr pode ser vista na figura \ref{idatamgr}, ela é responsável pela conexão de todas as bases de dados, bem como determina o tipo de estrutura da base de dados, e também, informa se há permissão para escrita na base de dados desejada.
 
 \begin{figure}[h!]
 	\centering
@@ -484,7 +489,7 @@ A interface IDataMgr pode ser vista na figura \ref{idatamgr}, ela é responsáve
 	\label{idatamgr}
 \end{figure}
 
-Na figura \ref{imodelmgr} é apresentada a interface IModelMgr, esta realiza a leitura dos dados da base determinada pela interface IDataMgr e configurada no controlador ETL4NoSQLMgr. A interface IModelMgr também cria as operações de ETL e grava os dados na base de dados determinada no controlador.
+Na figura \ref{imodelmgr} é apresentada a interface IModelMgr, esta realiza a leitura dos dados da base armazenada pela interface IDataMgr e configurada pelo controlador ETL4NoSQLMgr. A interface IModelMgr também cria as operações de ETL e grava os dados na base de dados determinada no controlador. Note que nesta interface é possível criar novas operações de ETL, além da leitura e escrita, tornando o \textit{framework} flexível para cada aplicação. Ademais, após as operações serem criadas elas podem ser reutilizadas a qualquer momento facilitando o seu reuso.
 
 \begin{figure}[h!]
 	\centering
@@ -493,7 +498,7 @@ Na figura \ref{imodelmgr} é apresentada a interface IModelMgr, esta realiza a l
 	\label{imodelmgr}
 \end{figure}
 
-As operações criadas pela interface IModelMgr são listadas na interface IOpMgr (figura \ref{iopmgr}). Ela gerencia a inserção, alteração e remoção das operações, bem como ordena a sequência de operações a serem executadas.
+As operações criadas pela interface IModelMgr são listadas na interface IOpMgr (figura \ref{iopmgr}). Ela gerencia a inserção, alteração e remoção das operações, bem como ordena a sequência de operações a serem executadas conforme desejável pelo projetista de ETL.
 
 \begin{figure}[h!]
 	\centering
@@ -502,7 +507,7 @@ As operações criadas pela interface IModelMgr são listadas na interface IOpMg
 	\label{iopmgr}
 \end{figure}
 
-E finalmente, na figura \ref{iprocmgr}, é apresentada a interface IProcMgr. Esta interface é responsável pela execução das operações listadas pela IOpMgr. Na IProcMgr também é possível determinar o tipo de processamento desejável. 
+E finalmente, na figura \ref{iprocmgr}, é apresentada a interface IProcMgr. Esta interface é responsável pela execução das operações listadas pela IOpMgr. Na IProcMgr também é possível determinar e implementar o tipo de processamento das operações: distribuído, centralizado e paralelo. 
 
 \begin{figure}[h!]
 	\centering
@@ -526,7 +531,7 @@ E finalmente, na figura \ref{iprocmgr}, é apresentada a interface IProcMgr. Est
 
 \section{Considerações Finais}
 
-Este capítulo descreveu o ETL4NoSQL. Para isso, foram apresentados os requisitos de desenvolvimento de um \textit{framework} de ETL expondo a modelagem do domínio de ETL4NoSQL por meio de seu modelo conceitual, de casos de uso e comportamental. Foram demonstradas a modelagem da especificação, identificando os componentes, as interfaces de sistemas e de negócio do  \textit{framework} proposto. A especificação da arquitetura dos componentes do ETL4NoSQL e suas interações também foram evidenciadas. Mostramos como solução para implementação, as interfaces de programação utilizando a linguagem orientada à objetos chamada Python.
+Este capítulo descreveu o \textit{framework} ETL4NoSQL. Para isso, foram apresentados os seus requisitos de desenvolvimento e exposta a sua modelagem do domínio por meio de seu modelo conceitual, de casos de uso e comportamental. Foram demonstradas a modelagem da especificação e identificado os componentes, as interfaces de sistemas e de negócio do \textit{framework} proposto, além da especificação da arquitetura dos componentes do ETL4NoSQL, bem como suas interações. Mostramos como solução para implementação do \textit{framework} um ambiente de implementação utilizando a linguagem orientada à objetos chamada Python, e também suas interfaces de programação.
 
 O próximo capítulo apresentará o estudo experimental de \textit{software} que tem como objetivo definir se o ETL4NoSQL é adequado para desenvolver processos de ETL em BDs NoSQL e quais das suas funções são possíveis aprimorar.
 
