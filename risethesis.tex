@@ -88,6 +88,14 @@
 \usepackage{pdfpages}
 \usepackage{moreverb}
 \usepackage{listings}
+\usepackage{amsmath}
+\usepackage{empheq}
+\usepackage[theorems,skins]{tcolorbox}
+
+\newtcolorbox{mymathbox}[1][]{colback=white, sharp corners, #1}
+
+\newtcbox{\othermathbox}[1][]{nobeforeafter, math upper, tcbox raise base, enhanced, sharp corners, colback=black!10, colframe=red!30!black, drop fuzzy shadow, left=1em, top=2em, right=3em, bottom=4em}
+
 
 \captionsetup[table]{position=top,justification=centering,width=.85\textwidth,labelfont=bf,font=footnotesize}
 \captionsetup[lstlisting]{position=top,justification=centering,width=.85\textwidth,labelfont=bf,font=footnotesize}

@@ -1,15 +1,15 @@
 \chapter{Estudo Experimental de Software}
 
-Este capítulo provê o roteiro de experimentação de \textit{software} para ferramentas de ETL. A Engenharia de \textit{Software} Experimental tem como objetivo aprimorar métodos, técnicas e ferramentas de Engenharia de  \textit{Software} a partir de métodos experimentais (\cite{souza:2015}). As etapas definidas no processo de experimentação em Engenharia de  \textit{Software} proposto por \cite{souza:2015} consiste em etapas de definição, planejamento, operação, interpretação dos dados e empacotamento que serão melhor detalhados nas seções a seguir.
+Este capítulo provê o roteiro de experimentação de \textit{software} para ferramentas de ETL. A Engenharia de \textit{Software} Experimental tem como objetivo aprimorar métodos, técnicas e ferramentas de Engenharia de \textit{Software} a partir de métodos experimentais (\cite{souza:2015}). As etapas definidas no processo de experimentação em Engenharia de  \textit{Software} proposto por \cite{souza:2015} consistem em etapas de definição, planejamento, operação, interpretação dos dados e empacotamento que serão melhor detalhadas nas seções a seguir.
 \clearpage
 
 \section{Objetivos do experimento}
 
-O objetivo principal da aplicação deste experimento é definir se o \textit{framework} proposto nesta dissertação é uma ferramenta adequada para auxiliar no desenvolvimento de processos de ETL em BDs NoSQL.
+O objetivo principal da aplicação deste experimento é definir se o \textit{framework} proposto nesta dissertação é uma ferramenta adequada para auxiliar no desenvolvimento de processos de extração, transformação e carga de bancos de dados NoSQL.
 
 \subsection{Objetivo da Medição}
 
-Tendo como base as ferramentas de ETL existentes na literatura, caracterizar:
+Tendo como base as ferramentas de ETL existentes na literatura, o objetivo da medição é caracterizar:
 
 \begin{enumerate}
 	\item Quais as principais funcionalidades que as ferramentas de ETL oferecem:
@@ -62,7 +62,7 @@ Tendo como base as ferramentas de ETL existentes na literatura, caracterizar:
 
 \section{Planejamento}
 
-Na etapa de planejamento são definidas as hipóteses do estudo, a descrição da instrumentação, as métricas, seleção do contexto e dos indivíduos, as variáveis, a análise qualitativa e a validade do experimento. Todas elas serão descritas nas seções seguintes.
+Na etapa de planejamento são definidas as hipóteses do estudo, a descrição da instrumentação, as métricas, seleção do contexto e dos indivíduos, as variáveis, a análise qualitativa e a validade do experimento. Todas elas estão descritas nas subseções seguintes.
 
 \subsection{Definição das Hipóteses}
 
@@ -113,7 +113,7 @@ H4: Fpn - (Fpn $\cap$ Fo) $\neq$ $\emptyset$
 
 \subsection{Descrição da instrumentação}
 
-Para cada funcionalidade presente nas ferramentas apresentada na literatura que são consideradas fundamentais para o funcionamento dos processos de ETL pode ser encontrada no quadro \ref{instrumentacao}:
+Para cada funcionalidade das ferramentas de ETL consideradas por este estudo oferecer a escolha no quadro \ref{instrumentacao}:
 
 \begin{table}[ht]
 	\centering
@@ -143,15 +143,14 @@ Para cada funcionalidade presente nas ferramentas apresentada na literatura que 
 	\end{tabular}
 \end{table}
 
-Para cada funcionalidade aplicar teste estatístico qui-quadrado para definir:
+Para cada funcionalidade aplicar teste estatístico Qui-quadrado para definir:
+\begin{itemize}
+	\item se pode considerar que essa funcionalidade é fornecida (P);
+	\item se pode considerar que essa funcionalidade é constantemente utilizada pelos processos de ETL (U);
+	\item se pode considerar que essa funcionalidade necessita de melhoria (M).
+\end{itemize}
 
-se pode considerar que essa funcionalidade é fornecida;
-
-se pode considerar que essa funcionalidade é útil (ela é constantemente utilizada pelos processos de ETL);
-
-se pode considerar que essa funcionalidade necessita de melhoria.
-
-Resultado: N funcionalidades com valores (P; M; U) onde P - presença {0 - não presente; 1 - presente}; U - utilidade {0 - não é útil; 1 - é útil}; melhoria {0 - não necessita melhorar; 1 - necessita melhorar}.
+\textbf{Resultado}: N funcionalidades com valores (P; M; U) onde P - presença {0 - não presente; 1 - presente}; U - utilidade {0 - não é útil; 1 - é útil}; melhoria {0 - não necessita melhorar; 1 - necessita melhorar}.
 
 \subsection{Métricas}
 
@@ -198,18 +197,18 @@ De acordo com Travassos (2002), o contexto pode ser caracterizado conforme quatr
 	\item generalidade: específico / geral.
 \end{itemize}
 
-Nosso estudo supõe o processo off-line porque as ferramentas não estão sendo testadas durante todo o tempo da utilização, mas em certo instante. Os participantes são as ferramentas de ETL encontradas na literatura. O estudo é modelado porque as funcionalidades das ferramentas não são caracterizadas durante a resolução do problema real, mas utilizando parâmetros subjetivos (ex. presença, utilidade e necessidade). As funcionalidades do ETL4NoSQL são comparadas com as ferramentas presentes na literatura, então, o contexto possui o caráter específico.
+Nosso estudo supõe o processo \textit{off-line} porque as ferramentas não estão sendo testadas durante todo o tempo da utilização, mas em certo instante. Os participantes são as ferramentas de ETL encontradas na literatura. O estudo é modelado porque as funcionalidades das ferramentas não são caracterizadas durante a resolução do problema real, mas utilizando parâmetros subjetivos (ex. presença, utilidade e necessidade). As funcionalidades do ETL4NoSQL são comparadas com as ferramentas presentes na literatura, então, o contexto possui o caráter específico.
 
 \subsection{Seleção dos indivíduos}
 
-Como participantes para o estudo propõe-se utilizar as ferramentas encontradas na literatura. Assume-se que esses indivíduos estão presente em diversos estudos realizados e avaliados no meio acadêmico.
+Como participantes para o estudo propõe-se utilizar as ferramentas encontradas na literatura. Assume-se que esses indivíduos estão presentes em diversos estudos realizados e avaliados no meio acadêmico.
 
-Para a escolha das ferramentas utilizadas neste estudo foi levado em consideração a semelhança da finalidade do uso com a ferramenta proposta. Seria conveniente utilizar para o estudo ferramentas que tem o objetivo de auxiliar processos de ETL. Dessa forma, a seleção baseou-se nas características das ferramentas.
+Para a escolha das ferramentas utilizadas neste estudo foi levado em consideração a semelhança da finalidade do uso com a ferramenta proposta neste trabalho. Seria conveniente utilizar para o estudo ferramentas que tem o objetivo de auxiliar no desenvolvimento de processos de ETL em bancos de dados NoSQL. Dessa forma, a seleção dos indivíduos do estudo experimental baseou-se nas características das ferramentas de ETL existentes na literatura.
 
 \subsection{Variáveis}
 
 
-Variável independente: A lista de funcionalidades das ferramentas encontradas na literatura.
+Variável independente: A lista de funcionalidades das ferramentas de ETL encontradas na literatura.
 
 Variáveis dependentes: 
 
@@ -221,11 +220,15 @@ Variáveis dependentes:
 	Similar, quando não se cumprem as condições de "Igual" e "Diferente". O grau de similaridade pode ser avaliado como:
 	\{ 1, X, X \} / \{ 0, X, X \} + \{ 1, X, X \} * 100\%
 	
-	\item A utilidade das funcionalidades similares. Mostra a parte útil das funcionalidades oferecidas pela ferramenta proposta:
+	\item A utilidade das funcionalidades similares. 
+	
+	Mostra a parte útil das funcionalidades oferecidas pela ferramenta proposta:
 	Parte útil: \{ 1, X, 1 \} / \{ 1, X, X \} * 100\%
 	Parte inútil: \{ 1, X, 0 \} / \{ 1, X, X \} * 100\%
 	
-	\item A melhoria das funcionalidades similares. Mostra a necessidade de melhoria nas funcionalidades oferecidas pela ferramenta proposta:
+	\item A melhoria das funcionalidades similares. 
+	
+	Mostra a necessidade de melhoria nas funcionalidades oferecidas pela ferramenta proposta:
 	Não necessita melhorar: \{ 1, 0, X \} / \{ 1, X, X \} * 100\%
 	Necessita melhorar: \{ 1, 0, X \} / \{ 1, X, X \} * 100\%
 \end{enumerate}
@@ -237,13 +240,13 @@ Assim, essa análise deve considerar funcionalidades com valor PMU = {0, X, X} (
 
 \subsection{Validade}
 
-\textbf{Validade interna:} como mencionado na parte "Seleção dos indivíduos" para o estudo propõe-se a utilizar ferramentas presentes na literatura, que são validadas pelo meio acadêmico. Assim, assume-se que elas são representativas para a população de ferramentas de ETL.
+\textbf{Validade interna:} como mencionado na parte "Seleção dos indivíduos" para o estudo propõe-se utilizar ferramentas de ETL presentes na literatura, que são validadas pelo meio acadêmico. Assim, assume-se que elas são representativas para a população de ferramentas de ETL.
 
 Além disso, para redução da influência dos fatores que não são interesse do nosso estudo e, portanto, para aumento da validade interna do estudo supõe-se utilizar dados das ferramentas mais populares da literatura, cuja a validação já tenha passado por diversas avaliações.
 
 \textbf{Validade de conclusão:} para receber os valores da presença, utilidade e melhorias o teste binomial será utilizado. A verificação de hipótese será feita por meio de simples demonstração de presença ou não de funcionalidades nas listas que representam as variáveis independentes.
 
-\textbf{Validade de construção:} esse estudo está caracterizado pela conformidade das funcionalidades listadas na ferramenta proposta com as funcionalidades reais necessárias para a utilização de ferramentas de ETL. As características das ferramentas de ETL presentes na literatura representa a lista de funcionalidades que uma ferramenta de ETL deve apresentar para mostrar o desempenho adequado do ponto de vista da literatura. As funcionalidades, que tem o maior relacionamento com as ferramentas de ETL do ponto de vista dos pesquisadores, foram escolhidas do conjunto total de funcionalidades das ferramentas de ETL presentes na literatura.
+\textbf{Validade de construção:} esse estudo está caracterizado pela conformidade das funcionalidades listadas na ferramenta proposta com as funcionalidades reais necessárias para a utilização de ferramentas de ETL. As características das ferramentas de ETL presentes na literatura representa a lista de funcionalidades que uma ferramenta de ETL deve apresentar para mostrar o desempenho adequado do ponto de vista da literatura. As funcionalidades que tem o maior relacionamento com as ferramentas de ETL do ponto de vista dos pesquisadores foram escolhidas do conjunto total de funcionalidades das ferramentas de ETL presentes na literatura.
 
 \textbf{Validade externa:} como foi mencionado nas partes "Seleção dos indivíduos" e "Validade interna" os participantes do estudo em geral podem ser considerados representativos para a população da literatura apresentada pela academia. Para avaliação do nível de importância das funcionalidades analisadas foi levada em consideração a frequência que a funcionalidade apareceu nas ferramentas da literatura.
 
@@ -251,13 +254,13 @@ Os materiais utilizados no estudo podem ser considerados representativos e "em t
 
 \section{Operação}
 
-A etapa de operação ocorre após a etapa de planejamento do estudo experimental. Nela é exercido o monitoramento do experimento para garantir que ele esteja ocorrendo conforme foi planejado (Souza Isaque, 2015). Nesta seção serão apresentados os questionários do perfil da ferramenta de ETL e o de Funcionalidades.
+A etapa de operação ocorre após a etapa de planejamento do estudo experimental. Nela é exercido o monitoramento do experimento para garantir que ele esteja ocorrendo conforme foi planejado (\cite{souza:2015}). Nesta seção serão apresentados os questionários do perfil da ferramenta de ETL e o de Funcionalidades.
 
 \subsection{Questionário do Perfil da Ferramenta de ETL}
 
 O quadro \ref{questionarioperfil} mostra as questões usadas para definir o perfil das ferramentas utilizadas como indivíduos deste experimento.
 
-\begin{table}[ht]
+\begin{table}[h!]
 	\centering
 	\caption{Questionário do Perfil da Ferramenta de ETL}
 	\label{questionarioperfil}
@@ -293,7 +296,7 @@ O quadro \ref{questionarioperfil} mostra as questões usadas para definir o perf
 
 Sob o ponto de vista das características das ferramentas e considerando a finalidade da ferramenta indicada acima, avalie as colunas correspondentes segundo as escalas abaixo, a presença, utilidade e melhorias quanto às funcionalidades das ferramentas apresentadas nos seus respectivos trabalhos de pesquisa, das funcionalidades listadas no questionário:
 
-\begin{table}[ht!]
+\begin{table}[h!]
 	\centering
 	\caption{Instrumentação para aplicar o questionário}
 	\label{instrumentacao2}
@@ -321,7 +324,7 @@ Sob o ponto de vista das características das ferramentas e considerando a final
 	\end{tabular}
 \end{table}
 
-\begin{figure}[h!]
+\begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.5]{fig/questionario_caracteristicas.png}
 	\caption{Questionário de Funcionalidades}
@@ -333,31 +336,31 @@ Sob o ponto de vista das características das ferramentas e considerando a final
 \subsection{Resultado do Estudo}
 
 
-A figura \ref{presenca} apresenta o gráfico da quantidade de presença para cada funcionalidade de acordo com cada ferramenta de ETL. Já a figura \ref{utilidade} mostra o nível de utilidade que as ferramentas dão para cada funcionalidade e a figura \ref{melhoria} indica necessidade de melhoraria das funcionalidades em cada ferramenta.
+A figura \ref{presenca} apresenta o gráfico da quantidade de presença para cada funcionalidade de acordo com cada ferramenta de ETL. Já a figura \ref{utilidade} mostra o nível do uso que as ferramentas fazem para cada funcionalidade e a figura \ref{melhoria} indica necessidade de melhoraria das funcionalidades em cada ferramenta.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.4]{fig/presenca.png}
+	\includegraphics[scale=0.5]{fig/presenca.png}
 	\caption{Quantidade de Presença para cada funcionalidade}
 	\label{presenca}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.4]{fig/utilidade.png}
+	\includegraphics[scale=0.5]{fig/utilidade.png}
 	\caption{Níveis de utilidade para cada funcionalidade}
 	\label{utilidade}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.4]{fig/melhorias.png}
+	\includegraphics[scale=0.5]{fig/melhorias.png}
 	\caption{Necessidade de melhoria para cada funcionalidade}
 	\label{melhoria}
 \end{figure}
 
 
-O perfil dos participantes é apresentado no quadro \ref{resultadoperfil}, bem como a legenda para leitura é exibida no quadro \ref{legenda}. Na figura \ref{perfil} é possível comparar por meio do gráfico os perfis das ferramentas analisadas por este estudo experimental. 
+O perfil dos participantes é apresentado no quadro \ref{resultadoperfil}, bem como a legenda para leitura é exibida no quadro \ref{legenda}. 
 
 Das onze ferramentas de ETL apresentadas neste estudo dez possuem código aberto, sete não possui uma marca reconhecida no mercado, nenhuma foi desenvolvida para suportar BDs NoSQL, seis possuem uma GUI, apenas quatro não são programáveis, duas não são integradas, nove delas oferece alguma alternativa para o processamento distribuído, um pouco mais da metade são extensíveis e a finalidade da maioria é modelagem tentando aliar ao desempenho.
 
@@ -417,12 +420,12 @@ Código Fonte & Marca de mercado & Para NoSQL & GUI & Programável & Integrada &
 \end{table}
 
 
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.38]{fig/perfil.png}
-\caption{Perfil das Ferramentas de ETL}
-\label{perfil}
-\end{figure}
+%\begin{figure}[h]
+%\centering
+%\includegraphics[scale=0.38]{fig/perfil.png}
+%\caption{Perfil das Ferramentas de ETL}
+%\label{perfil}
+%\end{figure}
 
 \section{Análise e interpretação dos resultados}
 
@@ -491,7 +494,7 @@ As medidas de tendência central como os valores "Presença", "Melhoria" e "Util
 
 Considerando as respostas recebidas durante o estudo e utilizando os resultados de estatística descritiva podemos dividir as perguntas em 4 grupos. O primeiro grupo são as funcionalidades que estão presente, mas são parcialmente úteis; já o segundo grupo são as funcionalidades presentes e úteis; o terceiro grupo consiste na presença da funcionalidade com necessidade de melhoria; e finalmente, o quarto grupo que representa as funcionalidades que estão presentes e não necessitam de melhoria. Todos os grupos podem ser analisados nos quadros \ref{grupo1}, \ref{grupo2}, \ref{grupo3} e \ref{grupo4}.
 
-Os valores na tabela significam P - presente:não presente; M - necessita melhoria:não necessita melhoria; U - útil;inútil. 
+Os valores na tabela significam P - presente:não presente; M - necessita melhoria:não necessita melhoria; U - útil:inútil. 
 
 
 \begin{table}[h!]
@@ -504,9 +507,9 @@ Os valores na tabela significam P - presente:não presente; M - necessita melhor
 		\hline
 		N. & Funcionalidade & P & M & U & Característica  \\
 		\hline
-		6 & Apoio ao nível de debugging & 10:1 & 0:11 & 8:3 & - A funcionalidade existe na maioria das ferramentas, mas não dão o enfoque nela. \\
-		&&&&& - É uma funcionalidade trivial, pois é possível comparar os dados da fonte e destino mesmo sem \textit{debugging}.\\
-		&&&&& - Pode ser útil para evitar o trabalho de fazer a comparação da fonte com o destino, além de poder dar uma resposta em tempo de execução.\\
+		6 & Apoio ao nível de debugging & 10:1 & 0:11 & 8:3 & - A funcionalidade existe na maioria das ferramentas, mas não dão enfoque à ela. \\
+		&&&&& - É possível comparar os dados da fonte e destino mesmo sem \textit{debugging}.\\
+		&&&&& - Pode ser útil para evitar o trabalho de fazer a comparação da fonte com o destino, além da possibilidade de obter uma resposta em tempo de execução.\\
 		\hline
 		
 		
@@ -521,7 +524,7 @@ Os valores na tabela significam P - presente:não presente; M - necessita melhor
 	\begin{tabular}{|l|l|l|l|l|l|}
 		\hline
 		N & Funcionalidade & P & M & U & Características \\ \hline
-		\multirow{4}{*}{2} & \multirow{4}{*}{Suporte à fonte} & \multirow{4}{*}{10:1} & \multirow{4}{*}{8:3} & \multirow{4}{*}{11:0} & \multirow{16}{*}{\begin{tabular}[c]{@{}l@{}}- As ferramentas oferecem algum suporte \\ em relação à leitura e carga da fonte e destino,  \\ porém muitas apenas lidam com SGBDs relacionais.\\ - Deve haver um enfoque nas novas soluções \\ de SGBDs como os SGBDs NoSQL.\\ - Algumas ferramentas não oferecem a opção \\ para utilizar linha de comando, o qual é \\ considerado importante para ter maior liberdade \\ na implementação de processos de ETL.\\ -Dependendo do foco da ferramenta, alguma\\ delas não dão importância ao processamento\\ em paralelo, porém em se tratando de \textit{Big Data},\\ o processamento em paralelo é fundamental\\ para possibilitar a execução de processos de\\ ETL em grandes volumes de dados.\end{tabular}} \\
+		\multirow{4}{*}{2} & \multirow{4}{*}{Suporte à fonte} & \multirow{4}{*}{10:1} & \multirow{4}{*}{8:3} & \multirow{4}{*}{11:0} & \multirow{16}{*}{\begin{tabular}[c]{@{}l@{}}- As ferramentas oferecem algum suporte \\ em relação à leitura e carga da fonte e destino\\ dos dados, porém apenas lidam com \\SGBDs relacionais.\\ - Deve haver um enfoque nas novas soluções \\ de SGBDs como os SGBDs NoSQL.\\ - Algumas ferramentas não oferecem a opção \\ para utilizar linha de comando, que é \\ considerado importante para ter maior liberdade \\ na implementação dos processos de ETL.\\ -Algumas ferramentas,\\ não dão importância ao processamento\\ em paralelo, porém em se tratando de grandes \\volumes de dados, o processamento em paralelo\\ é fundamental para possibilitar a execução de \\processos de ETL.\end{tabular}} \\
 		&  &  &  &  &  \\
 		&  &  &  &  &  \\
 		&  &  &  &  &  \\ \cline{1-5}
@@ -548,7 +551,7 @@ Os valores na tabela significam P - presente:não presente; M - necessita melhor
 	\begin{tabular}{|l|l|l|l|l|l|}
 		\hline
 		N & Funcionalidade & P & M & U & Características \\ \hline
-		\multirow{4}{*}{4} & \multirow{4}{*}{Suporte à modelagem} & \multirow{4}{*}{9:2} & \multirow{4}{*}{5:6} & \multirow{4}{*}{11:0} & \multirow{10}{*}{\begin{tabular}[c]{@{}l@{}}- A maioria das ferramentas dão suporte\\ à modelagem dos processos de ETL,\\ porém algumas focam apenas no \\ desempenho necessitando melhoria no \\ processo de modelagem.\\ - Poucas ferramentas dão importância \\ para garantir qualidade aos processos \\ de ETL ou ao seu desempenho.\end{tabular}} \\
+		\multirow{4}{*}{4} & \multirow{4}{*}{Suporte à modelagem} & \multirow{4}{*}{9:2} & \multirow{4}{*}{5:6} & \multirow{4}{*}{11:0} & \multirow{10}{*}{\begin{tabular}[c]{@{}l@{}}- A maioria das ferramentas dão suporte\\ à modelagem dos processos de ETL,\\ porém algumas focam apenas no \\ desempenho necessitando melhoria no \\ processo de modelagem.\\ - Poucas ferramentas dão importância \\ para garantir qualidade aos processos \\ de ETL.\end{tabular}} \\
 		&  &  &  &  &  \\
 		&  &  &  &  &  \\
 		&  &  &  &  &  \\ \cline{1-5}
@@ -606,27 +609,35 @@ Para cada funcionalidade foi aplicado o teste de associação Qui-quadrado, com 
 Dessa forma, calculamos o valor esperado para cada funcionalidade através da fórmula de frequências esperadas:
 \\
 
-E = (total da linha) x (total da coluna) / (total geral)
+\begin{lstlisting}[frame=single, language=Oberon-2, basicstyle=\small]
+	E = (total da linha) x (total da coluna) / (total geral)
 
-E = 63 x 11 / 110 = 6,3
+	E = 63 x 11 / 110 = 6,3
 
-E = 47 x 11 / 110 = 4,7
-\\
+	E = 47 x 11 / 110 = 4,7
+
+\end{lstlisting}
 
 Para a frequência das funcionalidades existentes o valor esperado é E = 6,3 e para frequência não existentes o valor esperado é E = 4,7.
 
 
 A fórmula estatística para o teste qui-quadrado é definida por:
-\\
 
+\[
+\boxed{ 
+		\!\begin{aligned}
+		& \chi^2 = \sum \frac{(O-E)ˆ2}{E} \\
+		\end{aligned}
+	}
+\]
+Onde:
 
- $ \chi^2 $ = $\sum \frac{(O-E)ˆ2}{E}$
+A = soma se estende a todas as células da tabela de contingência;
 
+O = representa a frequência observada na célula; e 
 
- onde:
- a soma se estende a todas as células da tabela de contingência; 
- O representa a frequência observada na célula; e
- E representa a frequência esperada na célula.
+E = representa a frequência esperada na célula.
+
 
 \begin{table}
 	\centering
@@ -642,11 +653,16 @@ A fórmula estatística para o teste qui-quadrado é definida por:
 
 Somando os valores das parcelas do  $ \chi^2 $, temos: 
 
-$ \chi^2 $ = 20,765
+\[
+\boxed{
+	\!\begin{aligned}
+	& \chi^2=20,765 \\
+	& com \\
+	& gl = (l - 1) . (c - 1) = (2 - 1) (10 - 1) = 9\\
+	\end{aligned}
+}
+\]
 
-com
-
-\textit{gl} = (\textit{l} - 1) . (\textit{c} - 1) = (2 - 1) (10 - 1) = 9
 
 Pela tabela de distribuição qui-quadrado, verificamos que a probabilidade de significância $\rho$ é inferior a 0,01. Então, para qualquer nível usual de significância ($\alpha = 0,05$), o teste detecta associação entre as funcionalidades e as ferramentas (pois, $\rho < \alpha $). Em outras palavras, o teste qui-quadrado mostrou que as ferramentas em estudo são diferentes quanto às suas funcionalidades.
 
@@ -655,7 +671,7 @@ Pela tabela de distribuição qui-quadrado, verificamos que a probabilidade de s
 Para verificar a similaridade entre as funcionalidades existentes nas ferramentas de ETL na literatura e as funcionalidades do ETL4NoSQL é necessário calcular o valor de variável dependente.
 
 \begin{itemize}
-	\item[1.]  A mediana dos conjuntos de funcionalidades existentes nas ferramentas de ETL da literatura e as funcionalidades do ETL4NoSQL não podem ser consideradas iguais (a quantidade de funcionalidades com valor PMU \{ 1, X, X \} 7 < 10), nem diferentes (a quantidade de funcionalidades com valor PMU \{ 0, X, X \}  3 < 10). Assim, precisamos calcular o grau de similaridade segundo a fórmula do variável dependente 1:
+	\item[1.]  A mediana dos conjuntos de funcionalidades existentes nas ferramentas de ETL da literatura e as funcionalidades do ETL4NoSQL não podem ser consideradas iguais (a quantidade de funcionalidades com valor PMU \{ 1, X, X \} 7 < 10), nem diferentes (a quantidade de funcionalidades com valor PMU \{ 0, X, X \}  3 < 10). Assim, precisamos calcular o grau de similaridade segundo a fórmula da variável dependente 1:
 
 		grau de similaridade = 7 / 10 * 100\% = 70\% 
 
