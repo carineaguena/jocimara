@@ -673,7 +673,7 @@ requirements for the degree of \@degree\ in \@majorfielden.
 
 \def\dedicatory{%
   \if@openright\cleardoublepage\else\clearpage\fi
-  \thispagestyle{empty}
+  \setcounter{chapter}{2}
   ~\\
   \vfill
   \begin{flushright}
