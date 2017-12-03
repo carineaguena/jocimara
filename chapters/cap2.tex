@@ -1,6 +1,6 @@
 \chapter{Fundamentação Teórica}
 
-Neste capítulo são apresentados os conceitos relacionados ao desenvolvimento desta pesquisa, bem como o embasamento teórico necessário para o entendimento do trabalho. Os assuntos abordados são: ETL, Banco de Dados NoSQL, \textit{Frameworks}, Estudo Experimental de \textit{Software} e trabalhos correlatos ao tema deste trabalho.
+Neste capítulo, são apresentados os conceitos relacionados ao desenvolvimento desta pesquisa, bem como o embasamento teórico necessário para o entendimento do trabalho. Os assuntos abordados são: ETL, Banco de Dados NoSQL, \textit{Frameworks}, Estudo Experimental de \textit{Software} e trabalhos correlatos ao tema deste estudo.
 
 
 \clearpage
@@ -8,11 +8,11 @@ Neste capítulo são apresentados os conceitos relacionados ao desenvolvimento d
 
 \section{Conceitos Básicos}
 
-Conceitos de ETL, banco de dados NoSQL, desenvolvimento baseado em componentes, \textit{frameworks} e estudo experimental de \textit{software} são essenciais para esta pesquisa. Dessa forma, os princípios básicos desses conceitos são apresentados nesta seção. Ainda que estudo experimental de \textit{software} não seja o tema principal deste trabalho, seus conceitos são essenciais para avaliar e medir nossa proposta sendo fundamental entendê-los.
+Conceitos de ETL, banco de dados NoSQL, desenvolvimento baseado em componentes, \textit{frameworks} e estudo experimental de \textit{software} são essenciais para esta pesquisa. Dessa forma, os princípios básicos desses conceitos são apresentados nesta seção. Ainda que, estudo experimental de \textit{software} não seja o tema principal deste trabalho, seus conceitos são essenciais para avaliar e medir nossa proposta sendo fundamental entendê-los.
 
 \subsection{ETL}
 
-ETL sigla para \textit{Extraction, Transform and Load} (Extração, Limpeza/Transformação e Carga - ETL) é conhecido na literatura por definir processos que permitem a extração e transformação de dados, centralizando-os numa base destino facilitando o gerenciamento e análise desses dados (\cite{kimball:2004}, \cite{rud:2009}). O fluxo do processo de ETL inicia-se com extração dos dados a partir de uma fonte de dados, que podem ser arquivos textuais, banco de dados relacionais, banco de dados NoSQL, entre outros. Os dados são propagados para uma Área de Processamento de Dados (APD) onde são executadas a limpeza e transformação por meio de mecanismos de ETL definidos como agregação, junção, filtro, união, etc. Finalmente, os dados são carregados em estruturas que podem ser \textit{data warehouses} ou repositórios analíticos (\cite{silva:2016}, \cite{silva:2012}, \cite{kimball:2004}). 
+ETL (Extração, Limpeza/Transformação e Carga - ETL) é conhecido na literatura por definir processos que permitem a extração e transformação de dados, centralizando-os numa base destino facilitando o gerenciamento e análise desses dados (\cite{kimball:2004}, \cite{rud:2009}). O fluxo do processo de ETL inicia-se com extração dos dados a partir de uma fonte de dados, que podem ser arquivos textuais, banco de dados relacionais, banco de dados NoSQL, entre outros. Os dados são propagados para uma Área de Processamento de Dados (APD) onde são executadas a limpeza e transformação por meio de mecanismos de ETL definidos como agregação, junção, filtro, união, etc. Finalmente, os dados são carregados em estruturas que podem ser \textit{data warehouses} ou repositórios analíticos (\cite{silva:2016}, \cite{silva:2012}, \cite{kimball:2004}). 
 
 \cite{kimball:2004} definem os processos de ETL em 4 macroprocessos, com 34 subsistemas que são listados a seguir. 
 
@@ -25,55 +25,21 @@ ETL sigla para \textit{Extraction, Transform and Load} (Extração, Limpeza/Tran
 	%	\end{itemize}
 	
 	\item[\textbf{b)}] \textbf{Limpeza e Transformação}: Envia os dados de origem, por meio de várias etapas de processamento de ETL; melhora a qualidade dos dados recebidos da fonte de dados; mescla os dados de duas ou mais fontes de dados; cria dimensões; e aplica métricas. Esta etapa possui 5 subsistemas: \textit{Data Cleasing System, Error Event Tracking, Deduplication, Data Conformance} e Criação de Dimensão de auditoria .
-	%	\begin{itemize}
-		%	\item \textbf{Data Cleasing System - Sistema de Limpeza de Dados:}  Implementa processos de qualidade para identificar violações nos dados.
-		%	\item \textbf{Criação de Dimensão de auditoria:} Junta metadados para cada tabela fato como uma dimensão. Estes metadados estarão disponíveis para a geração de aplicações de BI que visualizem  a qualidade dos dados.
-		%	\item \textbf{Deduplication - Tirar a duplicidade de dados:} Elimina dados redundantes de dimensões como clientes ou produtos. Pode requerer integração cruzada entre múltiplas origens e a aplicação de regras para identificar qual a versão mais correta de uma linha duplicada.
-		%	\item \textbf{Data Conformance - conformidade de dados:} Força o uso de atributos comuns entre as principais Conformed Dimensions versus as métricas comuns nas tabelas fato relacionadas.
-	%	\end{itemize}
+
 	
 	\item[\textbf{c)}] \textbf{Entrega ou Carga}: Estrutura fisicamente e carrega os dados conforme desejado em DWs ou repositórios analíticos. Esta etapa possui 13 subsistemas: \textit{Slowly Changing Dimension (SCD) Manager, Surrogate Key Generator, Hierarchy Manager, Special Dimensions Manager, Fact Table Builders, Surrogate Key Pipeline, Multi-Valued Bridge Table Builder, Late Arriving Data Handler, Dimension Manager, Fact Table Provider, Aggregate Builder, OLAP Cube Builder, Data Propagation Manager}.
-	%	\begin{itemize}
-		%	\item \textbf{Slowly Changing Dimension (SCD) Manager:} Implementa a lógica para os atributos SCD.
-		%	\item \textbf{Surrogate Key Generator:} Cria as chaves substitutas (chaves de negócio) - surrogate keys independentes para cada dimensão.
-		%	\item \textbf{Hierarchy Manager:} Entrega múltipla e simultânea de estruturas hierárquicas na dimensão.
-		%	\item \textbf{Special Dimensions Manager:} Cria locais - placeholders na estrutura de ETL para sustentar os processos repetitivos específicos da organização, no desenho de dimensões específicas como as Junk Dimensions, Mini Dimensions e indicadores de comportamento.
-		%\item \textbf{Fact Table Builders:} Construção dos três tipos básicos de tabela fato: Transacional, Periódico e Cumulativo (transaction grain, periodic snapshot e accumulating snapshot).
-		%	\item \textbf{Surrogate Key Pipeline:} Substitui, nas dimensões, a chave natural operacional das tabelas de origem pelas chaves substitutas (Surrogate Key) que serão utilizadas para o relacionamento com as tabelas fato.
-		%	\item \textbf{Multi-Valued Bridge Table Builder:} Construção e manutenção das tabelas ponte (bridge tables) para suportar os relacionamentos multi-valorados.
-		%	\item \textbf{Late Arriving Data Handler:} Aplica modificações especiais nas \textit{procedures} do processo padrão para lidar com tabelas fato recém definidas (\textit{late-arriving})  e dimensões.
-		%	\item \textbf{Dimension Manager:} Centraliza a autoridade para preparar e divulgar as dimensões conforme (\textit{conformed dimensions}) para a comunidade do \textit{data warehouse}.
-			%\item \textbf{Fact Table Provider:} Detém a administração de uma ou mais tabelas fato, e a responsabilidade de criação, manutenção e uso.
-%			\item \textbf{Aggregate Builder:} Construção e manutenção de agregações que serão usadas de forma continua com tecnologias de navegação agregada para melhorar a  performance das consultas.
-			%\item \textbf{OLAP Cube Builder:} Seleciona os dados do esquema dimensional para popular os cubos OLAP. 
-			%\item \textbf{Data Propagation Manager:} Prepara dados conformados e integrados no servidor de apresentação do \textit{data warehouse}, para entrega em outros ambientes, para propósitos especiais.
-		%\end{itemize}
+
 	\item[\textbf{d)}] \textbf{Gerenciamento}: Gerencia os sistemas e processos relacionados ao ambiente ETL de forma coerente. Esta etapa possui 13 subsistemas: \textit{Job Scheduler, Backup System, Recovery and Restart, Version Control, Version Migration, Workflow Monitor, Sorting, Lineage and Dependency, Problem Escalation, Paralleling and Pipelining, Security, Compliance Manager, Metadata Repository}.
-	%	\begin{itemize}
-	%		\item  \textbf{Job Scheduler:} A estratégia de gerenciamento da execução dos ETLs deve ser confiável, incluindo os relacionamentos e dependências entre os ETLs.
-	%		\item \textbf{Backup System:} Mantem cópia do ambiente de ETL para propósito de recuperação, \textit{restart} e arquivamento. 
-			%\item \textbf{Version Control:} Mantem arquivadas versões dos ETLs, para eventual recuperação das lógicas e metadados do 'ETL pipeline'.
-			%\item \textbf{Version Migration:} Migração de uma versão completa do 'ETL pipeline' a partir do ambiente de desenvolvimento para um ambiente de testes e, finalmente, para o ambiente de produção.
-			%\item  \textbf{Workflow Monitor:} Garante que os processos de ETL estão sendo eficientemente executados e que as cargas iniciem precisamente nas janelas de tempo estipuladas.
-			%\item \textbf{Sorting:} Garante a fundamental alta performance nos grupos de processos de ETLs.
-			%\item \textbf{Lineage and Dependency:} Identifica a origem dos dados, as localizações intermediarias, as transformações e o dado final, permitindo acompanhar de forma estruturada, a trajetória dos dados até a sua carga no \textit{data warehouse}.
-			%\item \textbf{Problem Escalation:} Estrutura de suporte que  encaminha os problemas encontrados nos processos de  ETLs (erros)  para o nível de solução apropriado.
-			%\item \textbf{Paralleling and Pipelining:} Habilita ao sistema de ETL a potencializar automaticamente  o uso de recursos como múltiplos processadores ou computação em grade (\textit{grid computing}) para entregas dentro dos prazos restritos.
-			%\item \textbf{Security:} Garante o acesso autorizado aos ETLs e Metadados, de forma individual ou em grupos, mantendo um histórico dos acessos.
-			%\item \textbf{Compliance Manager:} Suporta os requerimentos organizacionais de conformidade, através, tipicamente, da manutenção da custódia da cadeia de dados e do acompanhamento dos acessos aos dados (quem teve o acesso autorizado ao dado).
-			%\item \textbf{Metadata Repository:} Captura os metadados do ETL, incluindo os metadados de processo, metadados técnicos e metadados do negócio que significam todos os metadados do ambiente de DW/BI.
-		%\end{itemize}
+	
 	
 \end{itemize}
 
-Dessa forma, o ETL4NoSQL estrutura-se de maneira a atender aos requisitos do processos de ETL, servindo como base para o desenvolvimento de aplicações de ETL.
 
+\subsection{Sistemas de Bancos de Dados NoSQL}
 
-\subsection{Bancos de Dados NoSQL}
+Sistemas de BD NoSQL consistem em sistemas projetados para armazenar grandes volumes de dados em modelos não relacionais disponibilizando estruturas e interfaces com acesso simplificado (\cite{lima:2015}). Cada sistema de BD NoSQL possui um modelo de dados próprio, nos quais os modelos de dados mais conhecidos são divididos em quatro categorias: Chave-Valor, Orientado a Documentos, Famílias de Colunas e Baseado em Grafos (\cite{fowler:2013}, \cite{kaur:2013}).
 
-Bancos de dados NoSQL consistem em bancos de dados que seguem modelos de dados não relacionais projetados para gerenciar grandes volumes de dados que disponibilizam estruturas e interfaces de acesso simples (\cite{lima:2015}). Cada banco de dados NoSQL possui um esquema de modelagem próprio, nos quais os mais conhecidos são divididos em quatro categorias: Chave-Valor, Orientado a Documentos, Famílias de Colunas e Baseado em Grafos (\cite{fowler:2013}, \cite{kaur:2013}).
-
-As principais características dos banco de dados NoSQL são: distribuído, escalabilidade horizontal, construído para grande volume de dados, BASE (Basicamente disponível, Estado leve, Eventualmente consistente) ao invés de ACID (Atomicidade, Consistência, Isolamento e Durabilidade), modelo de dados não relacional e não suporta SQL (\cite{fowler:2013}, \cite{nasholm:2012}).
+As principais características dos sistemas de banco de dados NoSQL são: distribuição, escalabilidade horizontal, gerenciamento de grande volume de dados, satisfaz propriedades do tipo BASE (Basicamente disponível, Estado leve, Eventualmente consistente) ao invés de ACID (Atomicidade, Consistência, Isolamento e Durabilidade), modelo de dados não relacional e não contempla SQL (\cite{fowler:2013}, \cite{nasholm:2012}).
 
 \subsubsection{Banco de dados Orientados à Documentos}
 
