@@ -692,9 +692,10 @@ requirements for the degree of \@degree\ in \@majorfielden.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \def\acknowledgements{%
-  \pagestyle{empty}
+  \pagestyle{headings}
+  \pagenumbering{roman}
   \chapter*{\acknowledgementsname}
-  \thispagestyle{empty}}
+  \thispagestyle{headings}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -706,7 +707,7 @@ requirements for the degree of \@degree\ in \@majorfielden.
   \pagestyle{empty}
   \gdef\@keywordsname{\keywordsnamePT}
   \chapter*{\resumoname}
-  \thispagestyle{empty}}
+  \thispagestyle{headings}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -718,7 +719,7 @@ requirements for the degree of \@degree\ in \@majorfielden.
   \gdef\@keywordsname{\keywordsnameEN}
   \pagestyle{empty}
   \chapter*{\abstrname}
-  \thispagestyle{empty}}
+  \thispagestyle{headings}}
   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Keywords
@@ -749,7 +750,7 @@ requirements for the degree of \@degree\ in \@majorfielden.
 
 \def\epigraph{%
   \if@openright\cleardoublepage\else\clearpage\fi
-  \thispagestyle{empty}
+  \thispagestyle{headings}
   ~\\
   \vfill
   \begin{quotation}}
@@ -792,23 +793,23 @@ requirements for the degree of \@degree\ in \@majorfielden.
 
    \chapter*{\@tocname}
 
-   \thispagestyle{empty}
+   \thispagestyle{headings}
 
    \@starttoc{toc}
 
-   \thispagestyle{empty}}
+   \thispagestyle{headings}}
  
 
 \renewcommand\listoffigures{%
    \pagestyle{empty}
    \chapter*{\@listoffiguresname}
-   \thispagestyle{empty}
+   \thispagestyle{headings}
    \@starttoc{lof}}
 
 \renewcommand\listoftables{%
    \pagestyle{empty}
    \chapter*{\@listoftablesname}
-   \thispagestyle{empty}
+   \thispagestyle{headings}
    \@starttoc{lot}}
 
 \newcommand{\listofacronyms}{%
@@ -818,7 +819,7 @@ requirements for the degree of \@degree\ in \@majorfielden.
       \thispagestyle{empty}
    \else\if\@language0
       \chapter*{\acronimoname}
-      \thispagestyle{empty}
+      \thispagestyle{headings}
    \fi\fi}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
